@@ -1,36 +1,125 @@
-<!-- Tambahan baru ada di bagian form -->
-<form id="orderForm">
-  <label for="loginType">Tipe Login:</label>
-  <select id="loginType">
-    <option>Facebook</option>
-    <option>Miniclip</option>
-    <option>Google</option>
-  </select>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mamet Ucup Store - Top Up 8Ball Pool</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a0dad, #000000, #ffffff);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
 
-  <label for="playerId">ID Pemain:</label>
-  <input type="text" id="playerId" placeholder="Masukkan ID Pemain" required>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  <label for="vipLevel">Level VIP (angka):</label>
-  <input type="number" id="vipLevel" placeholder="Contoh: 7" required>
+    form {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2),
+                  0 0 10px rgba(106, 13, 173, 0.6);
+      width: 100%;
+      max-width: 500px;
+    }
 
-  <!-- ✅ Tambahan baru -->
-  <label for="vipTier">Tipe VIP Akun:</label>
-  <select id="vipTier" required>
-    <option value="">-- Pilih Tipe VIP --</option>
-    <option>Bronze</option>
-    <option>Silver</option>
-    <option>Gold</option>
-    <option>Diamond</option>
-    <option>Black Diamond</option>
-  </select>
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-  <label>Pilih Paket:</label>
-  <div class="checkbox-group">
-    <label><input type="checkbox" value="Top Up Premium"> Top Up Premium</label>
-    <label><input type="checkbox" value="Top Up Reguler"> Top Up Reguler</label>
-    <label><input type="checkbox" value="Bonus Mingguan"> Bonus Mingguan</label>
-    <label><input type="checkbox" value="Event Special"> Event Special</label>
-  </div>
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
 
-  <button type="submit">Checkout via WhatsApp</button>
-</form>
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #eee;
+      color: #000;
+    }
+
+    .checkbox-group {
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #6a0dad, #ffffff);
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(106, 13, 173, 0.6);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <form id="orderForm">
+      <h2>Form Top Up 8Ball Pool</h2>
+
+      <label for="loginType">Tipe Login:</label>
+      <select id="loginType">
+        <option>Facebook</option>
+        <option>Miniclip</option>
+        <option>Google</option>
+      </select>
+
+      <label for="playerId">ID Pemain:</label>
+      <input type="text" id="playerId" placeholder="Masukkan ID Pemain" required />
+
+      <label for="vipLevel">Level VIP (angka):</label>
+      <input type="number" id="vipLevel" placeholder="Contoh: 7" required />
+
+      <label for="vipTier">Tipe VIP Akun:</label>
+      <select id="vipTier" required>
+        <option value="">-- Pilih Tipe VIP --</option>
+        <option>Bronze</option>
+        <option>Silver</option>
+        <option>Gold</option>
+        <option>Diamond</option>
+        <option>Black Diamond</option>
+      </select>
+
+      <label>Pilih Paket:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" value="Top Up Premium" /> Top Up Premium</label>
+        <label><input type="checkbox" value="Top Up Reguler" /> Top Up Reguler</label>
+        <label><input type="checkbox" value="Bonus Mingguan" /> Bonus Mingguan</label>
+        <label><input type="checkbox" value="Event Special" /> Event Special</label>
+      </div>
+
+      <button type="submit">Checkout via WhatsApp</button>
+    </form>
+  </main>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
