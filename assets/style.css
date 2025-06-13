@@ -9,6 +9,9 @@ body {
 
 /* Header Styles */
 header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 20px;
   background: rgba(0, 0, 0, 0.7);
@@ -33,7 +36,21 @@ header h1 {
   z-index: 1;
 }
 
-/* Button Styles */
+/* Section Styles */
+section {
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* List Box Legend Styles */
+.list-box-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
 button {
   background: #0d6efd;
   color: white;
@@ -49,37 +66,21 @@ button:hover {
   background: #0069d9;
 }
 
-/* Menu Styles */
-section {
-  margin: 20px auto;
-  text-align: left;
-}
-
-.vip-options, .golden-shot-options, .pool-pass-options, .venice-legal-options {
+/* VIP Options (List Box) */
+.vip-options {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 10px;
-  justify-content: flex-start;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Animasi untuk menu yang muncul */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .option {
   background: rgba(0, 0, 0, 0.7);
   padding: 12px 20px;
   border-radius: 10px;
-  width: 200px;
+  width: 150px;
   text-align: center;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   transition: background 0.3s ease;
 }
 
@@ -97,7 +98,7 @@ section {
   background: red;
 }
 
-/* Cart */
+/* Cart Styles */
 .cart {
   position: fixed;
   bottom: 20px;
@@ -134,7 +135,21 @@ section {
   margin-bottom: 5px;
 }
 
-/* Adjusting responsiveness */
+/* Responsiveness and positioning tweaks */
+.vip-options, .golden-shot-options, .pool-pass-options, .venice-legal-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+section {
+  max-width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 @media (max-width: 768px) {
   .vip-options, .golden-shot-options, .pool-pass-options, .venice-legal-options {
     flex-direction: column;
