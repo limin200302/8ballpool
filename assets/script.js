@@ -1,25 +1,55 @@
-const vipOptions = document.querySelectorAll('.vip-option');
+const vipOptionsContainer = document.querySelector('.vip-options');
 const cartList = document.getElementById('cart-list');
 const cartCount = document.getElementById('cart-count');
 let selectedVIP = [];
 
-vipOptions.forEach(option => {
-  option.addEventListener('click', () => {
-    const vipName = option.getAttribute('data-vip');
+// Fitur List Cash - Menampilkan VIP berdasarkan akun
+document.getElementById('list-cash').addEventListener('click', () => {
+  const vipList = [
+    'Bronze', 'Silver', 'Gold', 'Zamrud', 'Diamond', 'Black Diamond'
+  ];
 
-    if (option.classList.contains('selected')) {
-      // Deselect VIP
-      option.classList.remove('selected');
-      selectedVIP = selectedVIP.filter(item => item !== vipName);
-    } else {
-      // Select VIP
-      option.classList.add('selected');
-      selectedVIP.push(vipName);
-    }
+  // Bersihkan daftar VIP yang lama
+  vipOptionsContainer.innerHTML = '';
 
-    updateCart();
+  // Menambahkan opsi VIP ke dalam daftar
+  vipList.forEach(vip => {
+    const vipOption = document.createElement('div');
+    vipOption.classList.add('vip-option');
+    vipOption.setAttribute('data-vip', vip);
+
+    const vipText = document.createElement('span');
+    vipText.textContent = vip;
+
+    const vipIcon = document.createElement('img');
+    vipIcon.classList.add('vip-icon');
+    vipIcon.src = `assets/img/${vip.toLowerCase().replace(" ", "")}.png`; // Sesuaikan nama file gambar
+
+    vipOption.appendChild(vipText);
+    vipOption.appendChild(vipIcon);
+
+    vipOption.addEventListener('click', () => {
+      toggleVIPSelection(vip, vipOption);
+    });
+
+    vipOptionsContainer.appendChild(vipOption);
   });
 });
+
+// Menangani pemilihan VIP
+function toggleVIPSelection(vipName, vipOption) {
+  if (vipOption.classList.contains('selected')) {
+    // Deselect VIP
+    vipOption.classList.remove('selected');
+    selectedVIP = selectedVIP.filter(item => item !== vipName);
+  } else {
+    // Select VIP
+    vipOption.classList.add('selected');
+    selectedVIP.push(vipName);
+  }
+
+  updateCart();
+}
 
 function updateCart() {
   cartList.innerHTML = '';
@@ -39,17 +69,3 @@ function checkout() {
     alert("Pesanan Anda:\n" + selectedVIP.join(", "));
   }
 }
-
-// Fitur List Cash
-document.getElementById('list-cash').addEventListener('click', () => {
-  const vipList = [
-    'Bronze', 'Silver', 'Gold', 'Zamrud', 'Diamond', 'Black Diamond'
-  ];
-  const account = prompt("Masukkan akun untuk memilih VIP:");
-
-  if (account) {
-    alert(`Akun ${account} dapat memilih paket VIP:\n${vipList.join(", ")}`);
-  } else {
-    alert("Akun tidak valid!");
-  }
-});
