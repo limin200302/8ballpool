@@ -1,24 +1,36 @@
-document.getElementById("orderForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+const cart = [];
+const cartCount = document.getElementById('cart-count');
+const cartList = document.getElementById('cart-list');
+const cartItems = document.getElementById('cart-items');
+const checkoutBtn = document.getElementById('checkout-btn');
 
-  const loginType = document.getElementById("loginType").value;
-  const playerId = document.getElementById("playerId").value;
-  const vipLevel = document.getElementById("vipLevel").value;
-  const vipTier = document.getElementById("vipTier").value;
-  const checkboxes = document.querySelectorAll(".checkbox-group input:checked");
+document.querySelectorAll('.vip-option').forEach(option => {
+    option.addEventListener('click', () => {
+        const vip = option.getAttribute('data-vip');
+        if (!cart.includes(vip)) {
+            cart.push(vip);
+            updateCart();
+        }
+    });
+});
 
-  const selectedPackages = Array.from(checkboxes)
-    .map(cb => cb.value)
-    .join(", ");
+function updateCart() {
+    cartCount.textContent = cart.length;
+    cartList.innerHTML = '';
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.charAt(0).toUpperCase() + item.slice(1);
+        cartList.appendChild(li);
+    });
+    cartItems.style.display = cart.length > 0 ? 'block' : 'none';
+}
 
-  const message = `Halo Admin, saya ingin top up 8 Ball Pool:\n\n` +
-                  `🔐 Tipe Login: ${loginType}\n` +
-                  `🆔 ID Pemain: ${playerId}\n` +
-                  `⭐ Level VIP: ${vipLevel}\n` +
-                  `💎 Tipe VIP Akun: ${vipTier}\n` +
-                  `📦 Paket yang Dipilih: ${selectedPackages}`;
-
-  const whatsappNumber = "6281234567890"; // Ganti sesuai nomor WA admin
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-  window.open(url, "_blank");
+checkoutBtn.addEventListener('click', () => {
+    if (cart.length > 0) {
+        alert('Checkout berhasil!');
+        cart.length = 0;
+        updateCart();
+    } else {
+        alert('Keranjang kosong!');
+    }
 });
