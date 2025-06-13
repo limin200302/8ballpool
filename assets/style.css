@@ -1,1 +1,71 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f6f1;
+  color: #333;
+}
+
+header {
+  background-color: #6a0dad; /* Ungu */
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.checkbox-group {
+  margin-top: 1rem;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  background-color: #fceabb; /* Cream */
+  color: #6a0dad;
+  border: none;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eee;
+  color: #555;
+  margin-top: 3rem;
+}
 
