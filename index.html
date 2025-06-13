@@ -1,8 +1,60 @@
-<!-- ... -->
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mamet Ucup Store - Top Up 8Ball Pool</title>
-  <link rel="stylesheet" href="assets/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamet Ucup Store</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<!-- ... -->
+<body>
+    <header>
+        <h1>Mamet Ucup Store</h1>
+    </header>
+
+    <main>
+        <section class="vip-selection">
+            <h2>Pilih VIP Anda</h2>
+            <div class="vip-options">
+                <div class="vip-option" data-vip="bronze">
+                    <img src="bronze-logo.png" alt="Bronze">
+                    <span>Bronze</span>
+                </div>
+                <div class="vip-option" data-vip="silver">
+                    <img src="silver-logo.png" alt="Silver">
+                    <span>Silver</span>
+                </div>
+                <div class="vip-option" data-vip="gold">
+                    <img src="gold-logo.png" alt="Gold">
+                    <span>Gold</span>
+                </div>
+                <div class="vip-option" data-vip="zamrud">
+                    <img src="zamrud-logo.png" alt="Zamrud">
+                    <span>Zamrud</span>
+                </div>
+                <div class="vip-option" data-vip="diamond">
+                    <img src="diamond-logo.png" alt="Diamond">
+                    <span>Diamond</span>
+                </div>
+                <div class="vip-option" data-vip="black-diamond">
+                    <img src="black-diamond-logo.png" alt="Black Diamond">
+                    <span>Black Diamond</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="cart">
+            <div class="cart-icon">
+                <img src="cart-icon.png" alt="Keranjang">
+                <span id="cart-count">0</span>
+            </div>
+            <div id="cart-items" class="cart-items">
+                <h3>Keranjang</h3>
+                <ul id="cart-list"></ul>
+                <button id="checkout-btn">Checkout</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
