@@ -1,34 +1,55 @@
-const checkboxes = document.querySelectorAll('.vip-options input[type="checkbox"]');
+const vipOptions = document.querySelectorAll('.vip-option');
 const cartList = document.getElementById('cart-list');
 const cartCount = document.getElementById('cart-count');
+let selectedVIP = [];
 
-checkboxes.forEach(box => {
-  box.addEventListener('change', updateCart);
+vipOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    const vipName = option.getAttribute('data-vip');
+
+    if (option.classList.contains('selected')) {
+      // Deselect VIP
+      option.classList.remove('selected');
+      selectedVIP = selectedVIP.filter(item => item !== vipName);
+    } else {
+      // Select VIP
+      option.classList.add('selected');
+      selectedVIP.push(vipName);
+    }
+
+    updateCart();
+  });
 });
 
 function updateCart() {
-  const selected = [];
   cartList.innerHTML = '';
-  checkboxes.forEach(box => {
-    if (box.checked) {
-      selected.push(box.value);
-      const item = document.createElement('div');
-      item.textContent = box.value;
-      cartList.appendChild(item);
-    }
+  selectedVIP.forEach(vip => {
+    const item = document.createElement('div');
+    item.textContent = vip;
+    cartList.appendChild(item);
   });
-  cartCount.textContent = selected.length;
+
+  cartCount.textContent = selectedVIP.length;
 }
 
 function checkout() {
-  const selected = [];
-  checkboxes.forEach(box => {
-    if (box.checked) selected.push(box.value);
-  });
-
-  if (selected.length === 0) {
+  if (selectedVIP.length === 0) {
     alert("Silakan pilih minimal satu paket VIP.");
   } else {
-    alert("Pesanan Anda:\n" + selected.join(", "));
+    alert("Pesanan Anda:\n" + selectedVIP.join(", "));
   }
 }
+
+// Fitur List Cash
+document.getElementById('list-cash').addEventListener('click', () => {
+  const vipList = [
+    'Bronze', 'Silver', 'Gold', 'Zamrud', 'Diamond', 'Black Diamond'
+  ];
+  const account = prompt("Masukkan akun untuk memilih VIP:");
+
+  if (account) {
+    alert(`Akun ${account} dapat memilih paket VIP:\n${vipList.join(", ")}`);
+  } else {
+    alert("Akun tidak valid!");
+  }
+});
