@@ -1,60 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mamet Ucup Store</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mamet Ucup Store</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Mamet Ucup Store</h1>
-    </header>
+  <header>
+    <h1>Mamet Ucup Store</h1>
+  </header>
 
-    <main>
-        <section class="vip-selection">
-            <h2>Pilih VIP Anda</h2>
-            <div class="vip-options">
-                <div class="vip-option" data-vip="bronze">
-                    <img src="bronze-logo.png" alt="Bronze">
-                    <span>Bronze</span>
-                </div>
-                <div class="vip-option" data-vip="silver">
-                    <img src="silver-logo.png" alt="Silver">
-                    <span>Silver</span>
-                </div>
-                <div class="vip-option" data-vip="gold">
-                    <img src="gold-logo.png" alt="Gold">
-                    <span>Gold</span>
-                </div>
-                <div class="vip-option" data-vip="zamrud">
-                    <img src="zamrud-logo.png" alt="Zamrud">
-                    <span>Zamrud</span>
-                </div>
-                <div class="vip-option" data-vip="diamond">
-                    <img src="diamond-logo.png" alt="Diamond">
-                    <span>Diamond</span>
-                </div>
-                <div class="vip-option" data-vip="black-diamond">
-                    <img src="black-diamond-logo.png" alt="Black Diamond">
-                    <span>Black Diamond</span>
-                </div>
-            </div>
-        </section>
+  <main>
+    <section class="vip-menu">
+      <h2>Pilih Paket VIP</h2>
+      <div class="vip-options">
+        <label><input type="checkbox" value="Bronze" /> Bronze <img src="bronze.png" class="vip-icon" /></label>
+        <label><input type="checkbox" value="Silver" /> Silver <img src="silver.png" class="vip-icon" /></label>
+        <label><input type="checkbox" value="Gold" /> Gold <img src="gold.png" class="vip-icon" /></label>
+        <label><input type="checkbox" value="Zamrud" /> Zamrud <img src="zamrud.png" class="vip-icon" /></label>
+        <label><input type="checkbox" value="Diamond" /> Diamond <img src="diamond.png" class="vip-icon" /></label>
+        <label><input type="checkbox" value="Black Diamond" /> Black Diamond <img src="blackdiamond.png" class="vip-icon" /></label>
+      </div>
+    </section>
+  </main>
 
-        <section class="cart">
-            <div class="cart-icon">
-                <img src="cart-icon.png" alt="Keranjang">
-                <span id="cart-count">0</span>
-            </div>
-            <div id="cart-items" class="cart-items">
-                <h3>Keranjang</h3>
-                <ul id="cart-list"></ul>
-                <button id="checkout-btn">Checkout</button>
-            </div>
-        </section>
-    </main>
+  <div id="cart" class="cart">
+    <img src="cart.png" alt="Cart" class="cart-icon" />
+    <span id="cart-count">0</span>
+    <div class="cart-list" id="cart-list"></div>
+    <button onclick="checkout()">Checkout</button>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
