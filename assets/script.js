@@ -1,71 +1,90 @@
+const listCashBtn = document.getElementById('list-cash');
+const goldenShotBtn = document.getElementById('golden-shot');
+const poolPassBtn = document.getElementById('pool-pass');
+const veniceLegalBtn = document.getElementById('venice-legal');
 const vipOptionsContainer = document.querySelector('.vip-options');
+const goldenShotOptionsContainer = document.querySelector('.golden-shot-options');
+const poolPassOptionsContainer = document.querySelector('.pool-pass-options');
+const veniceLegalOptionsContainer = document.querySelector('.venice-legal-options');
 const cartList = document.getElementById('cart-list');
 const cartCount = document.getElementById('cart-count');
-let selectedVIP = [];
+let selectedItems = [];
 
-// Fitur List Cash - Menampilkan VIP berdasarkan akun
-document.getElementById('list-cash').addEventListener('click', () => {
-  const vipList = [
-    'Bronze', 'Silver', 'Gold', 'Zamrud', 'Diamond', 'Black Diamond'
-  ];
+const vipList = [
+  { name: 'Bronze', icon: 'bronze.png' },
+  { name: 'Silver', icon: 'silver.png' },
+  { name: 'Gold', icon: 'gold.png' },
+  { name: 'Zamrud', icon: 'zamrud.png' },
+  { name: 'Diamond', icon: 'diamond.png' },
+  { name: 'Black Diamond', icon: 'blackdiamond.png' }
+];
 
-  // Bersihkan daftar VIP yang lama
-  vipOptionsContainer.innerHTML = '';
+const goldenShotList = ['24 Golden Shot', '48 Golden Shot', '72 Golden Shot', '96 Golden Shot', '120 Golden Shot'];
+const poolPassList = ['Biasa Rp 50.000', 'Elite Rp 85.000'];
+const veniceLegalList = ['7 Hari Rp 80.000', '16 Hari Rp 155.000', '21 Hari Rp 230.000', '28 Hari Rp 285.000'];
 
-  // Menambahkan opsi VIP ke dalam daftar
-  vipList.forEach(vip => {
-    const vipOption = document.createElement('div');
-    vipOption.classList.add('vip-option');
-    vipOption.setAttribute('data-vip', vip);
+// Function to toggle options visibility
+function toggleOptions(button, container, optionsList) {
+  const isVisible = container.style.display === 'block';
+  container.style.display = isVisible ? 'none' : 'block';
 
-    const vipText = document.createElement('span');
-    vipText.textContent = vip;
+  if (!isVisible) {
+    container.innerHTML = ''; // Clear previous options
+    optionsList.forEach(option => {
+      const optionDiv = document.createElement('div');
+      optionDiv.classList.add('option');
+      optionDiv.textContent = option.name || option; // In case it's a text-based list
 
-    const vipIcon = document.createElement('img');
-    vipIcon.classList.add('vip-icon');
-    vipIcon.src = `assets/img/${vip.toLowerCase().replace(" ", "")}.png`; // Sesuaikan nama file gambar
+      // Add image for VIP options
+      if (option.icon) {
+        const img = document.createElement('img');
+        img.src = `assets/img/${option.icon}`;
+        optionDiv.appendChild(img);
+      }
 
-    vipOption.appendChild(vipText);
-    vipOption.appendChild(vipIcon);
+      optionDiv.addEventListener('click', () => {
+        toggleSelection(optionDiv, option.name || option);
+      });
 
-    vipOption.addEventListener('click', () => {
-      toggleVIPSelection(vip, vipOption);
+      container.appendChild(optionDiv);
     });
+  }
+}
 
-    vipOptionsContainer.appendChild(vipOption);
-  });
-});
-
-// Menangani pemilihan VIP
-function toggleVIPSelection(vipName, vipOption) {
-  if (vipOption.classList.contains('selected')) {
-    // Deselect VIP
-    vipOption.classList.remove('selected');
-    selectedVIP = selectedVIP.filter(item => item !== vipName);
+// Toggle selection on click
+function toggleSelection(optionDiv, optionName) {
+  if (optionDiv.classList.contains('selected')) {
+    optionDiv.classList.remove('selected');
+    selectedItems = selectedItems.filter(item => item !== optionName);
   } else {
-    // Select VIP
-    vipOption.classList.add('selected');
-    selectedVIP.push(vipName);
+    optionDiv.classList.add('selected');
+    selectedItems.push(optionName);
   }
 
   updateCart();
 }
 
+// Update cart
 function updateCart() {
   cartList.innerHTML = '';
-  selectedVIP.forEach(vip => {
-    const item = document.createElement('div');
-    item.textContent = vip;
-    cartList.appendChild(item);
+  selectedItems.forEach(item => {
+    const itemDiv = document.createElement('div');
+    itemDiv.textContent = item;
+    cartList.appendChild(itemDiv);
   });
 
-  cartCount.textContent = selectedVIP.length;
+  cartCount.textContent = selectedItems.length;
 }
 
+// Add event listeners
+listCashBtn.addEventListener('click', () => toggleOptions(listCashBtn, vipOptionsContainer, vipList));
+goldenShotBtn.addEventListener('click', () => toggleOptions(goldenShotBtn, goldenShotOptionsContainer, goldenShotList));
+poolPassBtn.addEventListener('click', () => toggleOptions(poolPassBtn, poolPassOptionsContainer, poolPassList));
+veniceLegalBtn.addEventListener('click', () => toggleOptions(veniceLegalBtn, veniceLegalOptionsContainer, veniceLegalList));
+
+// Checkout function
 function checkout() {
-  if (selectedVIP.length === 0) {
-    alert("Silakan pilih minimal satu paket VIP.");
-  } else {
-    alert("Pesanan Anda:\n" + selectedVIP.join(", "));
-  }
+  alert('Checkout: ' + selectedItems.join(', '));
+  selectedItems = [];
+  updateCart();
 }
