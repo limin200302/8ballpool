@@ -1,71 +1,68 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f9f6f1;
-  color: #333;
-}
-
-header {
-  background-color: #6a0dad; /* Ungu */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #6a0dad, #000000, #ffffff); /* Gradasi ungu → hitam → putih */
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   color: white;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-main {
-  padding: 2rem;
+/* Animasi gradasi bergerak */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.form-section {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 600px;
-  margin: auto;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+form {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparan */
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 
+              0 0 10px rgba(106, 13, 173, 0.6); /* bayangan ungu & putih */
+  width: 100%;
+  max-width: 500px;
 }
 
 label {
   display: block;
-  margin-top: 1rem;
+  margin-top: 15px;
   font-weight: bold;
 }
 
 input, select {
   width: 100%;
-  padding: 0.6rem;
-  margin-top: 0.3rem;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+  background: #eee;
+  color: #000;
 }
 
 .checkbox-group {
-  margin-top: 1rem;
-}
-
-.checkbox-group label {
-  display: block;
-  margin-bottom: 0.5rem;
+  margin-top: 10px;
 }
 
 button {
-  background-color: #fceabb; /* Cream */
-  color: #6a0dad;
-  border: none;
-  padding: 1rem;
-  border-radius: 12px;
-  margin-top: 2rem;
-  font-size: 1rem;
-  cursor: pointer;
+  margin-top: 20px;
   width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #6a0dad, #ffffff);
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(106, 13, 173, 0.6);
+  transition: transform 0.2s ease;
 }
 
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #eee;
-  color: #555;
-  margin-top: 3rem;
+button:hover {
+  transform: scale(1.03);
 }
-
