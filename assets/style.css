@@ -6,10 +6,15 @@ body {
   animation: gradientShift 15s ease infinite;
   color: white;
   min-height: 100vh;
+  display: block;
+  padding: 20px;
+}
+
+main {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 @keyframes gradientShift {
@@ -26,6 +31,7 @@ form {
               0 0 10px rgba(106, 13, 173, 0.6);
   width: 100%;
   max-width: 500px;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -47,10 +53,16 @@ input, select {
   border-radius: 8px;
   background: #eee;
   color: #000;
+  box-sizing: border-box;
 }
 
 .checkbox-group {
   margin-top: 10px;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 8px;
 }
 
 button {
