@@ -23,22 +23,6 @@ body {
   opacity: 0.5;
 }
 
-/* Header Styles */
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-}
-
-.header-img {
-  width: 100%;
-  max-width: 1900px;
-  height: 407px;
-  object-fit: cover;
-}
-
 /* Section Layout */
 section {
   margin: 20px 0;
@@ -104,6 +88,7 @@ button.active {
   font-size: 1.1rem;
 }
 
+/* Detail Harga untuk VIP */
 .vip-details {
   display: none;
   margin-top: 20px;
