@@ -47,6 +47,10 @@ main {
   cursor: pointer;
   font-weight: bold;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .price-section {
@@ -139,10 +143,10 @@ aside#cart {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 90px;
+  width: 60px;
   z-index: 999;
-  pointer-events: none;
   animation: float 3s ease-in-out infinite;
+  cursor: move;
 }
 
 @keyframes float {
@@ -154,4 +158,9 @@ img.dollar {
   width: 16px;
   margin-left: 4px;
   vertical-align: middle;
+}
+
+.icon-inline {
+  width: 18px;
+  height: 18px;
 }
