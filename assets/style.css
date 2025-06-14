@@ -1,179 +1,88 @@
-/* Setelan Umum Body */
-body {
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a2e, #5c1780, #ffffff);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
   color: white;
-  background: black;
+  padding: 20px;
 }
 
-/* Gambar Background */
-.background-img {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.background-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-}
-
-/* Section Layout */
-section {
-  margin: 20px 0;
-  padding: 10px;
+header {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 30px;
+  font-size: 2em;
+  text-shadow: 2px 2px 5px #000;
 }
 
-/* Kolom Button */
-button {
-  font-size: 1.2rem;
-  background-color: #8A2BE2;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+.vip-category {
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 200px;
-  margin: 10px;
+  transition: transform 0.2s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.vip-category:hover {
+  transform: scale(1.03);
+  background-color: rgba(255,255,255,0.1);
+}
+
+.vip-icon {
+  width: 32px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.dollar-icon {
+  width: 16px;
+  vertical-align: middle;
+}
+
+.vip-category h2 {
+  display: inline;
+  font-size: 1.5em;
+}
+
+.vip-category ul {
+  margin-top: 10px;
+  list-style: none;
+}
+
+.vip-category li {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.action {
+  text-align: center;
+  margin-top: 30px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #fff;
 }
 
 button:hover {
-  background-color: #5F259F;
-}
-
-button.active {
-  background-color: #D32F2F;
-}
-
-/* Dropdown Styles */
-.vip-options, .golden-shot-options, .pool-pass-options, .venice-legal-options {
-  display: none;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.vip-options.active, .golden-shot-options.active, .pool-pass-options.active, .venice-legal-options.active {
-  display: block;
-}
-
-/* Option Styles (Icon + Text) */
-.option {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  margin: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.option:hover {
-  transform: scale(1.05);
-  background-color: #555;
-}
-
-.option img {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-}
-
-.option span {
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
-}
-
-.option.active span {
-  color: gold;
-}
-
-/* Detail Harga untuk VIP */
-.vip-details {
-  display: none;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-}
-
-.vip-details.active {
-  display: block;
-}
-
-.vip-details div {
-  margin: 5px 0;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.vip-details div:hover {
-  color: gold;
-  text-decoration: underline;
-}
-
-/* Keranjang Styles */
-.cart {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px 20px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 150px;  /* Keranjang lebih kecil */
-  z-index: 10;
-}
-
-.cart-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.cart button {
-  background-color: #FF5733;
-  border: none;
-  padding: 5px 15px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-}
-
-.cart button:hover {
-  background-color: #C1351D;
-}
-
-/* Pesan Sekarang */
-#order-now {
-  display: none;
-  margin-top: 20px;
-  text-align: center;
-}
-
-#order-now button {
-  background-color: #25D366;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-#order-now button:hover {
-  background-color: #128C7E;
+  background-color: #9c27b0;
 }
