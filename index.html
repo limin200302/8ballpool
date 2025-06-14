@@ -9,35 +9,38 @@
 <body>
   <header>
     <h1>Mamet Ucup Store</h1>
-    <nav>
-      <ul>
-        <li><a href="#" id="toggle-pricelist">📋 Price List Cash</a></li>
-        <li><a href="#" id="toggle-boxlegend">📦 Price List Box Legend</a></li>
-      </ul>
-    </nav>
+    <button id="modeToggle">🌙</button>
   </header>
 
   <main>
-    <section id="price-list-section" class="hidden">
-      <h2>📋 Price List Cash</h2>
-      <div id="vip-container"></div>
+    <section class="menu">
+      <button class="toggle-section" data-target="priceListCash">📋 Price List Cash</button>
+      <div id="priceListCash" class="price-section"></div>
+
+      <button class="toggle-section" data-target="boxLegend">🎁 Price List Box Legend</button>
+      <div id="boxLegend" class="price-section"></div>
+
+      <button class="toggle-section" data-target="poolPass">🎫 Pool Pass</button>
+      <div id="poolPass" class="price-section">
+        <div class="item">
+          <span>Pool Pass Biasa - Rp 50.000</span>
+          <button onclick="addToCart('Pool Pass Biasa', 50000)">Pilih</button>
+        </div>
+        <div class="item">
+          <span>Pool Pass Elite - Rp 85.000</span>
+          <button onclick="addToCart('Pool Pass Elite', 85000)">Pilih</button>
+        </div>
+      </div>
     </section>
 
-    <section id="box-legend-section" class="hidden">
-      <h2>📦 Price List Box Legend</h2>
-      <div id="boxlegend-container"></div>
-    </section>
-
-    <section id="cart">
-      <h2>🛒 Keranjang Belanja</h2>
-      <ul id="cart-items"></ul>
-      <button id="checkout-btn">Checkout via WhatsApp</button>
-    </section>
+    <aside id="cart">
+      <h2>Keranjang</h2>
+      <ul id="cartItems"></ul>
+      <button id="checkoutBtn">Pesan Sekarang</button>
+    </aside>
   </main>
 
-  <a href="https://wa.me/6285713056206" class="whatsapp-btn" target="_blank">
-    <img src="assets/img/wa.png" alt="WhatsApp" />
-  </a>
+  <img src="assets/img/Anms.gif" id="chibi" alt="Chibi" />
 
   <script src="assets/script.js"></script>
 </body>
