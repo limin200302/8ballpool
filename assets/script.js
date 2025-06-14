@@ -31,26 +31,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const veniceLegalOptions = document.querySelector(".venice-legal-options");
     toggleDropdown(veniceLegalBtn, veniceLegalOptions);
   });
-
-  // Cart functionality
-  const cartCount = document.getElementById("cart-count");
-  let cartItems = 0;
-
-  // Function to update cart
-  function updateCart() {
-    cartCount.textContent = cartItems;
-  }
-
-  // Checkout action
-  function checkout() {
-    alert("Proceeding to checkout...");
-    cartItems = 0;
-    updateCart();
-  }
-
-  // Simulating adding items to the cart
-  document.getElementById("add-item-btn").addEventListener("click", function() {
-    cartItems++;
-    updateCart();
-  });
 });
+
+// Keranjang belanjaan
+let cartCount = 0;
+document.getElementById("cart-count").textContent = cartCount;
+
+function checkout() {
+  alert("Proses checkout!");
+  cartCount = 0;
+  document.getElementById("cart-count").textContent = cartCount;
+}
