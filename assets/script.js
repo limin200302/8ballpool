@@ -42,8 +42,43 @@ document.addEventListener("DOMContentLoaded", function() {
         "Rp 200.000 - 3.100 Cash",
         "Rp 260.000 - 4.000 Cash",
         "Rp 280.000 - 7.000 Cash"
+      ],
+      gold: [
+        "Rp 75.000 - 820 Cash",
+        "Rp 90.000 - 1.100 Cash",
+        "Rp 120.000 - 1.500 Cash",
+        "Rp 160.000 - 2.100 Cash",
+        "Rp 220.000 - 3.400 Cash",
+        "Rp 280.000 - 4.500 Cash",
+        "Rp 300.000 - 8.000 Cash"
+      ],
+      zamrud: [
+        "Rp 55.000 - 605 Cash",
+        "Rp 70.000 - 880 Cash",
+        "Rp 95.000 - 1.210 Cash",
+        "Rp 135.000 - 1.892 Cash",
+        "Rp 190.000 - 2.992 Cash",
+        "Rp 250.000 - 3.872 Cash",
+        "Rp 275.000 - 6.600 Cash"
+      ],
+      diamond: [
+        "Rp 85.000 - 950 Cash",
+        "Rp 105.000 - 1.300 Cash",
+        "Rp 130.000 - 1.600 Cash",
+        "Rp 180.000 - 2.500 Cash",
+        "Rp 240.000 - 3.700 Cash",
+        "Rp 310.000 - 5.000 Cash",
+        "Rp 350.000 - 9.000 Cash"
+      ],
+      "black-diamond": [
+        "Rp 100.000 - 1.050 Cash",
+        "Rp 120.000 - 1.400 Cash",
+        "Rp 150.000 - 1.800 Cash",
+        "Rp 200.000 - 2.700 Cash",
+        "Rp 260.000 - 4.000 Cash",
+        "Rp 330.000 - 5.500 Cash",
+        "Rp 370.000 - 10.000 Cash"
       ]
-      // You can add more VIP options (Gold, Zamrud, etc.) here
     };
 
     const selectedDetails = details[vipType] || [];
