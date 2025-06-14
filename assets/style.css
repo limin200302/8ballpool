@@ -1,88 +1,75 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
 body {
-  background: linear-gradient(135deg, #1a1a2e, #5c1780, #ffffff);
-  background-size: 400% 400%;
-  animation: gradientMove 10s ease infinite;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0e0e0e, #3d004d, #ffffff);
+  animation: shadowMove 10s infinite alternate;
   color: white;
-  padding: 20px;
+  padding: 1rem;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes shadowMove {
+  0% { box-shadow: 0 0 10px #9c27b0; }
+  100% { box-shadow: 0 0 30px #9c27b0; }
 }
 
 header {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 2em;
-  text-shadow: 2px 2px 5px #000;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .vip-category {
-  background-color: rgba(255,255,255,0.05);
+  border: 2px solid #fff;
   border-radius: 10px;
-  padding: 15px;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  margin-bottom: 1rem;
+  background: rgba(255,255,255,0.05);
+  padding: 0.5rem;
 }
 
-.vip-category:hover {
-  transform: scale(1.03);
-  background-color: rgba(255,255,255,0.1);
+.vip-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.vip-header:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .vip-icon {
-  width: 32px;
-  vertical-align: middle;
-  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.price-list {
+  list-style: none;
+  padding: 0.5rem 1rem;
+}
+
+.price-list li {
+  margin: 0.5rem 0;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.price-list li:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .dollar-icon {
-  width: 16px;
-  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  margin-left: 0.5rem;
 }
 
-.vip-category h2 {
-  display: inline;
-  font-size: 1.5em;
-}
-
-.vip-category ul {
-  margin-top: 10px;
-  list-style: none;
-}
-
-.vip-category li {
-  margin: 5px 0;
-  font-size: 1em;
-}
-
-.action {
-  text-align: center;
-  margin-top: 30px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 1.2em;
-  background-color: #6a1b9a;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 10px #fff;
-}
-
-button:hover {
-  background-color: #9c27b0;
+.hidden {
+  display: none;
 }
