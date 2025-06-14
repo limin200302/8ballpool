@@ -1,17 +1,11 @@
-let selectedVIP = "";
-
-function selectVIP(vip) {
-  selectedVIP = vip;
-  alert("VIP " + vip + " dipilih.");
+function togglePrices(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle("hidden");
 }
 
-function orderNow() {
-  if (!selectedVIP) {
-    alert("Silakan pilih VIP terlebih dahulu.");
-    return;
-  }
+function buy(vip, detail) {
+  const message = `Halo, saya ingin beli ${vip} - ${detail}`;
   const phone = "085713056206";
-  const message = `Halo, saya ingin memesan Cash untuk VIP ${selectedVIP}.`;
-  const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-  window.open(whatsappURL, "_blank");
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
 }
