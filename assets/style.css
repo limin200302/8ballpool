@@ -76,6 +76,12 @@ button.active {
   justify-content: start;
   margin: 10px;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.option:hover {
+  transform: scale(1.05);
+  background-color: #555;
 }
 
 .option img {
@@ -86,6 +92,11 @@ button.active {
 
 .option span {
   font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.option.active span {
+  color: gold;
 }
 
 /* Detail Harga untuk VIP */
@@ -104,9 +115,15 @@ button.active {
 .vip-details div {
   margin: 5px 0;
   font-size: 1rem;
+  cursor: pointer;
 }
 
-/* Cart Styles */
+.vip-details div:hover {
+  color: gold;
+  text-decoration: underline;
+}
+
+/* Keranjang Styles */
 .cart {
   position: fixed;
   top: 20px;
@@ -138,4 +155,25 @@ button.active {
 
 .cart button:hover {
   background-color: #C1351D;
+}
+
+/* Pesan Sekarang */
+#order-now {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#order-now button {
+  background-color: #25D366;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#order-now button:hover {
+  background-color: #128C7E;
 }
