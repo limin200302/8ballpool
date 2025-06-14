@@ -12,9 +12,9 @@
     <img src="assets/img/8ball-bg.jpg" alt="8ball Background" class="background-image"/>
   </div>
 
-  <!-- Header dengan gambar custom -->
+  <!-- Header - Hapus teks "Mamet Ucup Store" -->
   <header>
-    <h1>Mamet Ucup Store</h1>
+    <img src="assets/img/head.png" alt="Header Image" class="header-img"/>
   </header>
 
   <main>
@@ -22,31 +22,36 @@
     <section class="list-box-legend">
       <button id="list-cash">List Cash</button>
       <div class="vip-options">
-        <div class="option">
+        <div class="option" data-vip="bronze">
           <img src="assets/img/bronze.png" alt="Bronze" class="option-logo"/>
           <span>Bronze</span>
         </div>
-        <div class="option">
+        <div class="option" data-vip="silver">
           <img src="assets/img/silver.png" alt="Silver" class="option-logo"/>
           <span>Silver</span>
         </div>
-        <div class="option">
+        <div class="option" data-vip="gold">
           <img src="assets/img/gold.png" alt="Gold" class="option-logo"/>
           <span>Gold</span>
         </div>
-        <div class="option">
+        <div class="option" data-vip="zamrud">
           <img src="assets/img/zamrud.png" alt="Zamrud" class="option-logo"/>
           <span>Zamrud</span>
         </div>
-        <div class="option">
+        <div class="option" data-vip="diamond">
           <img src="assets/img/diamond.png" alt="Diamond" class="option-logo"/>
           <span>Diamond</span>
         </div>
-        <div class="option">
+        <div class="option" data-vip="black-diamond">
           <img src="assets/img/black-diamond.png" alt="Black Diamond" class="option-logo"/>
           <span>Black Diamond</span>
         </div>
       </div>
+    </section>
+
+    <!-- Detail Harga VIP berdasarkan pilihan -->
+    <section id="vip-details" class="vip-details">
+      <!-- Harga akan dimuat di sini berdasarkan pilihan VIP -->
     </section>
 
     <!-- Golden Shot -->
