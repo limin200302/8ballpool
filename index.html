@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mamet Ucup Store</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
@@ -11,91 +11,9 @@
     <h1>Mamet Ucup Store</h1>
   </header>
 
-  <section id="vip-list">
-    <!-- Silver -->
-    <div class="vip-category">
-      <div class="vip-header" onclick="togglePrices('silver')">
-        <img src="assets/img/silver.png" class="vip-icon" alt="Silver"/>
-        <h2>Silver</h2>
-      </div>
-      <ul class="price-list hidden" id="silver">
-        <li onclick="buy('Silver', 'Rp 55.000 - 605')">Rp 55.000 - 605 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Silver', 'Rp 70.000 - 880')">Rp 70.000 - 880 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Silver', 'Rp 95.000 - 1.210')">Rp 95.000 - 1.210 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Silver', 'Rp 135.000 - 1.892')">Rp 135.000 - 1.892 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Silver', 'Rp 190.000 - 2.992')">Rp 190.000 - 2.992 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Silver', 'Rp 250.000 - 3.872')">Rp 250.000 - 3.872 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Silver', 'Rp 275.000 - 6.600')">Rp 275.000 - 6.600 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-      </ul>
-    </div>
-
-    <!-- Gold -->
-    <div class="vip-category">
-      <div class="vip-header" onclick="togglePrices('gold')">
-        <img src="assets/img/gold.png" class="vip-icon" alt="Gold"/>
-        <h2>Gold</h2>
-      </div>
-      <ul class="price-list hidden" id="gold">
-        <li onclick="buy('Gold', 'Rp 55.000 - 688')">Rp 55.000 - 688 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Gold', 'Rp 70.000 - 1.000')">Rp 70.000 - 1.000 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Gold', 'Rp 95.000 - 1.375')">Rp 95.000 - 1.375 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Gold', 'Rp 135.000 - 2.150')">Rp 135.000 - 2.150 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Gold', 'Rp 190.000 - 3.400')">Rp 190.000 - 3.400 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Gold', 'Rp 250.000 - 4.400')">Rp 250.000 - 4.400 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Gold', 'Rp 275.000 - 7.500')">Rp 275.000 - 7.500 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-      </ul>
-    </div>
-
-    <!-- Zamrud -->
-    <div class="vip-category">
-      <div class="vip-header" onclick="togglePrices('zamrud')">
-        <img src="assets/img/zamrud.png" class="vip-icon" alt="Zamrud"/>
-        <h2>Zamrud</h2>
-      </div>
-      <ul class="price-list hidden" id="zamrud">
-        <li onclick="buy('Zamrud', 'Rp 55.000 - 825')">Rp 55.000 - 825 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Zamrud', 'Rp 70.000 - 1.200')">Rp 70.000 - 1.200 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Zamrud', 'Rp 95.000 - 1.650')">Rp 95.000 - 1.650 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Zamrud', 'Rp 135.000 - 2.580')">Rp 135.000 - 2.580 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Zamrud', 'Rp 190.000 - 4.080')">Rp 190.000 - 4.080 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Zamrud', 'Rp 250.000 - 5.280')">Rp 250.000 - 5.280 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Zamrud', 'Rp 275.000 - 9.000')">Rp 275.000 - 9.000 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-      </ul>
-    </div>
-
-    <!-- Diamond -->
-    <div class="vip-category">
-      <div class="vip-header" onclick="togglePrices('diamond')">
-        <img src="assets/img/diamond.png" class="vip-icon" alt="Diamond"/>
-        <h2>Diamond</h2>
-      </div>
-      <ul class="price-list hidden" id="diamond">
-        <li onclick="buy('Diamond', 'Rp 55.000 - 963')">Rp 55.000 - 963 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Diamond', 'Rp 70.000 - 1.400')">Rp 70.000 - 1.400 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Diamond', 'Rp 95.000 - 1.925')">Rp 95.000 - 1.925 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Diamond', 'Rp 135.000 - 3.010')">Rp 135.000 - 3.010 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Diamond', 'Rp 190.000 - 4.760')">Rp 190.000 - 4.760 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Diamond', 'Rp 250.000 - 6.160')">Rp 250.000 - 6.160 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Diamond', 'Rp 275.000 - 10.500')">Rp 275.000 - 10.500 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-      </ul>
-    </div>
-
-    <!-- Black Diamond -->
-    <div class="vip-category">
-      <div class="vip-header" onclick="togglePrices('blackdiamond')">
-        <img src="assets/img/blackdiamond.png" class="vip-icon" alt="Black Diamond"/>
-        <h2>Black Diamond</h2>
-      </div>
-      <ul class="price-list hidden" id="blackdiamond">
-        <li onclick="buy('Black Diamond', 'Rp 55.000 - 1.100')">Rp 55.000 - 1.100 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Black Diamond', 'Rp 70.000 - 1.600')">Rp 70.000 - 1.600 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Black Diamond', 'Rp 95.000 - 2.200')">Rp 95.000 - 2.200 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Black Diamond', 'Rp 135.000 - 3.440')">Rp 135.000 - 3.440 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Black Diamond', 'Rp 190.000 - 5.440')">Rp 190.000 - 5.440 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Black Diamond', 'Rp 250.000 - 7.040')">Rp 250.000 - 7.040 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-        <li onclick="buy('Black Diamond', 'Rp 275.000 - 12.000')">Rp 275.000 - 12.000 <img src="assets/img/dollar.png" class="dollar-icon"></li>
-      </ul>
-    </div>
+  <section id="pricelist">
+    <h2>Price List Cash 8Ball Pool</h2>
+    <div id="vip-container"></div>
   </section>
 
   <script src="assets/script.js"></script>
