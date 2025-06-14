@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const listCashBtn = document.getElementById("list-cash");
   const vipOptions = document.querySelector(".vip-options");
   const vipDetails = document.getElementById("vip-details");
+  const orderNowSection = document.getElementById("order-now");
+  const whatsappLink = document.getElementById("whatsapp-link");
 
   // Fitur toggle untuk List Cash
   function toggleDropdown(button, menu) {
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (event.target && event.target.classList.contains("option")) {
       const vipType = event.target.getAttribute("data-vip");
       displayVipDetails(vipType);
+      event.target.classList.add("active"); // Menambahkan warna aktif pada pilihan
     }
   });
 
@@ -50,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Rp 160.000 - 2.100 Cash",
         "Rp 220.000 - 3.400 Cash",
         "Rp 280.000 - 4.500 Cash",
-        "Rp 300.000 - 8.000 Cash"
+        "Rp 300.000 - 7.500 Cash"
       ],
       zamrud: [
         "Rp 55.000 - 605 Cash",
@@ -59,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Rp 135.000 - 1.892 Cash",
         "Rp 190.000 - 2.992 Cash",
         "Rp 250.000 - 3.872 Cash",
-        "Rp 275.000 - 6.600 Cash"
+        "Rp 275.000 - 8.600 Cash"
       ],
       diamond: [
         "Rp 85.000 - 950 Cash",
@@ -68,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Rp 180.000 - 2.500 Cash",
         "Rp 240.000 - 3.700 Cash",
         "Rp 310.000 - 5.000 Cash",
-        "Rp 350.000 - 9.000 Cash"
+        "Rp 350.000 - 10.000 Cash"
       ],
       "black-diamond": [
         "Rp 100.000 - 1.050 Cash",
@@ -77,13 +80,18 @@ document.addEventListener("DOMContentLoaded", function() {
         "Rp 200.000 - 2.700 Cash",
         "Rp 260.000 - 4.000 Cash",
         "Rp 330.000 - 5.500 Cash",
-        "Rp 370.000 - 10.000 Cash"
+        "Rp 370.000 - 12.000 Cash"
       ]
     };
 
     const selectedDetails = details[vipType] || [];
-    vipDetails.innerHTML = selectedDetails.map(item => `<div>${item}</div>`).join("");
+    vipDetails.innerHTML = selectedDetails.map(item => 
+      `<div class="price-option">${item}</div>`).join("");
     vipDetails.classList.add("active");
+
+    // Menampilkan tombol "Pesan Sekarang"
+    orderNowSection.style.display = 'block';
+    whatsappLink.href = `https://wa.me/6285713056206?text=Saya ingin membeli paket VIP ${vipType} dengan harga ${selectedDetails[0]}`;
   }
 
   // Keranjang belanjaan
