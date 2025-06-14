@@ -4,81 +4,69 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mamet Ucup Store</title>
-  <style>
-    /* General Body Styles */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-image: url('assets/img/8ball-bg.jpg'); /* Menambahkan background image */
-      background-size: cover; /* Gambar menutupi seluruh area */
-      background-attachment: fixed; /* Agar background tetap di tempat saat scroll */
-      color: white;
-      background-position: center; /* Posisi background di tengah */
-    }
-
-    /* Header Styles */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-      position: relative;
-      background: rgba(0, 0, 0, 0.7); /* Tambahkan background transparan agar teks bisa terbaca */
-    }
-
-    header img {
-      width: 100%; /* Ukuran lebar gambar header */
-      height: auto; /* Menyesuaikan tinggi gambar */
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1; /* Gambar berada di belakang teks */
-    }
-
-    header h1 {
-      font-size: 2rem;
-      color: white;
-      text-shadow: 2px 2px 4px #8A2BE2; /* Efek bayangan pada teks */
-      position: relative;
-      z-index: 1; /* Agar teks tetap di depan gambar */
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <!-- Background image di HTML -->
+  <div class="background-img">
+    <img src="assets/img/8ball-bg.jpg" alt="8ball Background" class="background-image"/>
+  </div>
+
+  <!-- Header dengan gambar custom -->
   <header>
-    <!-- Menampilkan gambar header di belakang teks -->
-    <img src="assets/img/Head.bg" alt="Header Image" />
-    <h1>Mamet Ucup Store</h1>
+    <div class="header-container">
+      <img src="assets/img/Head.png" alt="Header Image" class="header-image"/>
+      <h1>Mamet Ucup Store</h1>
+    </div>
   </header>
 
   <main>
-    <!-- Menu utama dan konten lainnya -->
     <section class="list-box-legend">
       <button id="list-cash">List Cash</button>
-      <div class="vip-options"></div>
+      <div class="vip-options">
+        <div>Bronze</div>
+        <div>Silver</div>
+        <div>Gold</div>
+        <div>Zamrud</div>
+        <div>Diamond</div>
+        <div>Black Diamond</div>
+      </div>
     </section>
 
     <section class="golden-shot">
       <button id="golden-shot">Golden Shot</button>
-      <div class="golden-shot-options"></div>
+      <div class="golden-shot-options">
+        <div>24 Golden Shot</div>
+        <div>48 Golden Shot</div>
+        <div>72 Golden Shot</div>
+        <div>96 Golden Shot</div>
+        <div>120 Golden Shot</div>
+      </div>
     </section>
 
     <section class="pool-pass">
       <button id="pool-pass">Pool Pass</button>
-      <div class="pool-pass-options"></div>
+      <div class="pool-pass-options">
+        <div>Biasa Rp 50.000</div>
+        <div>Elite Rp 85.000</div>
+      </div>
     </section>
 
     <section class="venice-legal">
       <button id="venice-legal">Venice Legal</button>
-      <div class="venice-legal-options"></div>
+      <div class="venice-legal-options">
+        <div>7 Hari Rp 80.000</div>
+        <div>16 Hari Rp 155.000</div>
+        <div>21 Hari Rp 230.000</div>
+        <div>28 Hari Rp 285.000</div>
+      </div>
     </section>
   </main>
 
+  <!-- Keranjang Belanja (Cart) -->
   <div id="cart" class="cart">
-    <img src="assets/img/cart.png" alt="Cart" class="cart-icon" />
+    <img src="assets/img/cart.png" alt="Cart Icon" class="cart-icon" />
     <span id="cart-count">0</span>
-    <div class="cart-list" id="cart-list"></div>
     <button onclick="checkout()">Checkout</button>
   </div>
 
