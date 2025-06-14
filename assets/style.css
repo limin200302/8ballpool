@@ -1,10 +1,18 @@
-body {
+/* RESET DAN DASAR */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(-45deg, #1a1a1a, #4b0082, #ffffff);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(-45deg, #000000, #4b0082, #ffffff);
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
-  color: white;
+  animation: gradient 15s ease infinite;
+  color: #fff;
+  min-height: 100vh;
+  padding-bottom: 100px;
 }
 
 @keyframes gradient {
@@ -13,20 +21,47 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* HEADER */
 header {
   padding: 1em;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  font-size: 1.5em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-#pricelist {
+.top-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#search {
+  padding: 0.5em;
+  border-radius: 10px;
+  border: none;
+  width: 60%;
+  max-width: 300px;
+}
+
+#toggle-dark {
+  padding: 0.5em;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* SECTION */
+main {
   padding: 1em;
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
 }
 
+/* VIP */
 .vip-category {
   margin-bottom: 1em;
   background-color: rgba(255, 255, 255, 0.05);
@@ -53,6 +88,12 @@ header {
   padding: 0;
   margin: 0;
   display: none;
+  animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .price-list li {
@@ -74,6 +115,64 @@ header {
   margin-left: 5px;
 }
 
-h2 {
-  margin: 0;
+/* CART */
+#cart-section {
+  margin-top: 2em;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+#cart-list {
+  list-style: none;
+  margin: 1em 0;
+}
+
+#cart-list li {
+  padding: 0.5em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#checkout-btn {
+  padding: 0.75em;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#checkout-btn:hover {
+  background-color: #128c7e;
+}
+
+/* FLOATING WA */
+.floating-wa {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.floating-wa img {
+  width: 50px;
+  height: 50px;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #1a1a1a;
+  color: #ddd;
+}
+
+body.dark header,
+body.dark .vip-category,
+body.dark #cart-section {
+  background-color: #333;
+}
+
+body.dark #checkout-btn {
+  background-color: #1ebe5d;
 }
