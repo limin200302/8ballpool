@@ -7,61 +7,85 @@
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <!-- Background image di HTML -->
-  <div class="background-img">
-    <img src="assets/img/8ball-bg.jpg" alt="8ball Background" class="background-image"/>
-  </div>
+  <header>
+    <h1>Mamet Ucup Store</h1>
+  </header>
 
-  <main>
-    <!-- List Box Legend -->
-    <section class="list-box-legend">
-      <button id="list-cash">List Cash</button>
-      <div class="vip-options">
-        <div class="option" data-vip="bronze">
-          <img src="assets/img/bronze.png" alt="Bronze" class="option-logo"/>
-          <span>Bronze</span>
-        </div>
-        <div class="option" data-vip="silver">
-          <img src="assets/img/silver.png" alt="Silver" class="option-logo"/>
-          <span>Silver</span>
-        </div>
-        <div class="option" data-vip="gold">
-          <img src="assets/img/gold.png" alt="Gold" class="option-logo"/>
-          <span>Gold</span>
-        </div>
-        <div class="option" data-vip="zamrud">
-          <img src="assets/img/zamrud.png" alt="Zamrud" class="option-logo"/>
-          <span>Zamrud</span>
-        </div>
-        <div class="option" data-vip="diamond">
-          <img src="assets/img/diamond.png" alt="Diamond" class="option-logo"/>
-          <span>Diamond</span>
-        </div>
-        <div class="option" data-vip="black-diamond">
-          <img src="assets/img/blackdiamond.png" alt="Black Diamond" class="option-logo"/>
-          <span>Black Diamond</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Detail Harga VIP berdasarkan pilihan -->
-    <section id="vip-details" class="vip-details">
-      <!-- Harga akan dimuat di sini berdasarkan pilihan VIP -->
-    </section>
-
-    <!-- Pesan Sekarang Button -->
-    <div id="order-now">
-      <a href="#" id="whatsapp-link" target="_blank">
-        <button>Pesan Sekarang</button>
-      </a>
+  <section id="vip-list">
+    <!-- VIP List -->
+    <div class="vip-category" onclick="selectVIP('Silver')">
+      <img src="assets/img/silver.png" class="vip-icon" alt="Silver"/>
+      <h2>Silver</h2>
+      <ul>
+        <li>Rp 55.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 605</li>
+        <li>Rp 70.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 880</li>
+        <li>Rp 95.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.210</li>
+        <li>Rp 135.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.892</li>
+        <li>Rp 190.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 2.992</li>
+        <li>Rp 250.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 3.872</li>
+        <li>Rp 275.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 6.600</li>
+      </ul>
     </div>
-  </main>
 
-  <!-- Keranjang Belanja (Cart) -->
-  <div id="cart" class="cart">
-    <img src="assets/img/cart.png" alt="Cart Icon" class="cart-icon" />
-    <span id="cart-count">0</span>
-    <button onclick="checkout()">Checkout</button>
+    <div class="vip-category" onclick="selectVIP('Gold')">
+      <img src="assets/img/gold.png" class="vip-icon" alt="Gold"/>
+      <h2>Gold</h2>
+      <ul>
+        <li>Rp 55.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 688</li>
+        <li>Rp 70.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.000</li>
+        <li>Rp 95.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.375</li>
+        <li>Rp 135.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 2.150</li>
+        <li>Rp 190.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 3.400</li>
+        <li>Rp 250.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 4.400</li>
+        <li>Rp 275.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 7.500</li>
+      </ul>
+    </div>
+
+    <div class="vip-category" onclick="selectVIP('Zamrud')">
+      <img src="assets/img/zamrud.png" class="vip-icon" alt="Zamrud"/>
+      <h2>Zamrud</h2>
+      <ul>
+        <li>Rp 55.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 825</li>
+        <li>Rp 70.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.200</li>
+        <li>Rp 95.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.650</li>
+        <li>Rp 135.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 2.580</li>
+        <li>Rp 190.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 4.080</li>
+        <li>Rp 250.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 5.280</li>
+        <li>Rp 275.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 9.000</li>
+      </ul>
+    </div>
+
+    <div class="vip-category" onclick="selectVIP('Diamond')">
+      <img src="assets/img/diamond.png" class="vip-icon" alt="Diamond"/>
+      <h2>Diamond</h2>
+      <ul>
+        <li>Rp 55.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 963</li>
+        <li>Rp 70.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.400</li>
+        <li>Rp 95.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.925</li>
+        <li>Rp 135.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 3.010</li>
+        <li>Rp 190.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 4.760</li>
+        <li>Rp 250.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 6.160</li>
+        <li>Rp 275.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 10.500</li>
+      </ul>
+    </div>
+
+    <div class="vip-category" onclick="selectVIP('Black Diamond')">
+      <img src="assets/img/blackdiamond.png" class="vip-icon" alt="Black Diamond"/>
+      <h2>Black Diamond</h2>
+      <ul>
+        <li>Rp 55.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.100</li>
+        <li>Rp 70.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 1.600</li>
+        <li>Rp 95.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 2.200</li>
+        <li>Rp 135.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 3.440</li>
+        <li>Rp 190.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 5.440</li>
+        <li>Rp 250.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 7.040</li>
+        <li>Rp 275.000 - <img src="assets/img/dollar.png" class="dollar-icon"> 12.000</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="action">
+    <button onclick="orderNow()">Pesan Sekarang</button>
   </div>
 
   <script src="assets/script.js"></script>
