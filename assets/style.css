@@ -1,75 +1,79 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #0e0e0e, #3d004d, #ffffff);
-  animation: shadowMove 10s infinite alternate;
+  background: linear-gradient(-45deg, #1a1a1a, #4b0082, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
   color: white;
-  padding: 1rem;
 }
 
-@keyframes shadowMove {
-  0% { box-shadow: 0 0 10px #9c27b0; }
-  100% { box-shadow: 0 0 30px #9c27b0; }
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 header {
+  padding: 1em;
   text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  font-size: 1.5em;
+}
+
+#pricelist {
+  padding: 1em;
+  max-width: 600px;
+  margin: auto;
 }
 
 .vip-category {
-  border: 2px solid #fff;
+  margin-bottom: 1em;
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  margin-bottom: 1rem;
-  background: rgba(255,255,255,0.05);
-  padding: 0.5rem;
+  overflow: hidden;
+  transition: 0.3s;
 }
 
 .vip-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  padding: 1em;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.vip-header:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.vip-icon {
-  width: 30px;
-  height: 30px;
+.vip-header img.vip-icon {
+  width: 32px;
+  margin-right: 10px;
 }
 
 .price-list {
   list-style: none;
-  padding: 0.5rem 1rem;
+  padding: 0;
+  margin: 0;
+  display: none;
 }
 
 .price-list li {
-  margin: 0.5rem 0;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
-  border-radius: 8px;
+  padding: 0.75em 1em;
+  cursor: pointer;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  transition: background 0.3s;
 }
 
 .price-list li:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dollar-icon {
   width: 18px;
   height: 18px;
-  margin-left: 0.5rem;
+  margin-left: 5px;
 }
 
-.hidden {
-  display: none;
+h2 {
+  margin: 0;
 }
