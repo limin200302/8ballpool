@@ -50,7 +50,7 @@ function renderPriceList(containerId) {
       item.className = 'item';
 
       const label = document.createElement('span');
-      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash} <img class="dollar" src="assets/img/dollar.png" width="16" />`;
+      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash}<img class="dollar" src="assets/img/dollar.png" />`;
       const button = document.createElement('button');
       button.textContent = 'Pilih';
       button.onclick = () => {
@@ -72,7 +72,11 @@ renderPriceList('boxLegend');
 document.querySelectorAll('.toggle-section').forEach(btn => {
   btn.addEventListener('click', () => {
     const target = document.getElementById(btn.dataset.target);
-    target.style.display = target.style.display === 'block' ? 'none' : 'block';
+    const isVisible = target.style.display === 'block';
+    document.querySelectorAll('.price-section').forEach(section => {
+      section.style.display = 'none';
+    });
+    target.style.display = isVisible ? 'none' : 'block';
   });
 });
 
@@ -105,7 +109,7 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
 
 // Chibi draggable
 const chibi = document.getElementById('chibi');
-let isDragging = false, offsetX = 0, offsetY = 0;
+let isDragging = false, offsetX, offsetY;
 
 chibi.addEventListener('mousedown', (e) => {
   isDragging = true;
