@@ -229,12 +229,21 @@ function generatePriceList(containerId, data, iconPath) {
     container.appendChild(section);
   });
 }
+let currentActiveId = null;
+
 function selectIcon(el) {
+  const targetId = el.getAttribute("data-target");
+  if (currentActiveId === targetId) {
+    el.classList.remove("active");
+    const section = document.getElementById(targetId);
+    if (section) section.style.display = "none";
+    currentActiveId = null;
+    return;
+  }
   document.querySelectorAll(".icon-wrapper").forEach(wrapper => {
     wrapper.classList.remove("active");
   });
   el.classList.add("active");
-  const targetId = el.getAttribute("data-target");
   const sections = ["priceListCash", "boxLegend", "poolPass"];
   sections.forEach(sectionId => {
     const section = document.getElementById(sectionId);
@@ -242,6 +251,8 @@ function selectIcon(el) {
   });
   const targetSection = document.getElementById(targetId);
   if (targetSection) targetSection.style.display = "block";
+
+  currentActiveId = targetId;
 }
 
 document.getElementById("checkoutBtn").addEventListener("click", () => {
