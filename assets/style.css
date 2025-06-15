@@ -156,3 +156,21 @@ header {
 #cartItems button.remove:hover {
   background-color: #dc2626;
 }
+.icon-menu {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.menu-icon {
+  width: 90px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-icon:hover {
+  transform: scale(1.05);
+}
