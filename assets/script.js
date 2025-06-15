@@ -50,7 +50,7 @@ function renderPriceList(containerId) {
       item.className = 'item';
 
       const label = document.createElement('span');
-      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash}<img class="dollar" src="assets/img/dollar.png" />`;
+      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash} <img class="dollar" src="assets/img/dollar.png" width="16" />`;
       const button = document.createElement('button');
       button.textContent = 'Pilih';
       button.onclick = () => {
@@ -81,10 +81,7 @@ function addToCart(item, price) {
   cart.push({ item, price });
   updateCart();
 }
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  updateCart();
-}
+
 function updateCart() {
   const list = document.getElementById('cartItems');
   list.innerHTML = '';
@@ -94,27 +91,35 @@ function updateCart() {
     list.appendChild(li);
   });
 }
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
 document.getElementById('checkoutBtn').addEventListener('click', () => {
   if (cart.length === 0) return alert('Keranjang kosong!');
   const msg = cart.map(c => `${c.item} - Rp ${c.price.toLocaleString()}`).join('%0A');
   window.open(`https://wa.me/6285713056206?text=Halo saya ingin beli:%0A${msg}`, '_blank');
 });
 
-// draggable chibi
+// Chibi draggable
 const chibi = document.getElementById('chibi');
-let isDragging = false, offsetX, offsetY;
+let isDragging = false, offsetX = 0, offsetY = 0;
 
 chibi.addEventListener('mousedown', (e) => {
   isDragging = true;
   offsetX = e.clientX - chibi.getBoundingClientRect().left;
   offsetY = e.clientY - chibi.getBoundingClientRect().top;
 });
+
 document.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
   chibi.style.left = `${e.clientX - offsetX}px`;
   chibi.style.top = `${e.clientY - offsetY}px`;
   chibi.style.position = 'fixed';
 });
+
 document.addEventListener('mouseup', () => {
   isDragging = false;
 });
