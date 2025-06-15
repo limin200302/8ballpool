@@ -12,41 +12,45 @@
     <button id="modeToggle">🌙</button>
   </header>
 
-  <main class="main-layout">
-    <section class="menu-section center-content">
+  <main>
+    <div class="menu">
       <button class="toggle-section" data-target="priceListCash">
         <img src="assets/img/dollar.png" class="icon-inline" />
         Price List Cash
         <img src="assets/img/dollar.png" class="icon-inline" />
       </button>
-      <div id="priceListCash" class="price-section vertical-list"></div>
+      <div id="priceListCash" class="price-section vertical-list" style="display: none;"></div>
 
       <button class="toggle-section" data-target="boxLegend">
         <img src="assets/img/box_legends.png" class="icon-inline" />
         Price List Box Legend
         <img src="assets/img/box_legends.png" class="icon-inline" />
       </button>
-      <div id="boxLegend" class="price-section vertical-list"></div>
+      <div id="boxLegend" class="price-section vertical-list" style="display: none;"></div>
 
-      <button class="toggle-section" data-target="poolPass">🎱 Pool Pass</button>
-      <div id="poolPass" class="price-section">
-        <div class="item">
-          <span>Pool Pass Biasa - Rp 50.000</span>
+      <button class="toggle-section" data-target="poolPass">
+        🎱 Pool Pass
+      </button>
+      <div id="poolPass" class="price-section" style="display: none;">
+        <div class="item pass-item">
+          <div class="pass-label">Pool Pass Biasa</div>
+          <div class="pass-price">Rp 50.000</div>
           <button onclick="addToCart('Pool Pass Biasa', 50000)">Pilih</button>
         </div>
-        <div class="item">
-          <span>Pool Pass Elite - Rp 85.000</span>
+        <div class="item pass-item">
+          <div class="pass-label">Pool Pass Elite</div>
+          <div class="pass-price">Rp 85.000</div>
           <button onclick="addToCart('Pool Pass Elite', 85000)">Pilih</button>
         </div>
       </div>
-    </section>
-
-    <aside id="cart">
-      <h2>Keranjang Belanja</h2>
-      <ul id="cartItems"></ul>
-      <button id="checkoutBtn">Pesan Sekarang (WhatsApp)</button>
-    </aside>
+    </div>
   </main>
+
+  <aside id="cart">
+    <h2>Keranjang Belanja</h2>
+    <ul id="cartItems"></ul>
+    <button id="checkoutBtn">Pesan Sekarang (WhatsApp)</button>
+  </aside>
 
   <img src="assets/img/Anms.gif" id="chibi" alt="Chibi" draggable="true" />
 
