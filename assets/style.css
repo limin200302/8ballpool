@@ -1,123 +1,125 @@
 body {
   font-family: sans-serif;
+  background: linear-gradient(to bottom, #fff, #eee);
   margin: 0;
-  background: linear-gradient(to bottom, #2e003e, #ffffff);
-  color: #333;
+  padding: 0;
+  transition: background 0.5s;
 }
-
 .dark-mode {
-  background: linear-gradient(to bottom, #1a1a1a, #3c3c3c);
-  color: white;
+  background: linear-gradient(to bottom, #000000, #1c1c1c);
+  color: #fff;
 }
-
 header {
-  background: purple;
-  color: white;
-  padding: 1rem;
   text-align: center;
-  position: relative;
+  padding: 10px;
+  background-color: #6a0dad;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-
 #modeToggle {
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  top: 10px;
+  right: 10px;
 }
-
-.menu-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+.menu {
+  text-align: center;
+  padding: 20px;
 }
-
-button.toggle-section {
-  padding: 0.5rem 1rem;
+.menu button.toggle-section {
+  display: inline-block;
+  margin: 10px auto;
+  background: #a855f7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
   font-weight: bold;
-  background: #eee;
-  border-radius: 10px;
-  border: 2px solid #ccc;
+  border-radius: 12px;
 }
-
 .price-section {
   display: none;
-  width: 95%;
-  max-width: 600px;
-  margin-top: 1rem;
+  margin: 0 auto 30px auto;
+  padding: 15px;
+  max-width: 95%;
+  background-color: rgba(240, 240, 240, 0.85);
+  border-radius: 12px;
 }
-
+.vertical-list .vip-section,
+#poolPass .item {
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 100%;
+}
+.vip-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.vip-title img {
+  width: 28.8px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
 .item {
-  background: rgba(255, 255, 255, 0.8);
-  margin: 0.5rem 0;
-  padding: 0.8rem;
-  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.dark-mode .item {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 10px rgba(255,255,255,0.3);
-}
-
-button {
-  padding: 0.4rem 1rem;
-  border: none;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #f0f0f0;
   border-radius: 8px;
-  cursor: pointer;
 }
-
+.item span {
+  flex: 1;
+}
 .item button {
-  background: green;
+  background-color: #16a34a;
   color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
 }
-
 .item button.selected::after {
-  content: ' ✅';
-  margin-left: 4px;
+  content: " ✔️";
 }
-
+.dollar {
+  height: 18px;
+  margin-left: 8px;
+  vertical-align: bottom;
+}
 #cart {
+  padding: 20px;
   background: #f5f5f5;
-  padding: 1rem;
-  border-top: 3px solid purple;
-  margin-top: 2rem;
+  border-top: 2px solid #ccc;
+  text-align: center;
 }
-
 #cartItems li {
-  margin: 0.5rem 0;
+  list-style: none;
+  margin-bottom: 10px;
 }
-
 #checkoutBtn {
-  background: green;
+  background-color: #16a34a;
   color: white;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
+  padding: 10px 20px;
   font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
 }
-
 #chibi {
   position: fixed;
   bottom: 10px;
   left: 10px;
-  width: 60px;
-  cursor: grab;
-  z-index: 999;
+  width: 80px;
+  height: auto;
+  z-index: 99;
+  pointer-events: auto;
 }
-
 .icon-inline {
-  width: 20px;
-  height: 20px;
+  height: 18px;
   vertical-align: middle;
-}
-
-.pass-title {
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-}
-
-.pass-price {
-  margin-bottom: 0.5rem;
 }
