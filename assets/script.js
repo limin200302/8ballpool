@@ -134,6 +134,51 @@ const vipDataBox = [
   }
 ];
 
+let cart = [];
+
+function addToCart(itemName, price, button) {
+  const existingIndex = cart.findIndex(item => item.name === itemName);
+
+  if (existingIndex !== -1) {
+    cart.splice(existingIndex, 1);
+    if (button) button.classList.remove("selected");
+  } else {
+    cart.push({ name: itemName, price });
+    if (button) button.classList.add("selected");
+  }
+
+  updateCartDisplay();
+}
+
+function updateCartDisplay() {
+  const cartItems = document.getElementById("cartItems");
+  cartItems.innerHTML = "";
+
+  cart.forEach(({ name, price }) => {
+    const li = document.createElement("li");
+    li.textContent = `${name} - Rp ${price.toLocaleString("id-ID")}`;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = " - ";
+    removeBtn.className = "remove";
+    removeBtn.onclick = () => {
+      cart = cart.filter(item => item.name !== name);
+
+      const allButtons = document.querySelectorAll("button");
+      allButtons.forEach(btn => {
+        if (btn.textContent.includes("Pilih") && btn.parentElement.textContent.includes(name.split(" - ")[1])) {
+          btn.classList.remove("selected");
+        }
+      });
+
+      updateCartDisplay();
+    };
+
+    li.appendChild(removeBtn);
+    cartItems.appendChild(li);
+  });
+}
+
 function generatePriceList(containerId, data, iconPath) {
   const container = document.getElementById(containerId);
   data.forEach(vip => {
@@ -166,8 +211,7 @@ function generatePriceList(containerId, data, iconPath) {
       const button = document.createElement("button");
       button.textContent = "Pilih";
       button.onclick = function () {
-        addToCart(`${vip.name} - ${price.label}`, price.value);
-        button.classList.add("selected");
+        addToCart(`${vip.name} - ${price.label}`, price.value, button);
       };
 
       item.appendChild(span);
@@ -180,13 +224,6 @@ function generatePriceList(containerId, data, iconPath) {
   });
 }
 
-function addToCart(itemName, price) {
-  const cart = document.getElementById("cartItems");
-  const li = document.createElement("li");
-  li.textContent = `${itemName} - Rp ${price.toLocaleString("id-ID")}`;
-  cart.appendChild(li);
-}
-
 document.querySelectorAll(".toggle-section").forEach(button => {
   button.addEventListener("click", () => {
     const target = document.getElementById(button.dataset.target);
@@ -195,7 +232,7 @@ document.querySelectorAll(".toggle-section").forEach(button => {
 });
 
 document.getElementById("checkoutBtn").addEventListener("click", () => {
-  const items = Array.from(document.querySelectorAll("#cartItems li")).map(li => li.textContent);
+  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
   window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
 });
