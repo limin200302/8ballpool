@@ -1,125 +1,161 @@
-const modeToggle = document.getElementById('modeToggle');
-const body = document.body;
-modeToggle.onclick = () => {
-  body.classList.toggle('dark-mode');
-  modeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
-};
-
-const vips = {
-  Silver: {
-    icon: 'silver.png',
-    prices: [605, 880, 1210, 1892, 2992, 3872, 6600],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  },
-  Gold: {
-    icon: 'gold.png',
-    prices: [688, 1000, 1375, 2150, 3400, 4400, 7500],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  },
-  Zamrud: {
-    icon: 'zamrud.png',
-    prices: [825, 1200, 1650, 2580, 4080, 5280, 9000],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  },
-  Diamond: {
-    icon: 'diamond.png',
-    prices: [963, 1400, 1925, 3010, 4760, 6160, 10500],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  },
-  "Black Diamond": {
-    icon: 'blackdiamond.png',
-    prices: [1100, 1600, 2200, 3440, 5440, 7040, 12000],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  }
-};
-
-function renderPriceList(containerId) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = '';
-  Object.entries(vips).forEach(([vip, data]) => {
-    const section = document.createElement('div');
-    section.className = 'vip-section';
-
-    const title = document.createElement('div');
-    title.className = 'vip-title';
-    title.innerHTML = `<img src="assets/img/${data.icon}" width="24"/> ${vip}`;
-    section.appendChild(title);
-
-    data.prices.forEach((cash, i) => {
-      const item = document.createElement('div');
-      item.className = 'item';
-
-      const label = document.createElement('span');
-      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash}<img class="dollar" src="assets/img/dollar.png" />`;
-      const button = document.createElement('button');
-      button.textContent = 'Pilih';
-      button.onclick = () => {
-        addToCart(`${vip} ${cash}`, data.cost[i]);
-        button.classList.add('selected');
-      };
-
-      item.append(label, button);
-      section.appendChild(item);
-    });
-
-    container.appendChild(section);
-  });
-}
-
-renderPriceList('priceListCash');
-renderPriceList('boxLegend');
-
-document.querySelectorAll('.toggle-section').forEach(btn => {
-  btn.addEventListener('click', () => {
+const toggleBtns = document.querySelectorAll(".toggle-section");
+toggleBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
     const target = document.getElementById(btn.dataset.target);
-    target.style.display = target.style.display === 'block' ? 'none' : 'block';
+    target.classList.toggle("active");
   });
 });
 
 const cart = [];
-function addToCart(item, price) {
-  cart.push({ item, price });
+const cartList = document.getElementById("cartItems");
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+function addToCart(name, price) {
+  cart.push({ name, price });
   updateCart();
 }
 
-function updateCart() {
-  const list = document.getElementById('cartItems');
-  list.innerHTML = '';
-  cart.forEach((entry, index) => {
-    const li = document.createElement('li');
-    li.innerHTML = `${entry.item} - Rp ${entry.price.toLocaleString()} <button class="remove-btn" onclick="removeFromCart(${index})">-</button>`;
-    list.appendChild(li);
-  });
-}
-
-function removeFromCart(index) {
+function removeItem(index) {
   cart.splice(index, 1);
   updateCart();
 }
 
-document.getElementById('checkoutBtn').addEventListener('click', () => {
-  if (cart.length === 0) return alert('Keranjang kosong!');
-  const msg = cart.map(c => `${c.item} - Rp ${c.price.toLocaleString()}`).join('%0A');
-  window.open(`https://wa.me/6285713056206?text=Halo saya ingin beli:%0A${msg}`, '_blank');
+function updateCart() {
+  cartList.innerHTML = "";
+  cart.forEach((item, i) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - Rp ${item.price.toLocaleString()}`;
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "❌";
+    removeBtn.onclick = () => removeItem(i);
+    li.appendChild(removeBtn);
+    cartList.appendChild(li);
+  });
+}
+
+checkoutBtn.onclick = () => {
+  if (cart.length === 0) return alert("Keranjang kosong!");
+  const text = cart
+    .map((item) => `${item.name} - Rp ${item.price.toLocaleString()}`)
+    .join("%0A");
+  window.open(`https://wa.me/6285713056206?text=Halo,%20saya%20ingin%20pesan:%0A${text}`);
+};
+
+// Mode malam/siang toggle
+document.getElementById("modeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
 });
 
-// Chibi draggable
-const chibi = document.getElementById('chibi');
-let isDragging = false, offsetX, offsetY;
+// VIP Data
+const vipData = {
+  Silver: [
+    [55000, 605],
+    [70000, 880],
+    [95000, 1210],
+    [135000, 1892],
+    [190000, 2992],
+    [250000, 3872],
+    [275000, 6600],
+  ],
+  Gold: [
+    [55000, 688],
+    [70000, 1000],
+    [95000, 1375],
+    [135000, 2150],
+    [190000, 3400],
+    [250000, 4400],
+    [275000, 7500],
+  ],
+  Zamrud: [
+    [55000, 825],
+    [70000, 1200],
+    [95000, 1650],
+    [135000, 2580],
+    [190000, 4080],
+    [250000, 5280],
+    [275000, 9000],
+  ],
+  Diamond: [
+    [55000, 963],
+    [70000, 1400],
+    [95000, 1925],
+    [135000, 3010],
+    [190000, 4760],
+    [250000, 6160],
+    [275000, 10500],
+  ],
+  "Black Diamond": [
+    [55000, 1100],
+    [70000, 1600],
+    [95000, 2200],
+    [135000, 3440],
+    [190000, 5440],
+    [250000, 7040],
+    [275000, 12000],
+  ],
+};
 
-chibi.addEventListener('mousedown', (e) => {
+// Generate VIP section
+function populateVIP(id) {
+  const section = document.getElementById(id);
+  Object.entries(vipData).forEach(([vip, list]) => {
+    const vipDiv = document.createElement("div");
+    vipDiv.className = "vip";
+
+    const btn = document.createElement("button");
+    btn.className = "vip-toggle";
+    const icon = document.createElement("img");
+    icon.src = `assets/img/${vip.toLowerCase().replace(' ', '')}.png`;
+    icon.className = "vip-icon";
+    btn.appendChild(icon);
+    btn.append(` ${vip}`);
+    vipDiv.appendChild(btn);
+
+    const priceContainer = document.createElement("div");
+    priceContainer.className = "vip-prices hidden";
+    list.forEach(([price, cash]) => {
+      const div = document.createElement("div");
+      div.className = "price-item";
+      div.dataset.name = `${vip} - ${cash} Cash`;
+      div.dataset.price = price;
+      div.innerHTML = `Rp ${price.toLocaleString()} - ${cash} <img src=\"assets/img/dollar.png\" class=\"dollar-icon\">`;
+      div.onclick = () => {
+        addToCart(`${vip} - ${cash} Cash`, price);
+        div.classList.add("selected");
+      };
+      priceContainer.appendChild(div);
+    });
+    vipDiv.appendChild(priceContainer);
+
+    btn.onclick = () => {
+      priceContainer.classList.toggle("hidden");
+    };
+
+    section.appendChild(vipDiv);
+  });
+}
+
+populateVIP("priceListCash");
+populateVIP("boxLegend");
+
+// Drag chibi
+const chibi = document.getElementById("chibi");
+let isDragging = false;
+let offsetX, offsetY;
+
+chibi.addEventListener("mousedown", (e) => {
   isDragging = true;
-  offsetX = e.clientX - chibi.getBoundingClientRect().left;
-  offsetY = e.clientY - chibi.getBoundingClientRect().top;
+  offsetX = e.clientX - chibi.offsetLeft;
+  offsetY = e.clientY - chibi.offsetTop;
 });
 
-document.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  chibi.style.left = `${e.clientX - offsetX}px`;
-  chibi.style.top = `${e.clientY - offsetY}px`;
-  chibi.style.position = 'fixed';
+document.addEventListener("mousemove", (e) => {
+  if (isDragging) {
+    chibi.style.left = `${e.clientX - offsetX}px`;
+    chibi.style.top = `${e.clientY - offsetY}px`;
+  }
 });
 
-document.addEventListener('mouseup', () => {
+document.addEventListener("mouseup", () => {
   isDragging = false;
 });
