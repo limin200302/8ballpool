@@ -164,25 +164,25 @@ header {
   background-color: #dc2626;
 }
 .icon-menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  max-width: 300px;
-  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 8px auto;
+  max-width: 100%;
 }
+
 .menu-icon {
-  width: 90px;
-  height: 90px;
-  max-width: 90px;
-  max-height: 90px;
-  object-fit: contain;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 16px;
-  transition: transform 0.2s;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  margin: 8px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.2s;
 }
+
 .menu-icon:hover {
-  transform: scale(1.05);
+  transform: scale(1.05);
 }
