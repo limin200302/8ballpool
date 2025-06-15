@@ -229,26 +229,21 @@ function generatePriceList(containerId, data, iconPath) {
     container.appendChild(section);
   });
 }
-function toggleSection(id) {
-  const sections = ['priceListCash', 'boxLegend', 'poolPass'];
-  sections.forEach(sectionId => {
-    const section = document.getElementById(sectionId);
-    const icon = document.querySelector(`[onclick="toggleSection('${sectionId}')"]`);
-    if (sectionId === id) {
-      const isVisible = section.style.display === 'block';
-      section.style.display = isVisible ? 'none' : 'block';
-      icon.classList.toggle('selected-icon', !isVisible);
-    } else {
-      section.style.display = 'none';
-      if (icon) icon.classList.remove('selected-icon');
-    }
-  });
 function selectIcon(el) {
-  document.querySelectorAll('.icon-wrapper').forEach(wrapper => {
-    wrapper.classList.remove('active');
+  document.querySelectorAll(".icon-wrapper").forEach(wrapper => {
+    wrapper.classList.remove("active");
   });
-  el.classList.add('active');
+  el.classList.add("active");
+  const targetId = el.getAttribute("data-target");
+  const sections = ["priceListCash", "boxLegend", "poolPass"];
+  sections.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) section.style.display = "none";
+  });
+  const targetSection = document.getElementById(targetId);
+  if (targetSection) targetSection.style.display = "block";
 }
+
 document.getElementById("checkoutBtn").addEventListener("click", () => {
   const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
