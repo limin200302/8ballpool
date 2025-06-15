@@ -50,12 +50,17 @@ function renderPriceList(containerId) {
       item.className = 'item';
 
       const label = document.createElement('span');
-      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash}<img class="dollar" src="assets/img/dollar.png" />`;
+      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash} <img class="dollar" src="assets/img/dollar.png" />`;
+
       const button = document.createElement('button');
       button.textContent = 'Pilih';
       button.onclick = () => {
-        addToCart(`${vip} ${cash}`, data.cost[i]);
-        button.classList.add('selected');
+        const alreadySelected = button.classList.toggle('selected');
+        if (alreadySelected) {
+          addToCart(`${vip} ${cash}`, data.cost[i]);
+        } else {
+          removeFromCartByName(`${vip} ${cash}`);
+        }
       };
 
       item.append(label, button);
@@ -66,6 +71,14 @@ function renderPriceList(containerId) {
   });
 }
 
+function removeFromCartByName(name) {
+  const index = cart.findIndex(entry => entry.item === name);
+  if (index !== -1) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+}
+
 renderPriceList('priceListCash');
 renderPriceList('boxLegend');
 
@@ -73,17 +86,17 @@ document.querySelectorAll('.toggle-section').forEach(btn => {
   btn.addEventListener('click', () => {
     const target = document.getElementById(btn.dataset.target);
     const isVisible = target.style.display === 'block';
-    document.querySelectorAll('.price-section').forEach(section => {
-      section.style.display = 'none';
-    });
+    document.querySelectorAll('.price-section').forEach(sec => sec.style.display = 'none');
     target.style.display = isVisible ? 'none' : 'block';
   });
 });
 
 const cart = [];
 function addToCart(item, price) {
-  cart.push({ item, price });
-  updateCart();
+  if (!cart.some(entry => entry.item === item)) {
+    cart.push({ item, price });
+    updateCart();
+  }
 }
 
 function updateCart() {
@@ -99,6 +112,13 @@ function updateCart() {
 function removeFromCart(index) {
   cart.splice(index, 1);
   updateCart();
+
+  // Uncheck button
+  document.querySelectorAll('.item button').forEach(btn => {
+    if (btn.classList.contains('selected') && btn.previousSibling.textContent.includes(cart[index]?.item)) {
+      btn.classList.remove('selected');
+    }
+  });
 }
 
 document.getElementById('checkoutBtn').addEventListener('click', () => {
@@ -107,7 +127,7 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
   window.open(`https://wa.me/6285713056206?text=Halo saya ingin beli:%0A${msg}`, '_blank');
 });
 
-// Chibi draggable
+// Chibi drag
 const chibi = document.getElementById('chibi');
 let isDragging = false, offsetX, offsetY;
 
