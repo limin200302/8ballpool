@@ -167,17 +167,18 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 12px;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 8px auto;
-  max-width: 320px; /* atau hapus baris ini */
+  max-width: 300px;
+  margin: 0 auto 20px auto;
 }
-
 .menu-icon {
   width: 90px;
   height: 90px;
-  object-fit: cover;
-  margin: 8px;
+  max-width: 90px;
+  max-height: 90px;
+  object-fit: contain;
+  margin: 5px;
   cursor: pointer;
   border-radius: 16px;
   transition: transform 0.2s;
