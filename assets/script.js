@@ -138,129 +138,46 @@ const poolPassData = [
   { label: "Pool Pass Biasa - Rp 50.000", value: 50000 },
   { label: "Pool Pass Elite - Rp 85.000", value: 85000 }
 ];
-
 let cart = [];
 
-function getItemId(vipName, label, price) {
-  return `${vipName}__${label}__${price}`;
+function toggleSection(id) {
+  const section = document.getElementById(id);
+  section.style.display = section.style.display === "block" ? "none" : "block";
 }
 
-function addToCart(vipName, label, price, button) {
-  const id = getItemId(vipName, label, price);
-  const index = cart.findIndex(item => item.id === id);
+function formatRupiah(angka) {
+  return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
-  if (index !== -1) {
-    cart.splice(index, 1);
-    button.classList.remove("selected");
-  } else {
-    cart.push({ id, name: `${vipName} - ${label}`, price });
-    button.classList.add("selected");
+function getItemId(vip, label, price) {
+  return `${vip}-${label}-${price}`;
+}
+
+function addToCart(vip, label, price, button) {
+  const id = getItemId(vip, label, price);
+  if (!cart.find(item => item.id === id)) {
+    cart.push({ id, vip, label, price });
+    button.classList.add('selected');
+    button.innerHTML = "✔ Dipilih";
+    updateCart();
   }
-
-  updateCartDisplay();
 }
 
-function updateCartDisplay() {
-  const cartItems = document.getElementById("cartItems");
-  cartItems.innerHTML = "";
-  cart.forEach(({ id, name, price }) => {
+function updateCart() {
+  const list = document.getElementById("cart");
+  list.innerHTML = "";
+  cart.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${name}`;
-
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = " - ";
-    removeBtn.className = "remove";
-    removeBtn.onclick = () => {
-      cart = cart.filter(item => item.id !== id);
-      document.querySelectorAll(`[data-item-id="${id}"]`).forEach(btn => btn.classList.remove("selected"));
-      updateCartDisplay();
-    };
-
-    li.appendChild(removeBtn);
-    cartItems.appendChild(li);
+    li.innerHTML = `${item.vip} - ${item.label} - Rp ${formatRupiah(item.price)}`;
+    list.appendChild(li);
   });
+
+  const link = document.getElementById("whatsapp-link");
+  const message = cart.map(item => `${item.vip} - ${item.label} - Rp ${formatRupiah(item.price)}`).join('\n');
+  const total = cart.reduce((acc, curr) => acc + curr.price, 0);
+  link.href = `https://wa.me/6285713056206?text=${encodeURIComponent(message + '\nTotal: Rp ' + formatRupiah(total))}`;
 }
 
-function generatePriceList(containerId, data, iconPath) {
-  const container = document.getElementById(containerId);
-  data.forEach(vip => {
-    const section = document.createElement("div");
-    section.className = "vip-section";
-
-    const title = document.createElement("div");
-    title.className = "vip-title";
-
-    const logo = document.createElement("img");
-    logo.src = vip.logo;
-    logo.alt = `${vip.name} logo`;
-    title.appendChild(logo);
-    title.appendChild(document.createTextNode(` ${vip.name}`));
-
-    section.appendChild(title);
-
-    vip.prices.forEach(price => {
-      const item = document.createElement("div");
-      item.className = "item";
-
-      const span = document.createElement("span");
-      span.textContent = price.label;
-
-      const icon = document.createElement("img");
-      icon.className = "dollar";
-      icon.src = iconPath;
-
-      const button = document.createElement("button");
-      button.textContent = "Pilih";
-      button.dataset.itemId = getItemId(vip.name, price.label, price.value);
-      button.onclick = () => addToCart(vip.name, price.label, price.value, button);
-
-      item.appendChild(span);
-      item.appendChild(button);
-      item.appendChild(icon);
-      section.appendChild(item);
-    });
-
-    container.appendChild(section);
-  });
-}
-
-function generatePoolPass() {
-  const container = document.getElementById("poolPass");
-  poolPassData.forEach(pass => {
-    const item = document.createElement("div");
-    item.className = "item";
-
-    const span = document.createElement("span");
-    span.textContent = pass.label;
-
-    const button = document.createElement("button");
-    button.textContent = "Pilih";
-    button.dataset.itemId = getItemId("Pool Pass", pass.label, pass.value);
-    button.onclick = () => addToCart("Pool Pass", pass.label, pass.value, button);
-
-    item.appendChild(span);
-    item.appendChild(button);
-    container.appendChild(item);
-  });
-}
-
-document.querySelectorAll(".toggle-section").forEach(button => {
-  button.addEventListener("click", () => {
-    const target = document.getElementById(button.dataset.target);
-    target.style.display = target.style.display === "block" ? "none" : "block";
-  });
-});
-
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
-  const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
-  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
-});
-
-document.getElementById("modeToggle").addEventListener("click", () => {
+document.getElementById("toggle-dark").onclick = function () {
   document.body.classList.toggle("dark-mode");
-});
-
-generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
-generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
-generatePoolPass();
+};
