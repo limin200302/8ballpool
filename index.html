@@ -13,7 +13,7 @@
   </header>
 
   <main class="main-layout">
-    <section class="menu-section">
+    <section class="menu-section center-content">
       <button class="toggle-section" data-target="priceListCash">
         <img src="assets/img/dollar.png" class="icon-inline" />
         Price List Cash
@@ -30,17 +30,21 @@
 
       <button class="toggle-section" data-target="poolPass">🎱 Pool Pass</button>
       <div id="poolPass" class="price-section">
-        <div class="item card">
-          <p class="title">Pool Pass Biasa</p>
-          <img src="assets/img/pool_pass.png" class="pass-img" />
-          <p class="price">Rp 50.000</p>
-          <button onclick="addToCart('Pool Pass Biasa', 50000)">Pilih</button>
+        <div class="item-card">
+          <div class="item-overlay">
+            <span class="item-title">Pool Pass Biasa</span>
+            <img src="assets/img/pool_pass.png" />
+            <span class="item-price">Rp 50.000</span>
+            <button onclick="addToCart('Pool Pass Biasa', 50000)">Pilih</button>
+          </div>
         </div>
-        <div class="item card">
-          <p class="title">Pool Pass Elite</p>
-          <img src="assets/img/elite_pool.png" class="pass-img" />
-          <p class="price">Rp 85.000</p>
-          <button onclick="addToCart('Pool Pass Elite', 85000)">Pilih</button>
+        <div class="item-card">
+          <div class="item-overlay">
+            <span class="item-title">Pool Pass Elite</span>
+            <img src="assets/img/elite_pool.png" />
+            <span class="item-price">Rp 85.000</span>
+            <button onclick="addToCart('Pool Pass Elite', 85000)">Pilih</button>
+          </div>
         </div>
       </div>
     </section>
@@ -52,7 +56,7 @@
     </aside>
   </main>
 
-  <img src="assets/img/Anms.gif" id="chibi" alt="Chibi" draggable="true" />
+  <img src="assets/img/Anms.gif" id="chibi" alt="Chibi" draggable="false" />
 
   <script src="assets/script.js"></script>
 </body>
