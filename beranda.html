@@ -2,21 +2,50 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mamet Ucup Store - Beranda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beranda - Mamet Ucup Store</title>
   <link rel="stylesheet" href="assets/nav-style.css" />
   <script src="assets/nav-script.js" defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #4c1d95, #000000);
+      color: white;
+      padding: 1rem;
+    }
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    h1, h2 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    p, li {
+      line-height: 1.6;
+      color: #f0f0f0;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
-  <!-- Menu Navigasi -->
-  <nav class="navbar">
-    <div class="menu-toggle" id="menu-toggle">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <ul class="menu" id="menu">
+
+  <!-- Menu Navigasi dari nav-style.css dan nav-script.js -->
+  <div id="menu-toggle" class="menu-toggle">☰</div>
+  <nav class="nav-menu" id="navMenu">
+    <ul>
       <li><a href="index.html">Top Up 8Ball Pool</a></li>
       <li><a href="#">Top Up Dan</a></li>
       <li><a href="#">Top Up Mobile Legend</a></li>
@@ -25,7 +54,7 @@
   </nav>
 
   <!-- Konten Beranda -->
-  <main class="content">
+  <div class="content">
     <h1>Selamat Datang di Mamet Ucup Store</h1>
     <p>Website ini menyediakan layanan top up game 8 Ball Pool, Dan, dan Mobile Legend secara mudah dan terpercaya.</p>
 
@@ -50,10 +79,8 @@
       <li>Harus memberikan akses login sementara</li>
       <li>Tidak bisa digunakan saat akun sedang login di device lain</li>
     </ul>
-  </main>
+  </div>
 
-  <footer>
-    <p>© 2025 Mamet Ucup Store. All rights reserved.</p>
-  </footer>
+  <footer>© 2025 Mamet Ucup Store. All rights reserved.</footer>
 </body>
 </html>
