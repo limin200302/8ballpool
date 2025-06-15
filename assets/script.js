@@ -249,3 +249,27 @@ document.getElementById("modeToggle").addEventListener("click", () => {
 
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
+
+document.querySelectorAll(".toggle-section").forEach(button => {
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.target);
+    const isVisible = target.style.display === "block";
+    target.style.display = isVisible ? "none" : "block";
+  });
+});
+
+// --- Mode Gelap ---
+document.getElementById("modeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// --- Checkout WA ---
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
+  const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
+  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
+});
+
+// --- Script selebihnya tetap gunakan milikmu (data, fungsi addToCart, generatePriceList, dll) ---
+generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
+generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
