@@ -132,12 +132,12 @@ const vipDataBox = [
       { label: "Rp 295.000 - 404 Box", value: 295000 }
     ]
   }
-];
+]
 
 let cart = [];
 
 function addToCart(itemName, price, button) {
-  const existingIndex = cart.findIndex(item => item.name === itemName);
+  const existingIndex = cart.findIndex(item => item.name === itemName && item.price === price);
 
   if (existingIndex !== -1) {
     cart.splice(existingIndex, 1);
@@ -162,11 +162,14 @@ function updateCartDisplay() {
     removeBtn.textContent = " - ";
     removeBtn.className = "remove";
     removeBtn.onclick = () => {
-      cart = cart.filter(item => item.name !== name);
+      cart = cart.filter(item => !(item.name === name && item.price === price));
 
       const allButtons = document.querySelectorAll("button");
       allButtons.forEach(btn => {
-        if (btn.textContent.includes("Pilih") && btn.parentElement.textContent.includes(name.split(" - ")[1])) {
+        if (
+          btn.textContent.includes("Pilih") &&
+          btn.parentElement.textContent.includes(name.split(" - ")[1])
+        ) {
           btn.classList.remove("selected");
         }
       });
@@ -243,15 +246,13 @@ document.getElementById("modeToggle").addEventListener("click", () => {
 
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
-// Tambahkan logika toggle untuk Pool Pass
-document.querySelectorAll("#poolPass .item button").forEach(button => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".item");
-    const span = item.querySelector("span");
-    const itemName = "Pool Pass - " + span.textContent.trim();
-    const price = parseInt(span.textContent.replace(/\D/g, ""));
 
-    addToCart(itemName, price, button);
-  });
+document.querySelectorAll("#poolPass .item button").forEach(button => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".item");
+    const span = item.querySelector("span");
+    const itemName = "Pool Pass - " + span.textContent.trim();
+    const price = parseInt(span.textContent.replace(/\D/g, ""));
+    addToCart(itemName, price, button);
+  });
 });
-                                                        
