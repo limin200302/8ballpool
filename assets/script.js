@@ -50,7 +50,7 @@ function renderPriceList(containerId) {
       item.className = 'item';
 
       const label = document.createElement('span');
-      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash} <img class="dollar" src="assets/img/dollar.png" />`;
+      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash}<img class="dollar" src="assets/img/dollar.png" />`;
       const button = document.createElement('button');
       button.textContent = 'Pilih';
       button.onclick = () => {
@@ -100,9 +100,10 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
   window.open(`https://wa.me/6285713056206?text=Halo saya ingin beli:%0A${msg}`, '_blank');
 });
 
-// Chibi draggable
+// draggable chibi
 const chibi = document.getElementById('chibi');
 let isDragging = false, offsetX, offsetY;
+
 chibi.addEventListener('mousedown', (e) => {
   isDragging = true;
   offsetX = e.clientX - chibi.getBoundingClientRect().left;
