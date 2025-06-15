@@ -189,7 +189,7 @@ header {
 .icon-wrapper {
   padding: 4px;
   border-radius: 12px;
-  background-color: silver;
+  background-color: red; /* ganti dari silver ke merah */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   display: inline-flex;
@@ -198,7 +198,7 @@ header {
 }
 
 .icon-wrapper.active {
-  background-color: rgba(192, 192, 192, 0.5);
+  background-color: rgba(255, 0, 0, 0.3); /* merah transparan saat dipilih */
   border: 2px solid #a855f7;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
