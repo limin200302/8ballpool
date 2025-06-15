@@ -187,19 +187,19 @@ header {
   transform: scale(1.05);
 }
 .icon-wrapper {
-  padding: 6px;
-  border-radius: 16px;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: silver; /* Pekat */
+  width: 120px;
+  height: 120px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  border: 2px solid transparent;
+  margin: 5px;
+  position: relative; /* Biar efek bisa terlihat */
 }
-
-.icon-wrapper.active {
-  background-color: rgba(168, 85, 247, 0.2); /* ungu transparan */
-  border: 2px solid #a855f7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* efek glow pas aktif */
-}
-
 /* Glow animasi berwarna-warni */
 @keyframes glowBorder {
   0% {
