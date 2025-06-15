@@ -1,129 +1,158 @@
 body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1c1c1c, #3f0c4f, #ffffff);
+  color: #fff;
   margin: 0;
-  font-family: sans-serif;
-  background: linear-gradient(45deg, #1a1a2e, #3f0071, #ffffff);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  color: #000;
+  padding: 0;
 }
+
+header {
+  background-color: #2c003e;
+  padding: 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  margin: 0;
+}
+
+#modeToggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .dark-mode {
-  background: #121212;
+  background: #111;
   color: #eee;
 }
-header {
-  text-align: center;
-  padding: 1rem;
-}
+
 .main-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 }
-.menu-section {
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 20px;
-}
+
 .center-content {
-  text-align: center;
+  width: 100%;
+  max-width: 800px;
 }
-.toggle-section {
-  background: #6a0dad;
-  color: white;
-  padding: 10px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
+
+.menu-section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
+
+.toggle-section {
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #5d2c91;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .price-section {
-  display: none;
-  padding: 10px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
   border-radius: 10px;
 }
+
+.vip-title {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
 .item {
-  margin: 5px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  border-radius: 6px;
 }
+
 .item button {
-  padding: 4px 8px;
-  border: none;
-  background: #0f0;
+  background: #7b3bd8;
   color: white;
+  border: none;
+  padding: 0.4rem 0.7rem;
   border-radius: 6px;
   cursor: pointer;
 }
+
 .item button.selected {
-  background: #00cc00;
-  border: 2px solid #fff;
+  background: #3ad132;
 }
-.item .dollar {
-  width: 16px;
-  margin-left: 5px;
-}
+
 #cart {
-  margin: 20px auto;
-  padding: 15px;
-  background: #fff;
-  color: #000;
-  max-width: 500px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
 }
-#cart ul {
-  padding: 0;
-  list-style: none;
+
+#cart h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
 }
+
+#cartItems li {
+  margin-bottom: 0.5rem;
+}
+
 .remove-btn {
-  margin-left: 10px;
   background: red;
   color: white;
   border: none;
-  border-radius: 4px;
+  margin-left: 10px;
   cursor: pointer;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
 }
-.icon-inline {
-  width: 24px;
-  height: 24px;
-}
-#chibi {
-  width: 100px;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  cursor: grab;
-  z-index: 999;
-}
-.item-card {
-  margin: 10px 0;
-  position: relative;
-}
-.item-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-.item-overlay {
-  background: rgba(192,192,192,0.3);
-  border-radius: 12px;
-  padding: 10px;
-  text-align: center;
-}
-.item-title {
+
+#checkoutBtn {
+  background-color: green;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
   font-weight: bold;
-  display: block;
+  cursor: pointer;
+  margin-top: 1rem;
 }
-.item-price {
-  display: block;
-  margin: 6px 0;
+
+.icon-inline {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
 }
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+
+#chibi {
+  width: 60px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100;
+  cursor: grab;
 }
