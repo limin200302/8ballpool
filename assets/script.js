@@ -132,12 +132,11 @@ const vipDataBox = [
       { label: "Rp 295.000 - 404 Box", value: 295000 }
     ]
   }
-];
-
+]
 let cart = [];
 
 function getItemId(vipName, label, price) {
-  return `${vipName}__${label}__${price}`;
+  return ${vipName}__${label}__${price};
 }
 
 function addToCart(vipName, label, price, button) {
@@ -148,7 +147,7 @@ function addToCart(vipName, label, price, button) {
     cart.splice(existingIndex, 1);
     if (button) button.classList.remove("selected");
   } else {
-    cart.push({ id, name: `${vipName} - ${label}`, price });
+    cart.push({ id, name: ${vipName} - ${label}, price });
     if (button) button.classList.add("selected");
   }
 
@@ -162,14 +161,14 @@ function updateCartDisplay() {
   cart.forEach(({ id, name, price }) => {
     const li = document.createElement("li");
     li.textContent = name;
-
+    
     const removeBtn = document.createElement("button");
     removeBtn.textContent = " - ";
     removeBtn.className = "remove";
     removeBtn.onclick = () => {
       cart = cart.filter(item => item.id !== id);
 
-      const allButtons = document.querySelectorAll("button[data-item-id]");
+      const allButtons = document.querySelectorAll("button");
       allButtons.forEach(btn => {
         if (btn.dataset.itemId === id) {
           btn.classList.remove("selected");
@@ -234,15 +233,14 @@ function generatePriceList(containerId, data, iconPath) {
 document.querySelectorAll(".toggle-section").forEach(button => {
   button.addEventListener("click", () => {
     const target = document.getElementById(button.dataset.target);
-    if (target) {
-      target.classList.toggle("hidden");
-    }
+    target.style.display = target.style.display === "block" ? "none" : "block";
   });
 });
+
 document.getElementById("checkoutBtn").addEventListener("click", () => {
-  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
+  const items = cart.map(item => ${item.name} - Rp ${item.price.toLocaleString("id-ID")});
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
-  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
+  window.open(https://wa.me/6285713056206?text=${message}, "_blank");
 });
 
 document.getElementById("modeToggle").addEventListener("click", () => {
