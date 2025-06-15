@@ -3,51 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mamet Ucup Store</title>
+  <title>Arena 8Ball Pool Mamet Ucup</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Mamet Ucup Store</h1>
-    <button id="modeToggle">Mode Gelap/Terang</button>
+    <button id="modeToggle">🌓</button>
   </header>
 
-  <main>
-    <div class="menu">
-      <button class="toggle-section" data-target="priceListCash">
-        <img src="assets/img/dollar.png" class="icon-inline" />
-        Price List Cash
-        <img src="assets/img/dollar.png" class="icon-inline" />
-      </button>
-      <button class="toggle-section" data-target="boxLegend">
-        <img src="assets/img/box_legends.png" class="icon-inline" />
-        Price List Box Legend
-        <img src="assets/img/box_legends.png" class="icon-inline" />
-      </button>
-      <button class="toggle-section" data-target="poolPass">
-        Pool Pass
-      </button>
-    </div>
+  <div class="menu">
+    <button class="toggle-section" data-target="priceListCash">
+      <img src="assets/img/dollar.png" class="icon-inline" />
+      Price List Cash
+      <img src="assets/img/dollar.png" class="icon-inline" />
+    </button>
+    <button class="toggle-section" data-target="boxLegend">
+      <img src="assets/img/box_legends.png" class="icon-inline" />
+      Price List Box Legend
+      <img src="assets/img/box_legends.png" class="icon-inline" />
+    </button>
+    <button class="toggle-section" data-target="poolPass">
+      🎫 Pool Pass 🎫
+    </button>
+  </div>
 
-    <div id="priceListCash" class="price-section vertical-list"></div>
-    <div id="boxLegend" class="price-section vertical-list"></div>
-    <div id="poolPass" class="price-section">
-      <div class="item">
-        <span>Pool Pass Biasa - Rp 50.000</span>
-        <button onclick="addToCart('Pool Pass', 'Biasa', 50000, this)">Pilih</button>
-      </div>
-      <div class="item">
-        <span>Pool Pass Elite - Rp 85.000</span>
-        <button onclick="addToCart('Pool Pass', 'Elite', 85000, this)">Pilih</button>
-      </div>
+  <div id="priceListCash" class="price-section vertical-list"></div>
+  <div id="boxLegend" class="price-section vertical-list"></div>
+  <div id="poolPass" class="price-section">
+    <div class="item">
+      <span>Rp 50.000 - Pool Pass Biasa</span>
+      <button onclick="addToCart('Pool Pass', 'Pool Pass Biasa', 50000, this)">Pilih</button>
     </div>
-  </main>
+    <div class="item">
+      <span>Rp 85.000 - Pool Pass Elite</span>
+      <button onclick="addToCart('Pool Pass', 'Pool Pass Elite', 85000, this)">Pilih</button>
+    </div>
+  </div>
 
-  <section id="cart">
-    <h2>Keranjang Belanja</h2>
+  <div id="cart">
+    <h3>Keranjang Belanja</h3>
     <ul id="cartItems"></ul>
     <button id="checkoutBtn">Checkout via WhatsApp</button>
-  </section>
+  </div>
 
   <img src="assets/img/chibi.png" id="chibi" draggable="true" />
 
