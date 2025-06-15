@@ -133,17 +133,21 @@ const vipDataBox = [
     ]
   }
 ]
-
 let cart = [];
 
-function addToCart(itemName, price, button) {
-  const existingIndex = cart.findIndex(item => item.name === itemName && item.price === price);
+function getItemId(vipName, label, price) {
+  return `${vipName}__${label}__${price}`;
+}
+
+function addToCart(vipName, label, price, button) {
+  const id = getItemId(vipName, label, price);
+  const existingIndex = cart.findIndex(item => item.id === id);
 
   if (existingIndex !== -1) {
     cart.splice(existingIndex, 1);
     if (button) button.classList.remove("selected");
   } else {
-    cart.push({ name: itemName, price });
+    cart.push({ id, name: `${vipName} - ${label}`, price });
     if (button) button.classList.add("selected");
   }
 
@@ -154,7 +158,7 @@ function updateCartDisplay() {
   const cartItems = document.getElementById("cartItems");
   cartItems.innerHTML = "";
 
-  cart.forEach(({ name, price }) => {
+  cart.forEach(({ id, name, price }) => {
     const li = document.createElement("li");
     li.textContent = `${name} - Rp ${price.toLocaleString("id-ID")}`;
 
@@ -162,14 +166,11 @@ function updateCartDisplay() {
     removeBtn.textContent = " - ";
     removeBtn.className = "remove";
     removeBtn.onclick = () => {
-      cart = cart.filter(item => !(item.name === name && item.price === price));
+      cart = cart.filter(item => item.id !== id);
 
       const allButtons = document.querySelectorAll("button");
       allButtons.forEach(btn => {
-        if (
-          btn.textContent.includes("Pilih") &&
-          btn.parentElement.textContent.includes(name.split(" - ")[1])
-        ) {
+        if (btn.dataset.itemId === id) {
           btn.classList.remove("selected");
         }
       });
@@ -213,8 +214,10 @@ function generatePriceList(containerId, data, iconPath) {
 
       const button = document.createElement("button");
       button.textContent = "Pilih";
+      const id = getItemId(vip.name, price.label, price.value);
+      button.dataset.itemId = id;
       button.onclick = function () {
-        addToCart(`${vip.name} - ${price.label}`, price.value, button);
+        addToCart(vip.name, price.label, price.value, button);
       };
 
       item.appendChild(span);
@@ -251,8 +254,11 @@ document.querySelectorAll("#poolPass .item button").forEach(button => {
   button.addEventListener("click", () => {
     const item = button.closest(".item");
     const span = item.querySelector("span");
-    const itemName = "Pool Pass - " + span.textContent.trim();
+    const label = span.textContent.trim();
     const price = parseInt(span.textContent.replace(/\D/g, ""));
-    addToCart(itemName, price, button);
+    const id = getItemId("Pool Pass", label, price);
+
+    button.dataset.itemId = id;
+    addToCart("Pool Pass", label, price, button);
   });
 });
