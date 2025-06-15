@@ -3,11 +3,11 @@ body {
   background: linear-gradient(to bottom, #fff, #eee);
   margin: 0;
   padding: 0;
-  transition: background 0.5s;
+  transition: background 0.5s, color 0.5s;
 }
 
 .dark-mode {
-  background: linear-gradient(to bottom, #000000, #1c1c1c);
+  background: linear-gradient(to bottom, #2d0b47, #000);
   color: #fff;
 }
 
@@ -49,14 +49,14 @@ header {
   margin: 0 auto 30px auto;
   padding: 15px;
   max-width: 95%;
-  background-color: rgba(240, 240, 240, 0.85);
+  background-color: rgba(240, 240, 240, 0.95);
   border-radius: 12px;
 }
 
 .vertical-list .vip-section,
 #poolPass .item {
   margin: 20px auto;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 10px;
   border-radius: 10px;
   max-width: 100%;
@@ -100,10 +100,10 @@ header {
   content: " ✔️";
 }
 
-.dollar {
+.dollar, .icon-inline {
   height: 18px;
   margin-left: 8px;
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
 #cart {
@@ -138,21 +138,17 @@ header {
   pointer-events: auto;
 }
 
-.icon-inline {
-  height: 18px;
-  vertical-align: middle;
-}
 #cartItems button.remove {
-  background-color: #ef4444;
-  color: white;
-  border: none;
-  padding: 4px 10px;
-  margin-left: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  margin-left: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 #cartItems button.remove:hover {
-  background-color: #dc2626;
+  background-color: #dc2626;
 }
