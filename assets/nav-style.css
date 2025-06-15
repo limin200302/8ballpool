@@ -1,0 +1,51 @@
+/* Hamburger Icon */
+.hamburger {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.hamburger div {
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Side Navigation Menu */
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background-color: #6a0dad;
+  color: white;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 100;
+}
+
+.side-nav.open {
+  left: 0;
+}
+
+.side-nav a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.side-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
