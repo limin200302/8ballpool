@@ -186,3 +186,15 @@ header {
 .menu-icon:hover {
   transform: scale(1.05);
 }
+.icon-wrapper {
+  padding: 6px;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.icon-wrapper.active {
+  background-color: rgba(168, 85, 247, 0.2); /* ungu transparan */
+  border: 2px solid #a855f7;
+}
