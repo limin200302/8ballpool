@@ -142,3 +142,17 @@ header {
   height: 18px;
   vertical-align: middle;
 }
+#cartItems button.remove {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  margin-left: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#cartItems button.remove:hover {
+  background-color: #dc2626;
+}
