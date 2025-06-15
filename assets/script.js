@@ -254,11 +254,19 @@ document.querySelectorAll("#poolPass .item button").forEach(button => {
   button.addEventListener("click", () => {
     const item = button.closest(".item");
     const span = item.querySelector("span");
-    const label = span.textContent.trim();
-    const price = parseInt(span.textContent.replace(/\D/g, ""));
-    const id = getItemId("Pool Pass", label, price);
+    
+    // Ambil label asli tanpa tambahan Rp di depan atau belakang
+    const labelText = span.textContent.trim(); // misal "Pool Pass Elite: Rp 85.000"
 
-    button.dataset.itemId = id;
-    addToCart("Pool Pass", label, price, button);
+    // Ambil hanya nama item tanpa harga (hapus bagian "Rp ...")
+    const itemNameOnly = labelText.replace(/-? *Rp[ .0-9]+/, '').trim();
+
+    // Ambil harga dari label, misal dari angka 85000
+    const price = parseInt(labelText.replace(/\D/g, ""));
+
+    // Gunakan nama yang bersih (tidak dobel Rp dan angka)
+    const itemName = "Pool Pass - " + itemNameOnly;
+
+    addToCart(itemName, price, button);
   });
 });
