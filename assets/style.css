@@ -1,99 +1,158 @@
 body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #220033, #ffffff);
-  color: #000;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom, #fff, #eee);
   margin: 0;
-  padding: 1em;
-  transition: background 0.5s, color 0.5s;
+  padding: 0;
+  transition: background 0.5s;
 }
 
 .dark-mode {
-  background: linear-gradient(to bottom, #1e1e2f, #2c2c2c);
-  color: #f1f1f1;
+  background: linear-gradient(to bottom, #000000, #1c1c1c);
+  color: #fff;
 }
 
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 1em;
-}
-
-h1 {
+header {
   text-align: center;
-  font-size: 2em;
-}
-
-button {
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 8px;
-  border: none;
-  background: #eee;
-  cursor: pointer;
-}
-
-button.selected {
-  background: #00cc66;
+  padding: 10px;
+  background-color: #6a0dad;
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-#toggle-dark {
+#modeToggle {
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 10px;
 }
 
-.menu-buttons {
+.menu {
   text-align: center;
-  margin: 1em 0;
+  padding: 20px;
 }
 
-.menu-buttons button {
+.menu button.toggle-section {
+  display: inline-block;
+  margin: 10px auto;
+  background: #a855f7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
   font-weight: bold;
-  background-color: #ddd;
+  border-radius: 12px;
 }
 
 .price-section {
   display: none;
-  margin-bottom: 2em;
+  margin: 0 auto 30px auto;
+  padding: 15px;
+  max-width: 95%;
+  background-color: rgba(240, 240, 240, 0.85);
+  border-radius: 12px;
 }
 
-.price-card {
-  background-color: rgba(255, 255, 255, 0.85);
+.vertical-list .vip-section,
+#poolPass .item {
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 10px;
   border-radius: 10px;
-  margin: 1em 0;
-  box-shadow: 0 0 10px #ccc;
+  max-width: 100%;
 }
 
-.dark-mode .price-card {
-  background-color: rgba(40, 40, 60, 0.95);
-  box-shadow: 0 0 10px #444;
+.vip-title {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.icon {
-  width: 24px;
+.vip-title img {
+  width: 28.8px;
   vertical-align: middle;
+  margin-right: 5px;
 }
 
-.vip-icon {
-  width: 24px;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-
-ul#cart {
-  list-style: none;
-  padding-left: 0;
-}
-
-ul#cart li {
-  background: #f2f2f2;
-  margin: 5px 0;
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 8px;
+  margin-bottom: 8px;
+  background-color: #f0f0f0;
   border-radius: 8px;
 }
 
-.dark-mode ul#cart li {
-  background: #3c3c3c;
+.item span {
+  flex: 1;
+}
+
+.item button {
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.item button.selected::after {
+  content: " ✔️";
+}
+
+.dollar {
+  height: 18px;
+  margin-left: 8px;
+  vertical-align: bottom;
+}
+
+#cart {
+  padding: 20px;
+  background: #f5f5f5;
+  border-top: 2px solid #ccc;
+  text-align: center;
+}
+
+#cartItems li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+#checkoutBtn {
+  background-color: #16a34a;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+#chibi {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 80px;
+  height: auto;
+  z-index: 99;
+  pointer-events: auto;
+}
+
+.icon-inline {
+  height: 18px;
+  vertical-align: middle;
+}
+#cartItems button.remove {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  margin-left: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#cartItems button.remove:hover {
+  background-color: #dc2626;
 }
