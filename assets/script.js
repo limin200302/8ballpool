@@ -230,46 +230,59 @@ function generatePriceList(containerId, data, iconPath) {
   });
 }
 
-document.querySelectorAll(".toggle-section").forEach(button => {
-  button.addEventListener("click", () => {
-    const target = document.getElementById(button.dataset.target);
-    target.style.display = target.style.display === "block" ? "none" : "block";
-  });
-});
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mamet Ucup Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Mamet Ucup Store</h1>
+    <button id="modeToggle">Mode Gelap/Terang</button>
+  </header>
 
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
-  const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
-  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
-});
+  <main>
+    <div class="menu">
+      <button class="toggle-section" data-target="priceListCash">
+        <img src="assets/img/dollar.png" class="icon-inline" />
+        Price List Cash
+        <img src="assets/img/dollar.png" class="icon-inline" />
+      </button>
+      <button class="toggle-section" data-target="boxLegend">
+        <img src="assets/img/box_legends.png" class="icon-inline" />
+        Price List Box Legend
+        <img src="assets/img/box_legends.png" class="icon-inline" />
+      </button>
+      <button class="toggle-section" data-target="poolPass">
+        Pool Pass
+      </button>
+    </div>
 
-document.getElementById("modeToggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
+    <div id="priceListCash" class="price-section vertical-list"></div>
+    <div id="boxLegend" class="price-section vertical-list"></div>
+    <div id="poolPass" class="price-section">
+      <div class="item">
+        <span>Pool Pass Biasa - Rp 50.000</span>
+        <button onclick="addToCart('Pool Pass', 'Biasa', 50000, this)">Pilih</button>
+      </div>
+      <div class="item">
+        <span>Pool Pass Elite - Rp 85.000</span>
+        <button onclick="addToCart('Pool Pass', 'Elite', 85000, this)">Pilih</button>
+      </div>
+    </div>
+  </main>
 
-generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
-generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
+  <section id="cart">
+    <h2>Keranjang Belanja</h2>
+    <ul id="cartItems"></ul>
+    <button id="checkoutBtn">Checkout via WhatsApp</button>
+  </section>
 
-document.querySelectorAll(".toggle-section").forEach(button => {
-  button.addEventListener("click", () => {
-    const target = document.getElementById(button.dataset.target);
-    const isVisible = target.style.display === "block";
-    target.style.display = isVisible ? "none" : "block";
-  });
-});
+  <img src="assets/img/chibi.png" id="chibi" draggable="true" />
 
-// --- Mode Gelap ---
-document.getElementById("modeToggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
-
-// --- Checkout WA ---
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
-  const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
-  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
-});
-
-// --- Script selebihnya tetap gunakan milikmu (data, fungsi addToCart, generatePriceList, dll) ---
-generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
-generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
+  <script src="script.js"></script>
+</body>
+</html>
