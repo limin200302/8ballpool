@@ -198,3 +198,8 @@ header {
   background-color: rgba(168, 85, 247, 0.2); /* ungu transparan */
   border: 2px solid #a855f7;
 }
+.selected-icon {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(100, 100, 255, 0.2);
+  border-radius: 16px;
+}
