@@ -102,7 +102,7 @@ const vipDataBox = [
       { label: "Rp 100.000 - 54 Box", value: 100000 },
       { label: "Rp 145.000 - 86 Box", value: 145000 },
       { label: "Rp 200.000 - 137 Box", value: 200000 },
-      { label: "Rp 265.000 - 177 Box", value: 265000 },
+      { label: "Rp 265.000 - 117 Box", value: 265000 },
       { label: "Rp 295.000 - 303 Box", value: 295000 }
     ]
   },
@@ -132,52 +132,120 @@ const vipDataBox = [
       { label: "Rp 295.000 - 404 Box", value: 295000 }
     ]
   }
-];
-
-const poolPassData = [
-  { label: "Pool Pass Biasa - Rp 50.000", value: 50000 },
-  { label: "Pool Pass Elite - Rp 85.000", value: 85000 }
-];
+]
 let cart = [];
 
-function toggleSection(id) {
-  const section = document.getElementById(id);
-  section.style.display = section.style.display === "block" ? "none" : "block";
+function getItemId(vipName, label, price) {
+  return `${vipName}__${label}__${price}`;
 }
 
-function formatRupiah(angka) {
-  return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
+function addToCart(vipName, label, price, button) {
+  const id = getItemId(vipName, label, price);
+  const existingIndex = cart.findIndex(item => item.id === id);
 
-function getItemId(vip, label, price) {
-  return `${vip}-${label}-${price}`;
-}
-
-function addToCart(vip, label, price, button) {
-  const id = getItemId(vip, label, price);
-  if (!cart.find(item => item.id === id)) {
-    cart.push({ id, vip, label, price });
-    button.classList.add('selected');
-    button.innerHTML = "✔ Dipilih";
-    updateCart();
+  if (existingIndex !== -1) {
+    cart.splice(existingIndex, 1);
+    if (button) button.classList.remove("selected");
+  } else {
+    cart.push({ id, name: `${vipName} - ${label}`, price });
+    if (button) button.classList.add("selected");
   }
+
+  updateCartDisplay();
 }
 
-function updateCart() {
-  const list = document.getElementById("cart");
-  list.innerHTML = "";
-  cart.forEach(item => {
+function updateCartDisplay() {
+  const cartItems = document.getElementById("cartItems");
+  cartItems.innerHTML = "";
+
+  cart.forEach(({ id, name, price }) => {
     const li = document.createElement("li");
-    li.innerHTML = `${item.vip} - ${item.label} - Rp ${formatRupiah(item.price)}`;
-    list.appendChild(li);
-  });
+    li.textContent = name;
+    
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = " - ";
+    removeBtn.className = "remove";
+    removeBtn.onclick = () => {
+      cart = cart.filter(item => item.id !== id);
 
-  const link = document.getElementById("whatsapp-link");
-  const message = cart.map(item => `${item.vip} - ${item.label} - Rp ${formatRupiah(item.price)}`).join('\n');
-  const total = cart.reduce((acc, curr) => acc + curr.price, 0);
-  link.href = `https://wa.me/6285713056206?text=${encodeURIComponent(message + '\nTotal: Rp ' + formatRupiah(total))}`;
+      const allButtons = document.querySelectorAll("button");
+      allButtons.forEach(btn => {
+        if (btn.dataset.itemId === id) {
+          btn.classList.remove("selected");
+        }
+      });
+
+      updateCartDisplay();
+    };
+
+    li.appendChild(removeBtn);
+    cartItems.appendChild(li);
+  });
 }
 
-document.getElementById("toggle-dark").onclick = function () {
+function generatePriceList(containerId, data, iconPath) {
+  const container = document.getElementById(containerId);
+  data.forEach(vip => {
+    const section = document.createElement("div");
+    section.className = "vip-section";
+
+    const title = document.createElement("div");
+    title.className = "vip-title";
+
+    const logo = document.createElement("img");
+    logo.src = vip.name === "Black Diamond"
+      ? "assets/img/blackdiamond.png"
+      : vip.logo;
+    logo.alt = vip.name + " logo";
+
+    title.appendChild(logo);
+    title.appendChild(document.createTextNode(" " + vip.name));
+    section.appendChild(title);
+
+    vip.prices.forEach(price => {
+      const item = document.createElement("div");
+      item.className = "item";
+      const span = document.createElement("span");
+      span.textContent = price.label;
+
+      const icon = document.createElement("img");
+      icon.className = "dollar";
+      icon.src = iconPath;
+
+      const button = document.createElement("button");
+      button.textContent = "Pilih";
+      const id = getItemId(vip.name, price.label, price.value);
+      button.dataset.itemId = id;
+      button.onclick = function () {
+        addToCart(vip.name, price.label, price.value, button);
+      };
+
+      item.appendChild(span);
+      item.appendChild(button);
+      item.appendChild(icon);
+      section.appendChild(item);
+    });
+
+    container.appendChild(section);
+  });
+}
+
+document.querySelectorAll(".toggle-section").forEach(button => {
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.target);
+    target.style.display = target.style.display === "block" ? "none" : "block";
+  });
+});
+
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
+  const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
+  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
+});
+
+document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-};
+});
+
+generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
+generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
