@@ -187,19 +187,18 @@ header {
   transform: scale(1.05);
 }
 .icon-wrapper {
-  padding: 6px;
-  border-radius: 16px;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  padding: 4px;
+  border-radius: 12px;
+  background-color: silver;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon-wrapper.active {
-  background-color: rgba(168, 85, 247, 0.2); /* ungu transparan */
-  border: 2px solid #a855f7;
-}
-.selected-icon {
+  background-color: rgba(192, 192, 192, 0.5);
+  border: 2px solid #a855f7;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: rgba(100, 100, 255, 0.2);
-  border-radius: 16px;
 }
