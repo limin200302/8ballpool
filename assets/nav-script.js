@@ -1,31 +1,34 @@
-// ==== Hamburger Menu ====
-const hamburger = document.querySelector(".hamburger");
-const sideNav = document.querySelector(".side-nav");
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const sideNav = document.querySelector(".side-nav");
+  const berandaLink = document.querySelector(".side-nav a[href='#beranda']");
+  const berandaSection = document.getElementById("berandaSection");
 
-hamburger.addEventListener("click", () => {
-  sideNav.classList.toggle("open");
-});
+  // Jika ada tombol hamburger, aktifkan
+  if (hamburger && sideNav) {
+    hamburger.addEventListener("click", () => {
+      sideNav.classList.toggle("open");
+    });
+  }
 
-// ==== Navigasi ke Beranda ====
-const berandaLink = document.querySelector(".side-nav a[href='#beranda']");
-const berandaSection = document.getElementById("berandaSection");
+  // Tombol Beranda
+  if (berandaLink && berandaSection) {
+    berandaLink.addEventListener("click", (e) => {
+      e.preventDefault();
 
-// Semua konten utama untuk disembunyikan saat buka beranda
-const sectionsToHide = [
-  document.getElementById("priceListCash"),
-  document.getElementById("boxLegend"),
-  document.getElementById("poolPass")
-];
+      // Daftar id menu utama yang mau disembunyikan
+      const hideIds = ["priceListCash", "boxLegend", "poolPass"];
 
-berandaLink.addEventListener("click", (e) => {
-  e.preventDefault();
+      hideIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+      });
 
-  // Sembunyikan semua menu utama
-  sectionsToHide.forEach(section => section.style.display = "none");
+      // Tampilkan beranda
+      berandaSection.style.display = "block";
 
-  // Tampilkan beranda
-  berandaSection.style.display = "block";
-
-  // Tutup side menu
-  sideNav.classList.remove("open");
+      // Tutup side menu
+      sideNav.classList.remove("open");
+    });
+  }
 });
