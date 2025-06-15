@@ -246,6 +246,11 @@ document.getElementById("checkoutBtn").addEventListener("click", () => {
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
-
+function selectIcon(el) {
+  document.querySelectorAll('.icon-wrapper').forEach(wrapper => {
+    wrapper.classList.remove('active');
+  });
+  el.classList.add('active');
+}
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
