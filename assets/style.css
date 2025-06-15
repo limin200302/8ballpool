@@ -170,7 +170,7 @@ header {
   flex-wrap: wrap;
   gap: 10px;
   margin: 20px auto;
-  max-width: 310px;
+  max-width: 320px; /* atau bisa dihapus */
 }
 .menu-icon {
   width: 90px;
