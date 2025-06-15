@@ -1,183 +1,208 @@
-document.querySelectorAll(".toggle-section").forEach((button) => {
-  button.addEventListener("click", () => {
-    const targetId = button.getAttribute("data-target");
-    const section = document.getElementById(targetId);
-    if (section.style.display === "block") {
-      section.style.display = "none";
-    } else {
-      document.querySelectorAll(".price-section").forEach((s) => (s.style.display = "none"));
-      section.style.display = "block";
-    }
+const vipDataCash = [
+  {
+    name: "Silver",
+    logo: "assets/img/silver.png",
+    prices: [
+      { label: "Rp 55.000 - 605 Cash", value: 55000 },
+      { label: "Rp 70.000 - 880 Cash", value: 70000 },
+      { label: "Rp 95.000 - 1.210 Cash", value: 95000 },
+      { label: "Rp 135.000 - 1.892 Cash", value: 135000 },
+      { label: "Rp 190.000 - 2.992 Cash", value: 190000 },
+      { label: "Rp 250.000 - 3.872 Cash", value: 250000 },
+      { label: "Rp 275.000 - 6.600 Cash", value: 275000 }
+    ]
+  },
+  {
+    name: "Gold",
+    logo: "assets/img/gold.png",
+    prices: [
+      { label: "Rp 55.000 - 688 Cash", value: 55000 },
+      { label: "Rp 70.000 - 1.000 Cash", value: 70000 },
+      { label: "Rp 95.000 - 1.375 Cash", value: 95000 },
+      { label: "Rp 135.000 - 2.150 Cash", value: 135000 },
+      { label: "Rp 190.000 - 3.400 Cash", value: 190000 },
+      { label: "Rp 250.000 - 4.400 Cash", value: 250000 },
+      { label: "Rp 275.000 - 7.500 Cash", value: 275000 }
+    ]
+  },
+  {
+    name: "Zamrud",
+    logo: "assets/img/zamrud.png",
+    prices: [
+      { label: "Rp 55.000 - 825 Cash", value: 55000 },
+      { label: "Rp 70.000 - 1.200 Cash", value: 70000 },
+      { label: "Rp 95.000 - 1.650 Cash", value: 95000 },
+      { label: "Rp 135.000 - 2.580 Cash", value: 135000 },
+      { label: "Rp 190.000 - 4.080 Cash", value: 190000 },
+      { label: "Rp 250.000 - 5.280 Cash", value: 250000 },
+      { label: "Rp 275.000 - 9.000 Cash", value: 275000 }
+    ]
+  },
+  {
+    name: "Diamond",
+    logo: "assets/img/diamond.png",
+    prices: [
+      { label: "Rp 55.000 - 963 Cash", value: 55000 },
+      { label: "Rp 70.000 - 1.400 Cash", value: 70000 },
+      { label: "Rp 95.000 - 1.925 Cash", value: 95000 },
+      { label: "Rp 135.000 - 3.010 Cash", value: 135000 },
+      { label: "Rp 190.000 - 4.760 Cash", value: 190000 },
+      { label: "Rp 250.000 - 6.160 Cash", value: 250000 },
+      { label: "Rp 275.000 - 10.500 Cash", value: 275000 }
+    ]
+  },
+  {
+    name: "Black Diamond",
+    logo: "assets/img/blackdiamond.png",
+    prices: [
+      { label: "Rp 55.000 - 1.100 Cash", value: 55000 },
+      { label: "Rp 70.000 - 1.600 Cash", value: 70000 },
+      { label: "Rp 95.000 - 2.200 Cash", value: 95000 },
+      { label: "Rp 135.000 - 3.440 Cash", value: 135000 },
+      { label: "Rp 190.000 - 5.440 Cash", value: 190000 },
+      { label: "Rp 250.000 - 7.040 Cash", value: 250000 },
+      { label: "Rp 275.000 - 12.000 Cash", value: 275000 }
+    ]
+  }
+];
+
+const vipDataBox = [
+  {
+    name: "Silver",
+    logo: "assets/img/silver.png",
+    prices: [
+      { label: "Rp 60.000 - 20 Box", value: 60000 },
+      { label: "Rp 75.000 - 29 Box", value: 75000 },
+      { label: "Rp 100.000 - 40 Box", value: 100000 },
+      { label: "Rp 145.000 - 63 Box", value: 145000 },
+      { label: "Rp 200.000 - 100 Box", value: 200000 },
+      { label: "Rp 265.000 - 130 Box", value: 265000 },
+      { label: "Rp 295.000 - 222 Box", value: 295000 }
+    ]
+  },
+  {
+    name: "Gold",
+    logo: "assets/img/gold.png",
+    prices: [
+      { label: "Rp 60.000 - 22 Box", value: 60000 },
+      { label: "Rp 75.000 - 33 Box", value: 75000 },
+      { label: "Rp 100.000 - 45 Box", value: 100000 },
+      { label: "Rp 145.000 - 72 Box", value: 145000 },
+      { label: "Rp 200.000 - 114 Box", value: 200000 },
+      { label: "Rp 265.000 - 149 Box", value: 265000 },
+      { label: "Rp 295.000 - 252 Box", value: 295000 }
+    ]
+  },
+  {
+    name: "Zamrud",
+    logo: "assets/img/zamrud.png",
+    prices: [
+      { label: "Rp 60.000 - 27 Box", value: 60000 },
+      { label: "Rp 75.000 - 39 Box", value: 75000 },
+      { label: "Rp 100.000 - 54 Box", value: 100000 },
+      { label: "Rp 145.000 - 86 Box", value: 145000 },
+      { label: "Rp 200.000 - 137 Box", value: 200000 },
+      { label: "Rp 265.000 - 117 Box", value: 265000 },
+      { label: "Rp 295.000 - 303 Box", value: 295000 }
+    ]
+  },
+  {
+    name: "Diamond",
+    logo: "assets/img/diamond.png",
+    prices: [
+      { label: "Rp 60.000 - 32 Box", value: 60000 },
+      { label: "Rp 75.000 - 46 Box", value: 75000 },
+      { label: "Rp 100.000 - 64 Box", value: 100000 },
+      { label: "Rp 145.000 - 101 Box", value: 145000 },
+      { label: "Rp 200.000 - 159 Box", value: 200000 },
+      { label: "Rp 265.000 - 207 Box", value: 265000 },
+      { label: "Rp 295.000 - 353 Box", value: 295000 }
+    ]
+  },
+  {
+    name: "Black Diamond",
+    logo: "assets/img/blackdiamond.png",
+    prices: [
+      { label: "Rp 60.000 - 36 Box", value: 60000 },
+      { label: "Rp 75.000 - 53 Box", value: 75000 },
+      { label: "Rp 100.000 - 72 Box", value: 100000 },
+      { label: "Rp 145.000 - 115 Box", value: 145000 },
+      { label: "Rp 200.000 - 183 Box", value: 200000 },
+      { label: "Rp 265.000 - 237 Box", value: 265000 },
+      { label: "Rp 295.000 - 404 Box", value: 295000 }
+    ]
+  }
+];
+
+function generatePriceList(containerId, data, iconPath) {
+  const container = document.getElementById(containerId);
+  data.forEach(vip => {
+    const section = document.createElement("div");
+    section.className = "vip-section";
+
+    const title = document.createElement("div");
+    title.className = "vip-title";
+
+    const logo = document.createElement("img");
+    logo.src = vip.name === "Black Diamond"
+      ? "assets/img/blackdiamond.png"
+      : vip.logo;
+    logo.alt = vip.name + " logo";
+
+    title.appendChild(logo);
+    title.appendChild(document.createTextNode(" " + vip.name));
+    section.appendChild(title);
+
+    vip.prices.forEach(price => {
+      const item = document.createElement("div");
+      item.className = "item";
+      const span = document.createElement("span");
+      span.textContent = price.label;
+
+      const icon = document.createElement("img");
+      icon.className = "dollar";
+      icon.src = iconPath;
+
+      const button = document.createElement("button");
+      button.textContent = "Pilih";
+      button.onclick = function () {
+        addToCart(`${vip.name} - ${price.label}`, price.value);
+        button.classList.add("selected");
+      };
+
+      item.appendChild(span);
+      item.appendChild(button);
+      item.appendChild(icon);
+      section.appendChild(item);
+    });
+
+    container.appendChild(section);
   });
-});
-
-const priceListCash = {
-  "Silver": [
-    [55000, 605],
-    [70000, 880],
-    [95000, 1210],
-    [135000, 1892],
-    [190000, 2992],
-    [250000, 3872],
-    [275000, 6600]
-  ],
-  "Gold": [
-    [55000, 688],
-    [70000, 1000],
-    [95000, 1375],
-    [135000, 2150],
-    [190000, 3400],
-    [250000, 4400],
-    [275000, 7500]
-  ],
-  "Zamrud": [
-    [55000, 825],
-    [70000, 1200],
-    [95000, 1650],
-    [135000, 2580],
-    [190000, 4080],
-    [250000, 5280],
-    [275000, 9000]
-  ],
-  "Diamond": [
-    [55000, 963],
-    [70000, 1400],
-    [95000, 1925],
-    [135000, 3010],
-    [190000, 4760],
-    [250000, 6160],
-    [275000, 10500]
-  ],
-  "Black Diamond": [
-    [55000, 1100],
-    [70000, 1600],
-    [95000, 2200],
-    [135000, 3440],
-    [190000, 5440],
-    [250000, 7040],
-    [275000, 12000]
-  ]
-};
-function generatePriceListCash() {
-  const container = document.getElementById("priceListCash");
-  for (const [vip, list] of Object.entries(priceListCash)) {
-    const section = document.createElement("div");
-    section.className = "vip-section";
-
-    const title = document.createElement("div");
-    title.className = "vip-title";
-    const logo = document.createElement("img");
-    logo.src = `assets/img/${vip.toLowerCase().replace(" ", "_")}.png`;
-    logo.alt = vip;
-    title.appendChild(logo);
-    title.appendChild(document.createTextNode(vip));
-    section.appendChild(title);
-
-    list.forEach(([price, cash]) => {
-      const item = document.createElement("div");
-      item.className = "item";
-      const span = document.createElement("span");
-      span.innerHTML = `Rp ${price.toLocaleString()} - ${cash} Cash <img src="assets/img/dollar.png" class="dollar">`;
-      const button = document.createElement("button");
-      button.textContent = "Pilih";
-      button.onclick = function () {
-        const itemName = `${vip} - Rp ${price.toLocaleString()} - ${cash} Cash`;
-        if (button.classList.contains("selected")) {
-          button.classList.remove("selected");
-          removeFromCart(itemName);
-        } else {
-          button.classList.add("selected");
-          addToCart(itemName, price);
-        }
-      };
-      item.appendChild(span);
-      item.appendChild(button);
-      section.appendChild(item);
-    });
-
-    container.appendChild(section);
-  }
-}
-
-function generateBoxLegend() {
-  const boxList = {
-    "Silver": [[60000, 20], [75000, 29], [100000, 40], [145000, 63], [200000, 100], [265000, 130], [295000, 222]],
-    "Gold": [[60000, 22], [75000, 33], [100000, 45], [145000, 72], [200000, 114], [265000, 149], [295000, 252]],
-    "Zamrud": [[60000, 27], [75000, 39], [100000, 54], [145000, 86], [200000, 137], [265000, 117], [295000, 303]],
-    "Diamond": [[60000, 32], [75000, 46], [100000, 64], [145000, 101], [200000, 159], [265000, 207], [295000, 353]],
-    "Black Diamond": [[60000, 36], [75000, 53], [100000, 72], [145000, 115], [200000, 183], [265000, 237], [295000, 404]],
-  };
-
-  const container = document.getElementById("boxLegend");
-  for (const [vip, list] of Object.entries(boxList)) {
-    const section = document.createElement("div");
-    section.className = "vip-section";
-
-    const title = document.createElement("div");
-    title.className = "vip-title";
-    const logo = document.createElement("img");
-    logo.src = `assets/img/${vip.toLowerCase().replace(" ", "_")}.png`;
-    logo.alt = vip;
-    title.appendChild(logo);
-    title.appendChild(document.createTextNode(vip));
-    section.appendChild(title);
-
-    list.forEach(([price, box]) => {
-      const item = document.createElement("div");
-      item.className = "item";
-      const span = document.createElement("span");
-      span.innerHTML = `Rp ${price.toLocaleString()} - ${box} Box <img src="assets/img/box_legends.png" class="dollar">`;
-      const button = document.createElement("button");
-      button.textContent = "Pilih";
-      button.onclick = function () {
-        const itemName = `${vip} - Rp ${price.toLocaleString()} - ${box} Box`;
-        if (button.classList.contains("selected")) {
-          button.classList.remove("selected");
-          removeFromCart(itemName);
-        } else {
-          button.classList.add("selected");
-          addToCart(itemName, price);
-        }
-      };
-      item.appendChild(span);
-      item.appendChild(button);
-      section.appendChild(item);
-    });
-
-    container.appendChild(section);
-  }
 }
 
 function addToCart(itemName, price) {
+  const cart = document.getElementById("cartItems");
   const li = document.createElement("li");
-  li.textContent = `${itemName}`;
-  li.setAttribute("data-item", itemName);
-  document.getElementById("cartItems").appendChild(li);
+  li.textContent = `${itemName} - Rp ${price.toLocaleString("id-ID")}`;
+  cart.appendChild(li);
 }
 
-function removeFromCart(itemName) {
-  const items = document.querySelectorAll(`#cartItems li`);
-  items.forEach((li) => {
-    if (li.getAttribute("data-item") === itemName) {
-      li.remove();
-    }
+document.querySelectorAll(".toggle-section").forEach(button => {
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.target);
+    target.style.display = target.style.display === "block" ? "none" : "block";
   });
-}
+});
 
 document.getElementById("checkoutBtn").addEventListener("click", () => {
-  const list = [];
-  document.querySelectorAll("#cartItems li").forEach((li) => list.push(li.textContent));
-  if (list.length > 0) {
-    const message = encodeURIComponent(`Halo, saya mau order:\n\n${list.join("\n")}`);
-    window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
-  } else {
-    alert("Keranjang masih kosong!");
-  }
+  const items = Array.from(document.querySelectorAll("#cartItems li")).map(li => li.textContent);
+  const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
+  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
 });
 
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
 
-generatePriceListCash();
-generateBoxLegend();
+generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
+generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
