@@ -230,13 +230,19 @@ function generatePriceList(containerId, data, iconPath) {
   });
 }
 function toggleSection(id) {
-  const section = document.getElementById(id);
-  if (section.style.display === "block") {
-    section.style.display = "none";
-  } else {
-    section.style.display = "block";
-  }
-}
+  const sections = ['priceListCash', 'boxLegend', 'poolPass'];
+  sections.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    const icon = document.querySelector(`[onclick="toggleSection('${sectionId}')"]`);
+    if (sectionId === id) {
+      const isVisible = section.style.display === 'block';
+      section.style.display = isVisible ? 'none' : 'block';
+      icon.classList.toggle('selected-icon', !isVisible);
+    } else {
+      section.style.display = 'none';
+      if (icon) icon.classList.remove('selected-icon');
+    }
+  });
 function selectIcon(el) {
   document.querySelectorAll('.icon-wrapper').forEach(wrapper => {
     wrapper.classList.remove('active');
