@@ -156,3 +156,23 @@ header {
 #cartItems button.remove:hover {
   background-color: #dc2626;
 }
+.menu-img-button {
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu-img {
+  width: 160px;
+  max-width: 90%;
+  border: 5px solid silver;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  box-sizing: content-box;
+  transition: transform 0.3s ease;
+}
+
+.menu-img:hover {
+  transform: scale(1.05);
+}
