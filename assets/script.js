@@ -1,6 +1,3 @@
-script.js
-
-
 const vipDataCash = [
   {
     name: "Silver",
