@@ -5,10 +5,12 @@ body {
   padding: 0;
   transition: background 0.5s;
 }
+
 .dark-mode {
   background: linear-gradient(to bottom, #000000, #1c1c1c);
   color: #fff;
 }
+
 header {
   text-align: center;
   padding: 10px;
@@ -18,15 +20,18 @@ header {
   top: 0;
   z-index: 100;
 }
+
 #modeToggle {
   position: absolute;
   top: 10px;
   right: 10px;
 }
+
 .menu {
   text-align: center;
   padding: 20px;
 }
+
 .menu button.toggle-section {
   display: inline-block;
   margin: 10px auto;
@@ -38,6 +43,7 @@ header {
   font-weight: bold;
   border-radius: 12px;
 }
+
 .price-section {
   display: none;
   margin: 0 auto 30px auto;
@@ -46,6 +52,7 @@ header {
   background-color: rgba(240, 240, 240, 0.85);
   border-radius: 12px;
 }
+
 .vertical-list .vip-section,
 #poolPass .item {
   margin: 20px auto;
@@ -54,15 +61,18 @@ header {
   border-radius: 10px;
   max-width: 100%;
 }
+
 .vip-title {
   font-weight: bold;
   margin-bottom: 10px;
 }
+
 .vip-title img {
-  width: 34px;
+  width: 28.8px;
   vertical-align: middle;
   margin-right: 5px;
 }
+
 .item {
   display: flex;
   justify-content: space-between;
@@ -72,9 +82,11 @@ header {
   background-color: #f0f0f0;
   border-radius: 8px;
 }
+
 .item span {
   flex: 1;
 }
+
 .item button {
   background-color: #16a34a;
   color: white;
@@ -83,24 +95,29 @@ header {
   cursor: pointer;
   border-radius: 6px;
 }
+
 .item button.selected::after {
   content: " ✔️";
 }
+
 .dollar {
   height: 18px;
   margin-left: 8px;
   vertical-align: bottom;
 }
+
 #cart {
   padding: 20px;
   background: #f5f5f5;
   border-top: 2px solid #ccc;
   text-align: center;
 }
+
 #cartItems li {
   list-style: none;
   margin-bottom: 10px;
 }
+
 #checkoutBtn {
   background-color: #16a34a;
   color: white;
@@ -110,6 +127,7 @@ header {
   border-radius: 12px;
   margin-top: 10px;
 }
+
 #chibi {
   position: fixed;
   bottom: 10px;
@@ -119,6 +137,7 @@ header {
   z-index: 99;
   pointer-events: auto;
 }
+
 .icon-inline {
   height: 18px;
   vertical-align: middle;
