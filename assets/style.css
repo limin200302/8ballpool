@@ -176,8 +176,8 @@ header {
 }
 
 .menu-icon {
-  width: 30%;
-  height: 180px;
+  width: 180px !important;
+  height: 180px !important;
   object-fit: cover;
   margin: 12px;
   cursor: pointer;
