@@ -249,14 +249,3 @@ document.getElementById("modeToggle").addEventListener("click", () => {
 
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
-
-document.querySelectorAll("#poolPass .item button").forEach(button => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".item");
-    const span = item.querySelector("span");
-    const itemName = "Pool Pass - " + span.textContent.trim();
-    const price = parseInt(span.textContent.replace(/\D/g, ""));
-
-    addToCart(itemName, price, button);
-  });
-});
