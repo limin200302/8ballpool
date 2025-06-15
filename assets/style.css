@@ -169,10 +169,14 @@ header {
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
 .menu-icon {
-  width: 180px;
+  width: 30%;
   height: 180px;
   object-fit: cover;
   margin: 12px;
