@@ -187,18 +187,46 @@ header {
   transform: scale(1.05);
 }
 .icon-wrapper {
-  padding: 4px;
+  padding: 6px;
   border-radius: 12px;
-  background-color: red; /* ganti dari silver ke merah */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  background-color: silver; /* background silver pekat */
+  border: 2px solid #ff0000; /* default border, akan dianimasikan */
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.4); /* shadow awal */
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  animation: glowBorder 2s infinite ease-in-out;
+  margin: 4px;
 }
 
+/* Efek glowing berganti warna */
+@keyframes glowBorder {
+  0% {
+    border-color: #ff0000;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
+  }
+  25% {
+    border-color: #ffa500;
+    box-shadow: 0 0 12px rgba(255, 165, 0, 0.4);
+  }
+  50% {
+    border-color: #00ff00;
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.4);
+  }
+  75% {
+    border-color: #00bfff;
+    box-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
+  }
+  100% {
+    border-color: #ff00ff;
+    box-shadow: 0 0 12px rgba(255, 0, 255, 0.4);
+  }
+}
+
+/* Jika dipilih */
 .icon-wrapper.active {
-  background-color: rgba(255, 0, 0, 0.3); /* merah transparan saat dipilih */
+  background-color: rgba(192, 192, 192, 0.6); /* transparan silver */
   border: 2px solid #a855f7;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
 }
