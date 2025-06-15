@@ -160,8 +160,8 @@ function updateCartDisplay() {
 
   cart.forEach(({ id, name, price }) => {
     const li = document.createElement("li");
-    li.textContent = `${name} - Rp ${price.toLocaleString("id-ID")}`;
-
+    li.textContent = name;
+    
     const removeBtn = document.createElement("button");
     removeBtn.textContent = " - ";
     removeBtn.className = "remove";
