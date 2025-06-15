@@ -234,10 +234,11 @@ function generatePriceList(containerId, data, iconPath) {
 document.querySelectorAll(".toggle-section").forEach(button => {
   button.addEventListener("click", () => {
     const target = document.getElementById(button.dataset.target);
-    target.style.display = target.style.display === "block" ? "none" : "block";
+    if (target) {
+      target.classList.toggle("hidden");
+    }
   });
 });
-
 document.getElementById("checkoutBtn").addEventListener("click", () => {
   const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
