@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/nav-style.css">
-  <script src="assets/nav-script.js" defer></script>
+ <link rel="stylesheet" href="assets/nav-style.css">
+<script src="assets/nav-script.js" defer></script>
   <title>Mamet Ucup Store</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
@@ -16,35 +16,32 @@
 
   <main>
     <section class="menu">
-      <button class="menu-img-button toggle-section" data-target="priceListCash">
-        <img src="assets/img/X1.png" alt="Price List Cash" class="menu-img" />
-        <div class="menu-label">Price List Cash</div>
+      <button class="toggle-section" data-target="priceListCash">
+        <img src="assets/img/dollar.png" class="icon-inline" />
+        Price List Cash
+        <img src="assets/img/dollar.png" class="icon-inline" />
       </button>
+      <div id="priceListCash" class="price-section vertical-list"></div>
 
-      <button class="menu-img-button toggle-section" data-target="boxLegend">
-        <img src="assets/img/X2.png" alt="Price List Box Legends" class="menu-img" />
-        <div class="menu-label">Price List Box Legends</div>
+      <button class="toggle-section" data-target="boxLegend">
+        <img src="assets/img/box_legends.png" class="icon-inline" />
+        Price List Box Legend
+        <img src="assets/img/box_legends.png" class="icon-inline" />
       </button>
+      <div id="boxLegend" class="price-section vertical-list"></div>
 
-      <button class="menu-img-button toggle-section" data-target="poolPass">
-        <img src="assets/img/X3.png" alt="Pool Pass" class="menu-img" />
-        <div class="menu-label">Pool Pass</div>
-      </button>
+      <button class="toggle-section" data-target="poolPass">🎫 Pool Pass</button>
+      <div id="poolPass" class="price-section">
+        <div class="item">
+          <span>Pool Pass Biasa - Rp 50.000</span>
+          <button onclick="addToCart('Pool Pass', 'Pool Pass Biasa - Rp 50.000', 50000, this)">Pilih</button>
+        </div>
+        <div class="item">
+          <span>Pool Pass Elite - Rp 85.000</span>
+          <button onclick="addToCart('Pool Pass', 'Pool Pass Elite - Rp 85.000', 85000, this)">Pilih</button>
+        </div>
+      </div>
     </section>
-
-    <!-- Section untuk Pool Pass -->
-    <div id="poolPass" class="price-section vertical-list hidden">
-      <div class="item">
-        <span>Pool Pass Biasa - Rp 50.000</span>
-        <button onclick="addToCart('Pool Pass', 'Pool Pass Biasa - Rp 50.000', 50000, this)">Pilih</button>
-      </div>
-      <div class="item">
-        <span>Pool Pass Elite - Rp 85.000</span>
-        <button onclick="addToCart('Pool Pass', 'Pool Pass Elite - Rp 85.000', 85000, this)">Pilih</button>
-      </div>
-    </div>
-
-    <!-- (Pastikan bagian ini berisi semua daftar VIP dan Box Legends seperti file aslinya, kamu bisa tempelkan dari file sebelumnya ke bagian sini) -->
 
     <aside id="cart">
       <h2>Keranjang</h2>
@@ -56,47 +53,45 @@
   <img src="assets/img/Anms.gif" id="chibi" alt="Chibi" />
 
   <script src="assets/script.js"></script>
-
-  <!-- Menu Hamburger -->
   <div id="hamburgerMenu">
-    <div class="hamburger-icon" onclick="toggleNav()">MENU LAIN</div>
-    <div id="sideNav" class="hidden">
-      <ul>
-        <li><a href="beranda.html">Beranda</a></li>
-        <li><a href="#">Top Up 8 Ball Pool</a></li>
-        <li><a href="#">Top Up Mobile Legend</a></li>
-      </ul>
-    </div>
+  <div class="hamburger-icon" onclick="toggleNav()">MENU LAIN</div>
+  <div id="sideNav" class="hidden">
+    <ul>
+      <li><a href="beranda.html">Beranda</a></li>
+      <li><a href="#">Top Up 8 Ball Pool</a></li>
+      <li><a href="#">Top Up Mobile Legend</a></li>
+    </ul>
+  </div>
   </div>
-
-  <!-- Beranda Section -->
-  <section id="berandaSection" class="beranda-content" style="display: none;">
+<section id="berandaSection" class="beranda-content" style="display: none;">
     <h2>🏠 Tentang Mamet Ucup Store</h2>
     <p>Mamet Ucup Store adalah layanan top up 8 Ball Pool, Dan the Man, dan Mobile Legends yang terpercaya dan cepat! Kami menyediakan pilihan harga VIP terbaik dan berbagai metode pembayaran termasuk via login.</p>
+  </div>
 
-    <div class="card">
-      <h2>🔑 Tata Cara Top Up via Login</h2>
-      <ol>
-        <li>Hubungi kami via WhatsApp dengan format lengkap akun.</li>
-        <li>Berikan ID dan kata sandi akun game (jika diminta).</li>
-        <li>Kami akan melakukan top up dalam waktu maksimal 5-10 menit.</li>
-        <li>Ganti kata sandi setelah selesai sebagai tindakan keamanan.</li>
-      </ol>
-    </div>
+  <div class="card">
+    <h2>🔑 Tata Cara Top Up via Login</h2>
+    <ol>
+      <li>Hubungi kami via WhatsApp dengan format lengkap akun.</li>
+      <li>Berikan ID dan kata sandi akun game (jika diminta).</li>
+      <li>Kami akan melakukan top up dalam waktu maksimal 5-10 menit.</li>
+      <li>Ganti kata sandi setelah selesai sebagai tindakan keamanan.</li>
+    </ol>
+  </div>
 
-    <div class="card">
-      <h2>⚖️ Keuntungan & Kekurangan Via Login</h2>
-      <strong>✅ Keuntungan:</strong>
-      <ul>
-        <li>Harga bisa lebih murah.</li>
-        <li>Tersedia untuk event eksklusif tertentu.</li>
-      </ul>
-      <strong>❌ Kekurangan:</strong>
-      <ul>
-        <li>Perlu login akun (risiko keamanan jika tidak hati-hati).</li>
-        <li>Hanya bisa dilakukan saat jam operasional admin.</li>
-      </ul>
-    </div>
+  <div class="card">
+    <h2>⚖️ Keuntungan & Kekurangan Via Login</h2>
+    <strong>✅ Keuntungan:</strong>
+    <ul>
+      <li>Harga bisa lebih murah.</li>
+      <li>Tersedia untuk event eksklusif tertentu.</li>
+    </ul>
+    <strong>❌ Kekurangan:</strong>
+    <ul>
+      <li>Perlu login akun (risiko keamanan jika tidak hati-hati).</li>
+      <li>Hanya bisa dilakukan saat jam operasional admin.</li>
+    </ul>
+  </div>
   </section>
+  
 </body>
 </html>
