@@ -1,5 +1,6 @@
 const modeToggle = document.getElementById('modeToggle');
 const body = document.body;
+
 modeToggle.onclick = () => {
   body.classList.toggle('dark-mode');
   modeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
@@ -8,28 +9,13 @@ modeToggle.onclick = () => {
 const vips = {
   Silver: {
     icon: 'silver.png',
-    prices: [605, 880, 1210, 1892, 2992, 3872, 6600],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
+    prices: [605, 880, 1210],
+    cost: [55000, 70000, 95000]
   },
   Gold: {
     icon: 'gold.png',
-    prices: [688, 1000, 1375, 2150, 3400, 4400, 7500],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  },
-  Zamrud: {
-    icon: 'zamrud.png',
-    prices: [825, 1200, 1650, 2580, 4080, 5280, 9000],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  },
-  Diamond: {
-    icon: 'diamond.png',
-    prices: [963, 1400, 1925, 3010, 4760, 6160, 10500],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
-  },
-  "Black Diamond": {
-    icon: 'blackdiamond.png',
-    prices: [1100, 1600, 2200, 3440, 5440, 7040, 12000],
-    cost: [55000, 70000, 95000, 135000, 190000, 250000, 275000]
+    prices: [688, 1000, 1375],
+    cost: [55000, 70000, 95000]
   }
 };
 
@@ -42,7 +28,7 @@ function renderPriceList(containerId) {
 
     const title = document.createElement('div');
     title.className = 'vip-title';
-    title.innerHTML = `<img src="assets/img/${data.icon}" width="24"/> ${vip}`;
+    title.innerHTML = `<img src="assets/img/${data.icon}" /> ${vip}`;
     section.appendChild(title);
 
     data.prices.forEach((cash, i) => {
@@ -50,16 +36,17 @@ function renderPriceList(containerId) {
       item.className = 'item';
 
       const label = document.createElement('span');
-      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash} <img class="dollar" src="assets/img/dollar.png" />`;
+      label.innerHTML = `Rp ${data.cost[i].toLocaleString()} - ${cash}<img class="dollar" src="assets/img/dollar.png" />`;
 
       const button = document.createElement('button');
       button.textContent = 'Pilih';
       button.onclick = () => {
-        const alreadySelected = button.classList.toggle('selected');
-        if (alreadySelected) {
-          addToCart(`${vip} ${cash}`, data.cost[i]);
-        } else {
+        if (button.classList.contains('selected')) {
           removeFromCartByName(`${vip} ${cash}`);
+          button.classList.remove('selected');
+        } else {
+          addToCart(`${vip} ${cash}`, data.cost[i]);
+          button.classList.add('selected');
         }
       };
 
@@ -69,14 +56,6 @@ function renderPriceList(containerId) {
 
     container.appendChild(section);
   });
-}
-
-function removeFromCartByName(name) {
-  const index = cart.findIndex(entry => entry.item === name);
-  if (index !== -1) {
-    cart.splice(index, 1);
-    updateCart();
-  }
 }
 
 renderPriceList('priceListCash');
@@ -93,12 +72,17 @@ document.querySelectorAll('.toggle-section').forEach(btn => {
 
 const cart = [];
 function addToCart(item, price) {
-  if (!cart.some(entry => entry.item === item)) {
-    cart.push({ item, price });
-    updateCart();
-  }
+  cart.push({ item, price });
+  updateCart();
 }
-
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+function removeFromCartByName(name) {
+  const index = cart.findIndex(c => c.item === name);
+  if (index !== -1) removeFromCart(index);
+}
 function updateCart() {
   const list = document.getElementById('cartItems');
   list.innerHTML = '';
@@ -108,26 +92,13 @@ function updateCart() {
     list.appendChild(li);
   });
 }
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  updateCart();
-
-  // Uncheck button
-  document.querySelectorAll('.item button').forEach(btn => {
-    if (btn.classList.contains('selected') && btn.previousSibling.textContent.includes(cart[index]?.item)) {
-      btn.classList.remove('selected');
-    }
-  });
-}
-
 document.getElementById('checkoutBtn').addEventListener('click', () => {
   if (cart.length === 0) return alert('Keranjang kosong!');
   const msg = cart.map(c => `${c.item} - Rp ${c.price.toLocaleString()}`).join('%0A');
   window.open(`https://wa.me/6285713056206?text=Halo saya ingin beli:%0A${msg}`, '_blank');
 });
 
-// Chibi drag
+// Draggable Chibi
 const chibi = document.getElementById('chibi');
 let isDragging = false, offsetX, offsetY;
 
