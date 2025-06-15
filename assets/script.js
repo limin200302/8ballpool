@@ -231,10 +231,10 @@ function generatePriceList(containerId, data, iconPath) {
 }
 
 document.querySelectorAll(".toggle-section").forEach(button => {
-  button.addEventListener("click", () => {
-    const target = document.getElementById(button.dataset.target);
-    target.style.display = target.style.display === "block" ? "none" : "block";
-  });
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.target);
+    target.classList.toggle("active");
+  });
 });
 
 document.getElementById("checkoutBtn").addEventListener("click", () => {
