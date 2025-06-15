@@ -1,36 +1,27 @@
-/* Hamburger Icon */
+/* ==== Side Navigation Menu ==== */
 .hamburger {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 24px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  font-size: 28px;
+  background: transparent;
+  color: white;
+  border: none;
   cursor: pointer;
-  z-index: 101;
 }
 
-.hamburger div {
-  height: 4px;
-  background-color: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Side Navigation Menu */
 .side-nav {
   position: fixed;
   top: 0;
-  left: -260px;
+  left: -250px;
   width: 250px;
   height: 100%;
-  background-color: #6a0dad;
-  color: white;
+  background: linear-gradient(to bottom, #3a0066, #120026);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
   padding-top: 60px;
   transition: left 0.3s ease;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .side-nav.open {
@@ -39,13 +30,42 @@
 
 .side-nav a {
   display: block;
-  padding: 15px 25px;
+  padding: 15px 20px;
   color: white;
   text-decoration: none;
   font-weight: bold;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .side-nav a:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==== Beranda Content ==== */
+.beranda-content {
+  padding: 20px;
+  background-color: #fdfdfd;
+  color: #222;
+  max-width: 900px;
+  margin: 80px auto;
+  line-height: 1.6;
+  display: none;
+}
+
+.dark-mode .beranda-content {
+  background: linear-gradient(to bottom, #2e003e, #000000);
+  color: white;
+}
+
+.beranda-content .card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .beranda-content .card {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
