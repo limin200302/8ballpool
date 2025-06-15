@@ -132,7 +132,8 @@ const vipDataBox = [
       { label: "Rp 295.000 - 404 Box", value: 295000 }
     ]
   }
-]
+];
+
 let cart = [];
 
 function getItemId(vipName, label, price) {
@@ -161,14 +162,14 @@ function updateCartDisplay() {
   cart.forEach(({ id, name, price }) => {
     const li = document.createElement("li");
     li.textContent = name;
-    
+
     const removeBtn = document.createElement("button");
     removeBtn.textContent = " - ";
     removeBtn.className = "remove";
     removeBtn.onclick = () => {
       cart = cart.filter(item => item.id !== id);
 
-      const allButtons = document.querySelectorAll("button");
+      const allButtons = document.querySelectorAll("button[data-item-id]");
       allButtons.forEach(btn => {
         if (btn.dataset.itemId === id) {
           btn.classList.remove("selected");
