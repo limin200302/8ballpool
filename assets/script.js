@@ -102,7 +102,7 @@ const vipDataBox = [
       { label: "Rp 100.000 - 54 Box", value: 100000 },
       { label: "Rp 145.000 - 86 Box", value: 145000 },
       { label: "Rp 200.000 - 137 Box", value: 200000 },
-      { label: "Rp 265.000 - 117 Box", value: 265000 },
+      { label: "Rp 265.000 - 177 Box", value: 265000 },
       { label: "Rp 295.000 - 303 Box", value: 295000 }
     ]
   },
@@ -132,7 +132,13 @@ const vipDataBox = [
       { label: "Rp 295.000 - 404 Box", value: 295000 }
     ]
   }
-]
+];
+
+const poolPassData = [
+  { label: "Pool Pass Biasa - Rp 50.000", value: 50000 },
+  { label: "Pool Pass Elite - Rp 85.000", value: 85000 }
+];
+
 let cart = [];
 
 function getItemId(vipName, label, price) {
@@ -141,14 +147,14 @@ function getItemId(vipName, label, price) {
 
 function addToCart(vipName, label, price, button) {
   const id = getItemId(vipName, label, price);
-  const existingIndex = cart.findIndex(item => item.id === id);
+  const index = cart.findIndex(item => item.id === id);
 
-  if (existingIndex !== -1) {
-    cart.splice(existingIndex, 1);
-    if (button) button.classList.remove("selected");
+  if (index !== -1) {
+    cart.splice(index, 1);
+    button.classList.remove("selected");
   } else {
     cart.push({ id, name: `${vipName} - ${label}`, price });
-    if (button) button.classList.add("selected");
+    button.classList.add("selected");
   }
 
   updateCartDisplay();
@@ -157,24 +163,16 @@ function addToCart(vipName, label, price, button) {
 function updateCartDisplay() {
   const cartItems = document.getElementById("cartItems");
   cartItems.innerHTML = "";
-
   cart.forEach(({ id, name, price }) => {
     const li = document.createElement("li");
-    li.textContent = name;
-    
+    li.textContent = `${name}`;
+
     const removeBtn = document.createElement("button");
     removeBtn.textContent = " - ";
     removeBtn.className = "remove";
     removeBtn.onclick = () => {
       cart = cart.filter(item => item.id !== id);
-
-      const allButtons = document.querySelectorAll("button");
-      allButtons.forEach(btn => {
-        if (btn.dataset.itemId === id) {
-          btn.classList.remove("selected");
-        }
-      });
-
+      document.querySelectorAll(`[data-item-id="${id}"]`).forEach(btn => btn.classList.remove("selected"));
       updateCartDisplay();
     };
 
@@ -193,18 +191,17 @@ function generatePriceList(containerId, data, iconPath) {
     title.className = "vip-title";
 
     const logo = document.createElement("img");
-    logo.src = vip.name === "Black Diamond"
-      ? "assets/img/blackdiamond.png"
-      : vip.logo;
-    logo.alt = vip.name + " logo";
-
+    logo.src = vip.logo;
+    logo.alt = `${vip.name} logo`;
     title.appendChild(logo);
-    title.appendChild(document.createTextNode(" " + vip.name));
+    title.appendChild(document.createTextNode(` ${vip.name}`));
+
     section.appendChild(title);
 
     vip.prices.forEach(price => {
       const item = document.createElement("div");
       item.className = "item";
+
       const span = document.createElement("span");
       span.textContent = price.label;
 
@@ -214,11 +211,8 @@ function generatePriceList(containerId, data, iconPath) {
 
       const button = document.createElement("button");
       button.textContent = "Pilih";
-      const id = getItemId(vip.name, price.label, price.value);
-      button.dataset.itemId = id;
-      button.onclick = function () {
-        addToCart(vip.name, price.label, price.value, button);
-      };
+      button.dataset.itemId = getItemId(vip.name, price.label, price.value);
+      button.onclick = () => addToCart(vip.name, price.label, price.value, button);
 
       item.appendChild(span);
       item.appendChild(button);
@@ -230,59 +224,43 @@ function generatePriceList(containerId, data, iconPath) {
   });
 }
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mamet Ucup Store</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>Mamet Ucup Store</h1>
-    <button id="modeToggle">Mode Gelap/Terang</button>
-  </header>
+function generatePoolPass() {
+  const container = document.getElementById("poolPass");
+  poolPassData.forEach(pass => {
+    const item = document.createElement("div");
+    item.className = "item";
 
-  <main>
-    <div class="menu">
-      <button class="toggle-section" data-target="priceListCash">
-        <img src="assets/img/dollar.png" class="icon-inline" />
-        Price List Cash
-        <img src="assets/img/dollar.png" class="icon-inline" />
-      </button>
-      <button class="toggle-section" data-target="boxLegend">
-        <img src="assets/img/box_legends.png" class="icon-inline" />
-        Price List Box Legend
-        <img src="assets/img/box_legends.png" class="icon-inline" />
-      </button>
-      <button class="toggle-section" data-target="poolPass">
-        Pool Pass
-      </button>
-    </div>
+    const span = document.createElement("span");
+    span.textContent = pass.label;
 
-    <div id="priceListCash" class="price-section vertical-list"></div>
-    <div id="boxLegend" class="price-section vertical-list"></div>
-    <div id="poolPass" class="price-section">
-      <div class="item">
-        <span>Pool Pass Biasa - Rp 50.000</span>
-        <button onclick="addToCart('Pool Pass', 'Biasa', 50000, this)">Pilih</button>
-      </div>
-      <div class="item">
-        <span>Pool Pass Elite - Rp 85.000</span>
-        <button onclick="addToCart('Pool Pass', 'Elite', 85000, this)">Pilih</button>
-      </div>
-    </div>
-  </main>
+    const button = document.createElement("button");
+    button.textContent = "Pilih";
+    button.dataset.itemId = getItemId("Pool Pass", pass.label, pass.value);
+    button.onclick = () => addToCart("Pool Pass", pass.label, pass.value, button);
 
-  <section id="cart">
-    <h2>Keranjang Belanja</h2>
-    <ul id="cartItems"></ul>
-    <button id="checkoutBtn">Checkout via WhatsApp</button>
-  </section>
+    item.appendChild(span);
+    item.appendChild(button);
+    container.appendChild(item);
+  });
+}
 
-  <img src="assets/img/chibi.png" id="chibi" draggable="true" />
+document.querySelectorAll(".toggle-section").forEach(button => {
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.target);
+    target.style.display = target.style.display === "block" ? "none" : "block";
+  });
+});
 
-  <script src="script.js"></script>
-</body>
-</html>
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
+  const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
+  window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
+});
+
+document.getElementById("modeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
+generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
+generatePoolPass();
