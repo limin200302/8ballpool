@@ -3,58 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beranda - Mamet Ucup Store</title>
+  <title>Mamet Ucup Store - Beranda</title>
   <link rel="stylesheet" href="assets/nav-style.css" />
+  <script src="assets/nav-script.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">
-      <h1>Mamet Ucup Store</h1>
+  <!-- Menu Navigasi -->
+  <nav class="navbar">
+    <div class="menu-toggle" id="menu-toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
-    <button id="menuToggle" class="menu-toggle">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </button>
-  </header>
-
-  <nav class="side-nav" id="sideNav">
-    <a href="beranda.html" class="active">Beranda</a>
-    <a href="index.html">Top Up 8 Ball Pool</a>
-    <a href="#">Top Up Dan</a>
-    <a href="#">Top Up Mobile Legends</a>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Top Up 8Ball Pool</a></li>
+      <li><a href="#">Top Up Dan</a></li>
+      <li><a href="#">Top Up Mobile Legend</a></li>
+      <li><a href="beranda.html" class="active">Beranda</a></li>
+    </ul>
   </nav>
 
-  <main class="beranda-content">
-    <section>
-      <h2>Tentang Website</h2>
-      <p>Mamet Ucup Store adalah layanan top up game seperti 8 Ball Pool, Mobile Legends, dan lainnya. Kami menjamin harga terbaik, proses cepat, dan pelayanan ramah.</p>
-    </section>
+  <!-- Konten Beranda -->
+  <main class="content">
+    <h1>Selamat Datang di Mamet Ucup Store</h1>
+    <p>Website ini menyediakan layanan top up game 8 Ball Pool, Dan, dan Mobile Legend secara mudah dan terpercaya.</p>
 
-    <section>
-      <h2>Cara Top Up via Login</h2>
-      <ol>
-        <li>Pilih item top up yang diinginkan</li>
-        <li>Klik tombol WhatsApp untuk memesan</li>
-        <li>Kirim data login (akun dan sandi) ke admin</li>
-        <li>Tunggu proses, top up akan masuk maksimal 10 menit</li>
-      </ol>
-    </section>
+    <h2>Cara Top Up via Login</h2>
+    <ol>
+      <li>Klik menu game yang ingin di-top-up</li>
+      <li>Pilih item atau jumlah yang diinginkan</li>
+      <li>Login akun game kamu (jika diminta)</li>
+      <li>Lakukan pembayaran melalui WhatsApp kami</li>
+      <li>Proses top up akan dilakukan maksimal 5 menit</li>
+    </ol>
 
-    <section>
-      <h2>Keuntungan & Kekurangan Top Up via Login</h2>
-      <ul>
-        <li><strong>Keuntungan:</strong> Praktis, tidak perlu ID atau UID</li>
-        <li><strong>Kekurangan:</strong> Harus percaya karena akun diserahkan ke admin sementara</li>
-      </ul>
-    </section>
+    <h2>Keuntungan Via Login</h2>
+    <ul>
+      <li>Harga lebih murah</li>
+      <li>Bonus tambahan tertentu</li>
+      <li>Langsung diproses ke akun kamu</li>
+    </ul>
+
+    <h2>Kekurangan Via Login</h2>
+    <ul>
+      <li>Harus memberikan akses login sementara</li>
+      <li>Tidak bisa digunakan saat akun sedang login di device lain</li>
+    </ul>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2025 Mamet Ucup Store. All rights reserved.</p>
+  <footer>
+    <p>© 2025 Mamet Ucup Store. All rights reserved.</p>
   </footer>
-
-  <script src="assets/nav-script.js"></script>
 </body>
 </html>
