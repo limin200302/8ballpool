@@ -253,19 +253,11 @@ generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
 document.querySelectorAll("#poolPass .item button").forEach(button => {
   button.addEventListener("click", () => {
     const item = button.closest(".item");
-    const span = item.querySelector("span");
-    
-    // Ambil label asli tanpa tambahan Rp di depan atau belakang
-    const labelText = span.textContent.trim(); // misal "Pool Pass Elite: Rp 85.000"
+    const span = item.querySelector("span")
+    let itemName = span.textContent.replace(/- *Rp.*$/, '').trim();
 
-    // Ambil hanya nama item tanpa harga (hapus bagian "Rp ...")
-    const itemNameOnly = labelText.replace(/-? *Rp[ .0-9]+/, '').trim();
-
-    // Ambil harga dari label, misal dari angka 85000
-    const price = parseInt(labelText.replace(/\D/g, ""));
-
-    // Gunakan nama yang bersih (tidak dobel Rp dan angka)
-    const itemName = "Pool Pass - " + itemNameOnly;
+    // Ambil harga sebagai angka murni
+    let price = parseInt(span.textContent.replace(/\D/g, ""));
 
     addToCart(itemName, price, button);
   });
