@@ -166,7 +166,7 @@ header {
 .icon-menu {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 20px;
   align-items: center;
@@ -176,8 +176,8 @@ header {
 }
 
 .menu-icon {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   object-fit: cover;
   margin: 12px;
   cursor: pointer;
