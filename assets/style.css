@@ -35,7 +35,8 @@ header {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 20px;
+  margin: 0 auto 20px auto;
+  max-width: 800px;
 }
 
 .menu button.toggle-section {
@@ -182,4 +183,11 @@ header {
 
 .menu-icon:hover {
   transform: scale(1.05);
+}
+@media screen and (max-width: 600px) {
+  .menu-icon {
+    width: 90vw;
+    max-width: 256px;
+    height: auto;
+  }
 }
