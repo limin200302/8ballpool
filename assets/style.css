@@ -1,158 +1,134 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1c1c1c, #3f0c4f, #ffffff);
-  color: #fff;
   margin: 0;
   padding: 0;
-}
-
-header {
-  background-color: #2c003e;
-  padding: 1rem;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-header h1 {
-  margin: 0;
-}
-
-#modeToggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
+  background: linear-gradient(to bottom, #2c003e, #ffffff);
+  color: #000;
+  transition: background 0.3s, color 0.3s;
 }
 
 .dark-mode {
-  background: #111;
-  color: #eee;
+  background: linear-gradient(to bottom, #0f0f0f, #1f1f2f);
+  color: #fff;
 }
 
-.main-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+header {
+  background: #4b0082;
+  color: white;
   padding: 1rem;
+  text-align: center;
+  box-shadow: 0 0 10px #000;
 }
 
-.center-content {
-  width: 100%;
-  max-width: 800px;
-}
-
-.menu-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1rem;
+.menu {
+  text-align: center;
+  padding: 1rem;
 }
 
 .toggle-section {
-  padding: 0.6rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background: #5d2c91;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 10px;
+  margin: 0.5rem auto;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  background: #fff;
+  color: #4b0082;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .price-section {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 1rem;
+  display: none;
+  margin: 1rem auto;
+  max-width: 600px;
+}
+
+.vertical-list .vip-section,
+#poolPass .item {
+  background: rgba(255, 255, 255, 0.85);
+  margin: 10px 0;
+  padding: 10px;
   border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .vertical-list .vip-section,
+.dark-mode #poolPass .item {
+  background: rgba(50, 50, 50, 0.95);
 }
 
 .vip-title {
-  margin-bottom: 0.3rem;
   font-weight: bold;
-}
-
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem;
-  margin-bottom: 0.4rem;
-  border-radius: 6px;
+  margin-bottom: 8px;
 }
 
 .item button {
-  background: #7b3bd8;
+  margin-top: 5px;
+  padding: 5px 10px;
+  background: green;
   color: white;
   border: none;
-  padding: 0.4rem 0.7rem;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.item button.selected {
-  background: #3ad132;
-}
-
-#cart {
-  width: 100%;
-  max-width: 600px;
-  margin-top: 2rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 1rem;
-  border-radius: 12px;
-}
-
-#cart h2 {
-  margin-top: 0;
-  font-size: 1.4rem;
-}
-
-#cartItems li {
-  margin-bottom: 0.5rem;
-}
-
-.remove-btn {
-  background: red;
-  color: white;
-  border: none;
-  margin-left: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  padding: 0.2rem 0.5rem;
-}
-
-#checkoutBtn {
-  background-color: green;
-  color: white;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 1rem;
+.item button.selected::after {
+  content: " ✔️";
+  margin-left: 8px;
 }
 
 .icon-inline {
   width: 20px;
   height: 20px;
-  vertical-align: middle;
+}
+
+#cart {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode #cart {
+  background: rgba(40, 40, 40, 0.9);
+}
+
+#checkoutBtn {
+  margin-top: 1rem;
+  background: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 #chibi {
-  width: 60px;
   position: fixed;
-  bottom: 10px;
-  left: 10px;
-  z-index: 100;
-  cursor: grab;
+  bottom: 20px;
+  left: 20px;
+  width: 80px;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.pass-item {
+  text-align: center;
+}
+
+.pass-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.pass-price {
+  font-size: 1rem;
+  margin-bottom: 5px;
 }
