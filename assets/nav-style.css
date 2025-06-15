@@ -1,71 +1,66 @@
-/* ==== Side Navigation Menu ==== */
-.hamburger {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1001;
-  font-size: 28px;
-  background: transparent;
-  color: white;
-  border: none;
-  cursor: pointer;
+/* Reset dasar */
+body, ul, li, a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.side-nav {
+/* Toggle hamburger */
+.menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* Menu navigasi */
+.nav-menu {
   position: fixed;
   top: 0;
   left: -250px;
-  width: 250px;
+  width: 230px;
   height: 100%;
-  background: linear-gradient(to bottom, #3a0066, #120026);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+  background: #1f1f2e;
   padding-top: 60px;
-  transition: left 0.3s ease;
-  z-index: 1000;
+  transition: left 0.3s ease-in-out;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
-.side-nav.open {
+/* Menu aktif (saat terbuka) */
+.nav-menu.active {
   left: 0;
 }
 
-.side-nav a {
+/* Daftar menu */
+.nav-menu ul {
+  list-style: none;
+}
+
+.nav-menu li {
+  margin: 10px 0;
+}
+
+.nav-menu a {
   display: block;
-  padding: 15px 20px;
-  color: white;
+  padding: 12px 20px;
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+  transition: background 0.2s;
+  border-bottom: 1px solid #333;
 }
 
-.side-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ==== Beranda Content ==== */
-.beranda-content {
-  padding: 20px;
-  background-color: #fdfdfd;
-  color: #222;
-  max-width: 900px;
-  margin: 80px auto;
-  line-height: 1.6;
-  display: none;
-}
-
-.dark-mode .beranda-content {
-  background: linear-gradient(to bottom, #2e003e, #000000);
-  color: white;
-}
-
-.beranda-content .card {
-  background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-}
-
-.dark-mode .beranda-content .card {
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+.nav-menu a:hover,
+.nav-menu a.active {
+  background-color: #4c1d95;
+  color: #ffcc00;
+  border-left: 4px solid #ffcc00;
 }
