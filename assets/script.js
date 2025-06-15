@@ -237,6 +237,12 @@ function toggleSection(id) {
     section.style.display = "block";
   }
 }
+function selectIcon(el) {
+  document.querySelectorAll('.icon-wrapper').forEach(wrapper => {
+    wrapper.classList.remove('active');
+  });
+  el.classList.add('active');
+}
 document.getElementById("checkoutBtn").addEventListener("click", () => {
   const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
@@ -246,11 +252,6 @@ document.getElementById("checkoutBtn").addEventListener("click", () => {
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
-function selectIcon(el) {
-  document.querySelectorAll('.icon-wrapper').forEach(wrapper => {
-    wrapper.classList.remove('active');
-  });
-  el.classList.add('active');
-}
+
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
