@@ -229,14 +229,14 @@ function generatePriceList(containerId, data, iconPath) {
     container.appendChild(section);
   });
 }
-
-document.querySelectorAll(".toggle-section").forEach(button => {
-  button.addEventListener("click", () => {
-    const target = document.getElementById(button.dataset.target);
-    target.style.display = target.style.display === "block" ? "none" : "block";
-  });
-});
-
+function toggleSection(id) {
+  const section = document.getElementById(id);
+  if (section.style.display === "block") {
+    section.style.display = "none";
+  } else {
+    section.style.display = "block";
+  }
+}
 document.getElementById("checkoutBtn").addEventListener("click", () => {
   const items = cart.map(item => `${item.name} - Rp ${item.price.toLocaleString("id-ID")}`);
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
