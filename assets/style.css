@@ -166,18 +166,16 @@ header {
 .icon-menu {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 8px auto;
-  max-width: 256px;
+  max-width: 320px; /* atau hapus baris ini */
 }
 
 .menu-icon {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   margin: 8px;
   cursor: pointer;
@@ -186,11 +184,4 @@ header {
 }
 .menu-icon:hover {
   transform: scale(1.05);
-}
-@media screen and (max-width: 256px) {
-  .menu-icon {
-    width: 45vw;
-    max-width: 256px;
-    height: auto;
-  }
 }
