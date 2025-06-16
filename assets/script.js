@@ -291,7 +291,12 @@ const chibi = document.getElementById("chibi");
 let isDragging = false;
 let offsetX, offsetY;
 
-// Mouse support
+// Fungsi untuk membatasi posisi agar tidak keluar layar
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+// Mouse Events
 chibi.addEventListener("mousedown", function (e) {
   isDragging = true;
   offsetX = e.clientX - chibi.offsetLeft;
@@ -300,8 +305,15 @@ chibi.addEventListener("mousedown", function (e) {
 
 document.addEventListener("mousemove", function (e) {
   if (isDragging) {
-    chibi.style.left = e.clientX - offsetX + "px";
-    chibi.style.top = e.clientY - offsetY + "px";
+    let newX = e.clientX - offsetX;
+    let newY = e.clientY - offsetY;
+
+    // Batasi gerakan agar tidak keluar layar
+    newX = clamp(newX, 0, window.innerWidth - chibi.offsetWidth);
+    newY = clamp(newY, 0, window.innerHeight - chibi.offsetHeight);
+
+    chibi.style.left = newX + "px";
+    chibi.style.top = newY + "px";
     chibi.style.bottom = "auto";
   }
 });
@@ -310,7 +322,7 @@ document.addEventListener("mouseup", function () {
   isDragging = false;
 });
 
-// Touch support (Android)
+// Touch Events
 chibi.addEventListener("touchstart", function (e) {
   isDragging = true;
   const touch = e.touches[0];
@@ -321,8 +333,15 @@ chibi.addEventListener("touchstart", function (e) {
 document.addEventListener("touchmove", function (e) {
   if (isDragging) {
     const touch = e.touches[0];
-    chibi.style.left = touch.clientX - offsetX + "px";
-    chibi.style.top = touch.clientY - offsetY + "px";
+    let newX = touch.clientX - offsetX;
+    let newY = touch.clientY - offsetY;
+
+    // Batasi gerakan agar tidak keluar layar
+    newX = clamp(newX, 0, window.innerWidth - chibi.offsetWidth);
+    newY = clamp(newY, 0, window.innerHeight - chibi.offsetHeight);
+
+    chibi.style.left = newX + "px";
+    chibi.style.top = newY + "px";
     chibi.style.bottom = "auto";
   }
 }, { passive: false });
