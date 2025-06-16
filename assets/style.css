@@ -231,62 +231,58 @@ header {
   border-color: #a855f7;
 }
 
-#hamburgerMenu {
+/* Tombol Hamburger Pojok Kiri Atas */
+#hamburgerToggle {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-}
-
-.hamburger-icon {
-  padding: 10px 16px;
+  top: 12px;
+  left: 12px;
+  font-size: 24px;
   background-color: #6a0dad;
-  color: white;
+  color: #fff;
+  border: none;
   border-radius: 10px;
-  font-weight: bold;
-  font-size: 14px;
+  padding: 4px 10px;
+  z-index: 1100;
   cursor: pointer;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-.content-box {
-  background: #fff;
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+/* Sidebar */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18%;
+  height: 100%;
+  background: #ffffffee;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 1099;
+  transition: transform 0.3s ease;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
-#sideNav {
-  margin-top: 8px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-}
-
-#sideNav ul {
+.side-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-#sideNav li {
-  margin: 6px 0;
+.side-menu ul li {
+  margin: 12px 0;
 }
 
-#sideNav a {
+.side-menu ul li a {
   text-decoration: none;
   color: #333;
   font-weight: 600;
-  transition: 0.2s;
-}
-
-#sideNav a:hover {
-  color: #6a0dad;
 }
 
 .hidden {
-  display: none;
+  transform: translateX(-100%);
 }
 
+.side-menu.show {
+  transform: translateX(0);
+}
