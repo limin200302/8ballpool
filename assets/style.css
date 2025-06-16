@@ -27,131 +27,11 @@ header {
   right: 10px;
 }
 
-.menu {
-  text-align: center;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 auto 20px auto;
-  max-width: 800px;
-}
-
-.menu button.toggle-section {
-  display: inline-block;
-  margin: 10px auto;
-  background: #a855f7;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+.judul-store {
+  font-size: 24px;
   font-weight: bold;
-  border-radius: 12px;
-}
-
-.price-section {
-  display: none;
-  margin: 0 auto 30px auto;
-  padding: 15px;
-  max-width: 95%;
-  background-color: rgba(240, 240, 240, 0.85);
-  border-radius: 12px;
-}
-
-.vertical-list .vip-section,
-#poolPass .item {
-  margin: 20px auto;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 100%;
-}
-
-.vip-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.vip-title img {
-  width: 28.8px;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.item:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.item span {
-  flex: 1;
-}
-
-.item button {
-  background-color: #16a34a;
   color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.item button.selected::after {
-  content: " ✔️";
-}
-
-.dollar {
-  height: 18px;
   margin-left: 8px;
-  vertical-align: bottom;
-}
-
-#cart {
-  padding: 20px;
-  background: #f5f5f5;
-  border-top: 2px solid #ccc;
-  text-align: center;
-}
-
-#cartItems li {
-  list-style: none;
-  margin-bottom: 10px;
-}
-
-#checkoutBtn {
-  background-color: #16a34a;
-  color: white;
-  padding: 10px 20px;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  margin-top: 10px;
-}
-
-#chibi {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  width: 80px;
-  z-index: 9999;
-  cursor: grab;
-}
-
-#chibi:active {
-  cursor: grabbing;
 }
 
 .icon-menu {
@@ -197,13 +77,68 @@ header {
   object-fit: contain;
 }
 
-.icon-menu::-webkit-scrollbar {
-  height: 8px; /* Menambah ukuran scrollbar */
+.price-section {
+  display: none;
+  margin: 0 auto 30px auto;
+  padding: 15px;
+  max-width: 95%;
+  background-color: rgba(240, 240, 240, 0.85);
+  border-radius: 12px;
 }
 
-.icon-menu::-webkit-scrollbar-thumb {
-  background-color: #a855f7;
-  border-radius: 5px;
+#cart {
+  padding: 20px;
+  background: #f5f5f5;
+  border-top: 2px solid #ccc;
+  text-align: center;
+}
+
+#cartItems li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+#checkoutBtn {
+  background-color: #16a34a;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+#chibi {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 80px;
+  z-index: 9999;
+  cursor: grab;
+}
+
+#chibi:active {
+  cursor: grabbing;
+}
+
+.loading-spinner {
+  display: none;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Sidebar */
@@ -213,30 +148,40 @@ header {
   left: 0;
   width: 50%;
   height: 100%;
-  background-color: #1f1f1f;
+  background-color: rgba(31, 31, 31, 0.8); /* Transparency added */
   padding: 40px 20px;
   transition: transform 0.3s ease;
   transform: translateX(-100%);
+  color: white; /* Text color for the menu */
 }
 
 .side-menu.show {
   transform: translateX(0);
 }
 
-#sideMenu ul li a.active {
-  color: #00ffea;
-  font-weight: bold;
-  border-left: 4px solid red;
-  padding-left: 10px;
-  background-color: #222;
+.side-menu ul li {
+  margin: 20px 0;
 }
 
-#sideMenu a.active {
-  background-color: #8000c8; /* ungu */
-  color: yellow;
-  padding-left: 12px;
-  border-left: 4px solid yellow;
-  border-radius: 6px;
+.side-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.side-menu a:hover {
+  color: #00ffea; /* Hover color for links */
+  font-weight: bold;
+}
+
+.icon-menu::-webkit-scrollbar {
+  height: 8px; /* Menambah ukuran scrollbar */
+}
+
+.icon-menu::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 5px;
 }
 
 /* Responsiveness */
