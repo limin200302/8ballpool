@@ -287,6 +287,49 @@ if (closeMenuBtn) {
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
+const chibi = document.getElementById("chibi");
+let isDragging = false;
+let offsetX, offsetY;
+
+// Mouse support
+chibi.addEventListener("mousedown", function (e) {
+  isDragging = true;
+  offsetX = e.clientX - chibi.offsetLeft;
+  offsetY = e.clientY - chibi.offsetTop;
+});
+
+document.addEventListener("mousemove", function (e) {
+  if (isDragging) {
+    chibi.style.left = e.clientX - offsetX + "px";
+    chibi.style.top = e.clientY - offsetY + "px";
+    chibi.style.bottom = "auto";
+  }
+});
+
+document.addEventListener("mouseup", function () {
+  isDragging = false;
+});
+
+// Touch support (Android)
+chibi.addEventListener("touchstart", function (e) {
+  isDragging = true;
+  const touch = e.touches[0];
+  offsetX = touch.clientX - chibi.offsetLeft;
+  offsetY = touch.clientY - chibi.offsetTop;
+}, { passive: false });
+
+document.addEventListener("touchmove", function (e) {
+  if (isDragging) {
+    const touch = e.touches[0];
+    chibi.style.left = touch.clientX - offsetX + "px";
+    chibi.style.top = touch.clientY - offsetY + "px";
+    chibi.style.bottom = "auto";
+  }
+}, { passive: false });
+
+document.addEventListener("touchend", function () {
+  isDragging = false;
+});
 
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
