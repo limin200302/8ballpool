@@ -277,6 +277,13 @@ document.addEventListener("click", function (e) {
     sideMenu.classList.add("hidden");
   }
 });
+const closeMenuBtn = document.getElementById("closeMenu");
+if (closeMenuBtn) {
+  closeMenuBtn.addEventListener("click", function () {
+    sideMenu.classList.remove("show");
+    sideMenu.classList.add("hidden");
+  });
+}
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
