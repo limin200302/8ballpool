@@ -260,6 +260,10 @@ document.getElementById("checkoutBtn").addEventListener("click", () => {
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
   window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
 });
+function toggleNav() {
+  const sideNav = document.getElementById("sideNav");
+  sideNav.classList.toggle("hidden");
+}
 
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
