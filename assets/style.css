@@ -167,14 +167,15 @@ header {
 }
 .icon-menu {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto; /* Membuat menu bisa digeser */
   margin: 8px auto;
   max-width: 100%;
+  padding: 10px 0;
+  scroll-snap-type: x mandatory; /* Mengaktifkan snap ketika geser */
 }
-
 .menu-icon {
   width: 54px;
   height: 54px;
@@ -194,13 +195,16 @@ header {
   justify-content: center;
   padding: 10px;
   border-radius: 12px;
-  background-color: silver; /* Pekat */
+  background-color: silver;
   width: 70px;
   height: 70px;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
   border: 2px solid transparent;
   margin: 5px;
-  position: relative; /* Biar efek bisa terlihat */
+  position: relative;
+  opacity: 0.6; /* Default opacity untuk ikon yang tidak terpilih */
+  transition: opacity 0.3s ease; /* Efek transisi ketika memilih ikon */
+  scroll-snap-align: center; /* Menjamin posisi ikon tengah saat digeser */
 }
 /* Glow animasi berwarna-warni */
 @keyframes glowBorder {
@@ -228,9 +232,10 @@ header {
 
 /* Saat dipilih */
 .icon-wrapper.active {
-  background-color: rgba(192, 192, 192, 0.8); /* Silver transparan */
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
-  border-color: #a855f7;
+  opacity: 1; /* Ketika aktif, ikon tidak transparan */
+  background-color: rgba(192, 192, 192, 0.8);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+  border-color: #a855f7;
 }
 
 /* Tombol Hamburger Pojok Kiri Atas */
@@ -262,7 +267,12 @@ header {
   z-index: 1001;
   cursor: pointer;
 }
-
+.icon-menu::-webkit-scrollbar {
+  height: 8px; /* Menambah ukuran scrollbar */
+}
+.icon-menu::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 5px;
 /* Menu samping */
 .side-menu {
   position: fixed;
