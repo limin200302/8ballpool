@@ -260,14 +260,22 @@ document.getElementById("checkoutBtn").addEventListener("click", () => {
   const message = encodeURIComponent("Halo Mamet Ucup, saya ingin memesan:\n\n" + items.join("\n"));
   window.open(`https://wa.me/6285713056206?text=${message}`, "_blank");
 });
-function toggleSideMenu() {
-  const menu = document.getElementById("sideMenu");
-  menu.classList.toggle("show");
-  menu.classList.toggle("hidden");
-}
-document.getElementById("menuToggle").addEventListener("click", function () {
-  const menu = document.getElementById("sideMenu");
-  menu.classList.toggle("show");
+
+const menuBtn = document.getElementById("menuToggle");
+const sideMenu = document.getElementById("sideMenu");
+menuBtn.addEventListener("click", function (e) {
+  e.stopPropagation(); // cegah event bubble ke body
+  sideMenu.classList.toggle("show");
+  sideMenu.classList.toggle("hidden");
+});
+document.addEventListener("click", function (e) {
+  const isClickInsideMenu = sideMenu.contains(e.target);
+  const isClickOnButton = menuBtn.contains(e.target);
+
+  if (!isClickInsideMenu && !isClickOnButton) {
+    sideMenu.classList.remove("show");
+    sideMenu.classList.add("hidden");
+  }
 });
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
