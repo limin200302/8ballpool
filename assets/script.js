@@ -354,5 +354,19 @@ document.querySelectorAll('#sideMenu a').forEach(link => {
     link.classList.add('active');
   }
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (currentPage.includes("beranda")) {
+    document.getElementById("menu-beranda").classList.add("active");
+  } else if (currentPage.includes("index")) {
+    document.getElementById("menu-8ball").classList.add("active");
+  } else if (currentPage.includes("dan")) {
+    document.getElementById("menu-dan").classList.add("active");
+  } else if (currentPage.includes("ml")) {
+    document.getElementById("menu-ml").classList.add("active");
+  }
+});
+
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
