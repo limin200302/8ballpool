@@ -231,27 +231,27 @@ function generatePriceList(containerId, data, iconPath) {
 }
 let currentActiveId = null;
 
+let currentActiveId = null;
+
 function selectIcon(el) {
-  const targetId = el.getAttribute("data-target");
-  if (currentActiveId === targetId) {
-    el.classList.remove("active");
-    const section = document.getElementById(targetId);
-    if (section) section.style.display = "none";
-    currentActiveId = null;
-    return;
-  }
-  document.querySelectorAll(".icon-wrapper").forEach(wrapper => {
-    wrapper.classList.remove("active");
+  // Hapus kelas aktif dari semua ikon
+  document.querySelectorAll('.icon-wrapper').forEach(icon => {
+    icon.classList.remove('active');
   });
-  el.classList.add("active");
+
+  // Tambahkan kelas aktif pada ikon yang dipilih
+  el.classList.add('active');
+
+  // Set section yang sesuai untuk ditampilkan
+  const targetId = el.getAttribute('data-target');
   const sections = ["priceListCash", "boxLegend", "poolPass"];
   sections.forEach(sectionId => {
     const section = document.getElementById(sectionId);
     if (section) section.style.display = "none";
   });
+
   const targetSection = document.getElementById(targetId);
   if (targetSection) targetSection.style.display = "block";
-
   currentActiveId = targetId;
 }
 
