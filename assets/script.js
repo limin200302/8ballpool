@@ -265,6 +265,10 @@ function toggleSideMenu() {
   menu.classList.toggle("show");
   menu.classList.toggle("hidden");
 }
+document.getElementById("menuToggle").addEventListener("click", function () {
+  const menu = document.getElementById("sideMenu");
+  menu.classList.toggle("show");
+});
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
