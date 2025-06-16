@@ -353,3 +353,10 @@ header {
   padding-left: 10px;
   background-color: #222;
 }
+#sideMenu a.active {
+  background-color: #8000c8; /* ungu */
+  color: yellow;
+  padding-left: 12px;
+  border-left: 4px solid yellow;
+  border-radius: 6px;
+}
