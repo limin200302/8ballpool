@@ -1,3 +1,5 @@
+script.js
+
 const vipDataCash = [
   {
     name: "Silver",
@@ -132,8 +134,7 @@ const vipDataBox = [
       { label: "Rp 295.000 - 404 Box", value: 295000 }
     ]
   }
-];
-
+]
 let cart = [];
 
 function getItemId(vipName, label, price) {
@@ -162,7 +163,7 @@ function updateCartDisplay() {
   cart.forEach(({ id, name, price }) => {
     const li = document.createElement("li");
     li.textContent = name;
-
+    
     const removeBtn = document.createElement("button");
     removeBtn.textContent = " - ";
     removeBtn.className = "remove";
@@ -184,24 +185,75 @@ function updateCartDisplay() {
   });
 }
 
+function generatePriceList(containerId, data, iconPath) {
+  const container = document.getElementById(containerId);
+  data.forEach(vip => {
+    const section = document.createElement("div");
+    section.className = "vip-section";
+
+    const title = document.createElement("div");
+    title.className = "vip-title";
+
+    const logo = document.createElement("img");
+    logo.src = vip.name === "Black Diamond"
+      ? "assets/img/blackdiamond.png"
+      : vip.logo;
+    logo.alt = vip.name + " logo";
+
+    title.appendChild(logo);
+    title.appendChild(document.createTextNode(" " + vip.name));
+    section.appendChild(title);
+
+    vip.prices.forEach(price => {
+      const item = document.createElement("div");
+      item.className = "item";
+      const span = document.createElement("span");
+      span.textContent = price.label;
+
+      const icon = document.createElement("img");
+      icon.className = "dollar";
+      icon.src = iconPath;
+
+      const button = document.createElement("button");
+      button.textContent = "Pilih";
+      const id = getItemId(vip.name, price.label, price.value);
+      button.dataset.itemId = id;
+      button.onclick = function () {
+        addToCart(vip.name, price.label, price.value, button);
+      };
+
+      item.appendChild(span);
+      item.appendChild(button);
+      item.appendChild(icon);
+      section.appendChild(item);
+    });
+
+    container.appendChild(section);
+  });
+}
 let currentActiveId = null;
 
 function selectIcon(el) {
-  document.querySelectorAll('.icon-wrapper').forEach(icon => {
-    icon.classList.remove('active');
+  const targetId = el.getAttribute("data-target");
+  if (currentActiveId === targetId) {
+    el.classList.remove("active");
+    const section = document.getElementById(targetId);
+    if (section) section.style.display = "none";
+    currentActiveId = null;
+    return;
+  }
+  document.querySelectorAll(".icon-wrapper").forEach(wrapper => {
+    wrapper.classList.remove("active");
   });
-
-  el.classList.add('active');
-
-  const targetId = el.getAttribute('data-target');
+  el.classList.add("active");
   const sections = ["priceListCash", "boxLegend", "poolPass"];
   sections.forEach(sectionId => {
     const section = document.getElementById(sectionId);
-    if (section) section.style.display = "none"; // Sembunyikan semua section
+    if (section) section.style.display = "none";
   });
-
   const targetSection = document.getElementById(targetId);
   if (targetSection) targetSection.style.display = "block";
+
   currentActiveId = targetId;
 }
 
@@ -214,33 +266,29 @@ document.getElementById("checkoutBtn").addEventListener("click", () => {
 const menuBtn = document.getElementById("menuToggle");
 const sideMenu = document.getElementById("sideMenu");
 menuBtn.addEventListener("click", function (e) {
-  e.stopPropagation();
-  sideMenu.classList.toggle("show");
-  sideMenu.classList.toggle("hidden");
+  e.stopPropagation(); // cegah event bubble ke body
+  sideMenu.classList.toggle("show");
+  sideMenu.classList.toggle("hidden");
 });
-
 document.addEventListener("click", function (e) {
-  const isClickInsideMenu = sideMenu.contains(e.target);
-  const isClickOnButton = menuBtn.contains(e.target);
+  const isClickInsideMenu = sideMenu.contains(e.target);
+  const isClickOnButton = menuBtn.contains(e.target);
 
-  if (!isClickInsideMenu && !isClickOnButton) {
-    sideMenu.classList.remove("show");
-    sideMenu.classList.add("hidden");
-  }
+  if (!isClickInsideMenu && !isClickOnButton) {
+    sideMenu.classList.remove("show");
+    sideMenu.classList.add("hidden");
+  }
 });
-
 const closeMenuBtn = document.getElementById("closeMenu");
 if (closeMenuBtn) {
-  closeMenuBtn.addEventListener("click", function () {
-    sideMenu.classList.remove("show");
-    sideMenu.classList.add("hidden");
-  });
+  closeMenuBtn.addEventListener("click", function () {
+    sideMenu.classList.remove("show");
+    sideMenu.classList.add("hidden");
+  });
 }
-
 document.getElementById("modeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
-
 const chibi = document.getElementById("chibi");
 let isDragging = false;
 let offsetX, offsetY;
@@ -250,7 +298,7 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-// Mouse Events untuk draggable chibi
+// Mouse Events
 chibi.addEventListener("mousedown", function (e) {
   isDragging = true;
   offsetX = e.clientX - chibi.offsetLeft;
@@ -262,6 +310,7 @@ document.addEventListener("mousemove", function (e) {
     let newX = e.clientX - offsetX;
     let newY = e.clientY - offsetY;
 
+    // Batasi gerakan agar tidak keluar layar
     newX = clamp(newX, 0, window.innerWidth - chibi.offsetWidth);
     newY = clamp(newY, 0, window.innerHeight - chibi.offsetHeight);
 
@@ -275,7 +324,7 @@ document.addEventListener("mouseup", function () {
   isDragging = false;
 });
 
-// Touch Events untuk mobile devices
+// Touch Events
 chibi.addEventListener("touchstart", function (e) {
   isDragging = true;
   const touch = e.touches[0];
@@ -289,6 +338,7 @@ document.addEventListener("touchmove", function (e) {
     let newX = touch.clientX - offsetX;
     let newY = touch.clientY - offsetY;
 
+    // Batasi gerakan agar tidak keluar layar
     newX = clamp(newX, 0, window.innerWidth - chibi.offsetWidth);
     newY = clamp(newY, 0, window.innerHeight - chibi.offsetHeight);
 
@@ -301,3 +351,24 @@ document.addEventListener("touchmove", function (e) {
 document.addEventListener("touchend", function () {
   isDragging = false;
 });
+document.querySelectorAll('#sideMenu a').forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (currentPage.includes("beranda")) {
+    document.getElementById("menu-beranda").classList.add("active");
+  } else if (currentPage.includes("index")) {
+    document.getElementById("menu-8ball").classList.add("active");
+  } else if (currentPage.includes("dan")) {
+    document.getElementById("menu-dan").classList.add("active");
+  } else if (currentPage.includes("ml")) {
+    document.getElementById("menu-ml").classList.add("active");
+  }
+});
+
+generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
+generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
