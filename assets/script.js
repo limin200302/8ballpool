@@ -349,6 +349,10 @@ document.addEventListener("touchmove", function (e) {
 document.addEventListener("touchend", function () {
   isDragging = false;
 });
-
+document.querySelectorAll('#sideMenu a').forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  }
+});
 generatePriceList("priceListCash", vipDataCash, "assets/img/dollar.png");
 generatePriceList("boxLegend", vipDataBox, "assets/img/box_legends.png");
