@@ -3,62 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <link rel="stylesheet" href="assets/nav-style.css">
-<script src="assets/nav-script.js" defer></script>
+  <link rel="stylesheet" href="assets/nav-style.css">
+  <script src="assets/nav-script.js" defer></script>
   <title>Mamet Ucup Store</title>
   <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-<button id="menuToggle" class="menu-btn">☰</button>
+    <button id="menuToggle" class="menu-btn">☰</button>
     <button id="modeToggle">🌙</button>
-  <h1 class="judul-store">Mamet Ucup Store</h1>
-  <button id="modeToggle">🌙</button>
-</header>
-
-<div id="sideMenu" class="side-menu hidden">
-  <div id="closeMenu" style="color: red; font-weight: bold; cursor: pointer; margin-bottom: 20px;">Tutup ✖</div>
-<ul>
-  <li><a href="beranda.html" id="menu-beranda">Beranda</a></li>
-  <li><a href="index.html" id="menu-8ball">Top Up 8Ball Pool</a></li>
-  <li><a href="dan.html" id="menu-dan">Top Up Dan</a></li>
-  <li><a href="ml.html" id="menu-ml">Top Up Mobile Legend</a></li>
-</ul>
-</div>
-</div>
-    <h2 id="menuNote">Lihat Daftar Menunya Dibawah ya Ketua</h2>
-    <button id="modeToggle">🌙</button>
+    <h1 class="judul-store">Mamet Ucup Store</h1>
   </header>
 
+  <div id="sideMenu" class="side-menu hidden">
+    <div id="closeMenu" style="color: red; font-weight: bold; cursor: pointer; margin-bottom: 20px;">Tutup ✖</div>
+    <ul>
+      <li><a href="beranda.html" id="menu-beranda">Beranda</a></li>
+      <li><a href="index.html" id="menu-8ball">Top Up 8Ball Pool</a></li>
+      <li><a href="dan.html" id="menu-dan">Top Up Dan</a></li>
+      <li><a href="ml.html" id="menu-ml">Top Up Mobile Legend</a></li>
+    </ul>
+  </div>
+
   <main>
-<section class="icon-menu">
-  <div class="icon-wrapper" data-target="priceListCash" onclick="selectIcon(this)">
-    <img src="assets/img/X1.png" class="menu-icon" alt="Cash" />
-  </div>
-  <div class="icon-wrapper" data-target="boxLegend" onclick="selectIcon(this)">
-    <img src="assets/img/X2.png" class="menu-icon" alt="Box Legend" />
-  </div>
-  <div class="icon-wrapper" data-target="poolPass" onclick="selectIcon(this)">
-    <img src="assets/img/X3.png" class="menu-icon" alt="Pool Pass" />
-  </div>
-</section>
+    <section class="icon-menu">
+      <div class="icon-wrapper" data-target="priceListCash" onclick="selectIcon(this)">
+        <img src="assets/img/X1.png" class="menu-icon" alt="Cash" />
+      </div>
+      <div class="icon-wrapper" data-target="boxLegend" onclick="selectIcon(this)">
+        <img src="assets/img/X2.png" class="menu-icon" alt="Box Legend" />
+      </div>
+      <div class="icon-wrapper" data-target="poolPass" onclick="selectIcon(this)">
+        <img src="assets/img/X3.png" class="menu-icon" alt="Pool Pass" />
+      </div>
+    </section>
     
-  <div id="priceListCash" class="price-section vertical-list"></div>
-
-  <div id="boxLegend" class="price-section vertical-list"></div>
-
-  <div id="poolPass" class="price-section">
-    <div class="item">
-      <span>Pool Pass Biasa - Rp 50.000</span>
-      <button onclick="addToCart('Pool Pass', 'Pool Pass Biasa - Rp 50.000', 50000, this)">Pilih</button>
+    <div id="priceListCash" class="price-section vertical-list"></div>
+    <div id="boxLegend" class="price-section vertical-list"></div>
+    <div id="poolPass" class="price-section">
+      <div class="item">
+        <span>Pool Pass Biasa - Rp 50.000</span>
+        <button onclick="addToCart('Pool Pass', 'Pool Pass Biasa - Rp 50.000', 50000, this)">Pilih</button>
+      </div>
+      <div class="item">
+        <span>Pool Pass Elite - Rp 85.000</span>
+        <button onclick="addToCart('Pool Pass', 'Pool Pass Elite - Rp 85.000', 85000, this)">Pilih</button>
+      </div>
     </div>
-    <div class="item">
-      <span>Pool Pass Elite - Rp 85.000</span>
-      <button onclick="addToCart('Pool Pass', 'Pool Pass Elite - Rp 85.000', 85000, this)">Pilih</button>
-    </div>
-  </div>
-</section>
-  
+
     <aside id="cart">
       <h2>Keranjang</h2>
       <ul id="cartItems"></ul>
@@ -67,47 +60,14 @@
   </main>
 
   <img src="assets/img/Anms.gif" id="chibi" alt="Chibi" />
+  <div class="loading-spinner" id="loadingSpinner"></div>
+
+  <section id="berandaSection" class="beranda-content" style="display: none;">
+    <h2>🏠 Tentang Mamet Ucup Store</h2>
+    <p>Mamet Ucup Store adalah layanan top up 8 Ball Pool, Dan the Man, dan Mobile Legends yang terpercaya dan cepat! Kami menyediakan pilihan harga VIP terbaik dan berbagai metode pembayaran termasuk via login.</p>
+  </section>
 
   <script src="assets/script.js"></script>
 
-<section id="berandaSection" class="beranda-content" style="display: none;">
-    <h2>🏠 Tentang Mamet Ucup Store</h2>
-    <p>Mamet Ucup Store adalah layanan top up 8 Ball Pool, Dan the Man, dan Mobile Legends yang terpercaya dan cepat! Kami menyediakan pilihan harga VIP terbaik dan berbagai metode pembayaran termasuk via login.</p>
-  </div>
-
-  <div class="card">
-    <h2>🔑 Tata Cara Top Up via Login</h2>
-    <ol>
-      <li>Hubungi kami via WhatsApp dengan format lengkap akun.</li>
-      <li>Berikan ID dan kata sandi akun game (jika diminta).</li>
-      <li>Kami akan melakukan top up dalam waktu maksimal 5-10 menit.</li>
-      <li>Ganti kata sandi setelah selesai sebagai tindakan keamanan.</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h2>⚖️ Keuntungan & Kekurangan Via Login</h2>
-    <strong>✅ Keuntungan:</strong>
-    <ul>
-      <li>Harga bisa lebih murah.</li>
-      <li>Tersedia untuk event eksklusif tertentu.</li>
-    </ul>
-    <strong>❌ Kekurangan:</strong>
-    <ul>
-      <li>Perlu login akun (risiko keamanan jika tidak hati-hati).</li>
-      <li>Hanya bisa dilakukan saat jam operasional admin.</li>
-    </ul>
-  </div>
-  </section>
-  <div class="cara-topup">
-  <h3>Cara Top Up 8 Ball Pool</h3>
-  <ol>
-    <li>Pilih item yang di inginkan</li>
-    <li>Klik tombol "Pilih" lalu masuk ke Keranjang</li>
-    <li>Klik "Pesan Sekarang" untuk checkout via WhatsApp admin</li>
-    <li>Admin akan membalas pesan secepat mungkin</li>
-    <li>Proses setiap item rata-rata hanya 5-10 menit</li>
-  </ol>
-  </div>
 </body>
 </html>
